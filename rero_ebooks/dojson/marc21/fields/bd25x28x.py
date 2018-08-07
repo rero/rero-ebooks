@@ -285,8 +285,7 @@ def projected_publication_date(self, key, value):
 def production_publication_distribution_manufacture_and_copyright_notice(
     self, key, value
 ):
-    """Production, Publication, Distribution, Manufacture,
-       and Copyright Notice."""
+    """Production, Publication, Distribution, Manufacture, Copyright Notice."""
     indicator_map1 = {
         "2": "Intervening",
         "3": "Current/Latest",

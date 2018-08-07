@@ -118,6 +118,11 @@ DB_VERSIONING = False
 #: Hostname used in URLs for local JSONSchemas.
 JSONSCHEMAS_HOST = 'ebooks.rero.ch'
 
+# PIDStore
+# ========
+#: PID field name.
+PIDSTORE_RECID_FIELD = 'pid'
+
 # Flask configuration
 # ===================
 # See details on
@@ -139,6 +144,7 @@ APP_ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # OAI-PMH
 # =======
 OAISERVER_ID_PREFIX = 'oai:ebooks.rero.ch:'
+OAISERVER_CONTROL_NUMBER_FETCHER = 'ebook'
 
 # Debug
 # =====

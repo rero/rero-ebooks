@@ -93,6 +93,12 @@ setup(
         'invenio_i18n.translations': [
             'messages = rero_ebooks',
         ],
+        'invenio_pidstore.minters': [
+            'ebook = rero_ebooks.minters:ebook_pid_minter',
+        ],
+        'invenio_pidstore.fetchers': [
+            'ebook = rero_ebooks.fetchers:ebook_pid_fetcher',
+        ],
         'dojson.cli.rule': [
             'cantookmarc21 = rero_ebooks.dojson.marc21:marc21',
         ],
@@ -111,7 +117,7 @@ setup(
             'bd76x78x = rero_ebooks.dojson.marc21.fields.bd76x78x',
             'bd80x83x = rero_ebooks.dojson.marc21.fields.bd80x83x',
             'bd84188x = rero_ebooks.dojson.marc21.fields.bd84188x'
-        ]
+        ],
     },
     extras_require=extras_require,
     install_requires=install_requires,
