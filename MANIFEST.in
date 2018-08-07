@@ -45,3 +45,7 @@ recursive-include docs Makefile
 recursive-include rero_ebooks *.gitkeep
 recursive-include rero_ebooks *.html
 recursive-include tests *.py
+
+# added by check_manifest.py
+recursive-include data *.xml
+recursive-include rero_ebooks *.json

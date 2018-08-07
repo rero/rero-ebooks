@@ -53,8 +53,7 @@ install_requires = [
     'Flask-Debugtoolbar>=0.10.1',
     'invenio[{db},{es},base,auth,metadata]~={version}'.format(
         db=DATABASE, es=ELASTICSEARCH, version=INVENIO_VERSION),
-    'invenio-oaiharvester>=1.0.0a4',
-    'invenio-marc21>=1.0.0a8'
+    'invenio-oaiharvester>=1.0.0a4'
 ]
 
 packages = find_packages()
@@ -98,6 +97,9 @@ setup(
         ],
         'invenio_pidstore.fetchers': [
             'ebook = rero_ebooks.fetchers:ebook_pid_fetcher',
+        ],
+        'invenio_search.mappings': [
+            'ebooks = rero_ebooks.mappings',
         ],
         'dojson.cli.rule': [
             'cantookmarc21 = rero_ebooks.dojson.marc21:marc21',

@@ -141,10 +141,21 @@ SESSION_COOKIE_SECURE = True
 #: route correct hosts to the application.
 APP_ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+# Indexer
+# =======
+#: default ES index
+INDEXER_DEFAULT_INDEX = "ebooks-ebook-v1.0.0"
+#: default ES document type
+INDEXER_DEFAULT_DOC_TYPE = "ebook-v1.0.0"
+
 # OAI-PMH
 # =======
+#: OAI prefix
 OAISERVER_ID_PREFIX = 'oai:ebooks.rero.ch:'
+#: OAI fetcher
 OAISERVER_CONTROL_NUMBER_FETCHER = 'ebook'
+#: OAI default ES index
+OAISERVER_RECORD_INDEX = 'ebooks'
 
 # Debug
 # =====

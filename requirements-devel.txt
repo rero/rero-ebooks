@@ -9,4 +9,3 @@
 -e git+git://github.com/inveniosoftware/dojson.git#egg=dojson
 -e git+git://github.com/inveniosoftware/invenio-oaiharvester.git#egg=invenio-oaiharvester
 -e git+git://github.com/inveniosoftware/invenio-oaiserver.git#egg=invenio-oaiserver
--e git+git://github.com/inveniosoftware/invenio-marc21.git#egg=invenio-marc21
