@@ -92,6 +92,25 @@ setup(
         ],
         'invenio_i18n.translations': [
             'messages = rero_ebooks',
+        ],
+        'dojson.cli.rule': [
+            'cantookmarc21 = rero_ebooks.dojson.marc21:marc21',
+        ],
+        'rero_ebooks.marc21': [
+            'bdleader = rero_ebooks.dojson.marc21.fields.bdleader',
+            'bd00x = rero_ebooks.dojson.marc21.fields.bd00x',
+            'bd01x09x = rero_ebooks.dojson.marc21.fields.bd01x09x',
+            'bd1xx = rero_ebooks.dojson.marc21.fields.bd1xx',
+            'bd20x24x = rero_ebooks.dojson.marc21.fields.bd20x24x',
+            'bd25x28x = rero_ebooks.dojson.marc21.fields.bd25x28x',
+            'bd3xx = rero_ebooks.dojson.marc21.fields.bd3xx',
+            'bd4xx = rero_ebooks.dojson.marc21.fields.bd4xx',
+            'bd5xx = rero_ebooks.dojson.marc21.fields.bd5xx',
+            'bd6xx = rero_ebooks.dojson.marc21.fields.bd6xx',
+            'bd70x75x = rero_ebooks.dojson.marc21.fields.bd70x75x',
+            'bd76x78x = rero_ebooks.dojson.marc21.fields.bd76x78x',
+            'bd80x83x = rero_ebooks.dojson.marc21.fields.bd80x83x',
+            'bd84188x = rero_ebooks.dojson.marc21.fields.bd84188x'
         ]
     },
     extras_require=extras_require,

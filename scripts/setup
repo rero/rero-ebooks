@@ -23,3 +23,6 @@ invenio access allow superuser-access role admin
 # Create records (in progress...)
 harvest_path=$(invenio shell --no-term-title -c "print(app.instance_path)")"/harvest"
 invenio oaiharvester harvest  -u https://la-chaux-de-fonds.ebibliomedia.ch/oai.xml -m marc21 -d $harvest_path -s ""
+
+# Marc21 conversion example
+# yaz-marcdump -i marcxml -o marcxml ../../var/instance/harvest/oaiharvest_2018-08-07_22eo1wrd.xml | dojson -l marcxml -d marcxml do cantookmarc21 do to_marc21 > marc21.xml
