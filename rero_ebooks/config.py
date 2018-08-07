@@ -110,6 +110,8 @@ CELERY_BEAT_SCHEDULE = {
 #: Database URI including user and password
 SQLALCHEMY_DATABASE_URI = \
     'postgresql+psycopg2://rero-ebooks:rero-ebooks@localhost/rero-ebooks'
+# disable record versioning
+DB_VERSIONING = False
 
 # JSONSchemas
 # ===========

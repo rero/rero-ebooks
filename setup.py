@@ -53,6 +53,8 @@ install_requires = [
     'Flask-Debugtoolbar>=0.10.1',
     'invenio[{db},{es},base,auth,metadata]~={version}'.format(
         db=DATABASE, es=ELASTICSEARCH, version=INVENIO_VERSION),
+    'invenio-oaiharvester>=1.0.0a4',
+    'invenio-marc21>=1.0.0a8'
 ]
 
 packages = find_packages()

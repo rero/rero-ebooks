@@ -19,3 +19,7 @@ invenio index queue init purge
 # Create admin role to rectict access
 invenio roles create admin
 invenio access allow superuser-access role admin
+
+# Create records (in progress...)
+harvest_path=$(invenio shell --no-term-title -c "print(app.instance_path)")"/harvest"
+invenio oaiharvester harvest  -u https://la-chaux-de-fonds.ebibliomedia.ch/oai.xml -m marc21 -d $harvest_path -s ""

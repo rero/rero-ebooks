@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2018 RERO.
+#
+# RERO Ebooks is free software; you can redistribute it and/or modify it
+# under the terms of the MIT License; see LICENSE file for more details.
+# for development
+
+-e git+git://github.com/inveniosoftware/dojson.git#egg=dojson
+-e git+git://github.com/inveniosoftware/invenio-oaiharvester.git#egg=invenio-oaiharvester
+-e git+git://github.com/inveniosoftware/invenio-oaiserver.git#egg=invenio-oaiserver
+-e git+git://github.com/inveniosoftware/invenio-marc21.git#egg=invenio-marc21
