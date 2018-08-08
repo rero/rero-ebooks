@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ebooks-worker
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ebooks
+        tier: worker
+    spec:
+      containers:
+      - name: ebooks-worker
+        image: rabbitmq:3-management
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          valueFrom:
+            secretKeyRef:
+              name: rero-ebooks
+              key: worker-user
+        - name: RABBITMQ_DEFAULT_PASS
+          valueFrom:
+            secretKeyRef:
+              name: rero-ebooks
+              key: worker-password
+        - name: GET_HOSTS_FROM
+          value: dns
+        ports:
+        - containerPort: 5672
+          name: worker
+        - containerPort: 15672
+          name: ui

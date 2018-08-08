@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ebooks-tasksui
+  labels:
+    app: ebooks
+    tier: tasksui
+spec:
+  type: NodePort
+  ports:
+    - port: 5555
+      nodePort: 30057
+  selector:
+    app: ebooks
+    tier: tasksui

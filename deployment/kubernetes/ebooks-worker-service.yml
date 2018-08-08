@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ebooks-worker
+  labels:
+    app: ebooks
+    tier: worker
+spec:
+  type: NodePort
+  ports:
+    - port: 5672
+      nodePort: 30058
+      name: worker
+    - port: 15672
+      nodePort: 30055
+      name: ui
+  selector:
+    app: ebooks
+    tier: worker

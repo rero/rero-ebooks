@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ebooks-indexer
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ebooks
+        tier: indexer
+    spec:
+      initContainers:
+        - name: init-sysctl
+          image: busybox:1.27.2
+          command:
+            - sysctl
+            - -w
+            - vm.max_map_count=262144
+          env:
+          - name: bootstrap.memory_lock
+            value: "true"
+          securityContext:
+            privileged: true
+      containers:
+      - name: ebooks-indexer
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.2.2
+        resources:
+          requests:
+            cpu: 100m
+            memory: 512Mi
+        ports:
+        - containerPort: 9300
+          name: api
+        - containerPort: 9200
+          name: cluster
+        env:
+          - name: cluster.name
+            value: ebooks
+          - name: ES_JAVA_OPTS
+            value: -Xms512m -Xmx512m
+
