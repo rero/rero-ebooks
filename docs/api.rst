@@ -7,9 +7,3 @@
 
 API Docs
 ========
-
-Views
------
-
-.. automodule:: rero_ebooks.views
-   :members:
