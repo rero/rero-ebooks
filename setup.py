@@ -51,8 +51,14 @@ setup_requires = [
 install_requires = [
     'Flask-BabelEx>=0.9.3',
     'Flask-Debugtoolbar>=0.10.1',
-    'invenio[{db},{es},base,auth,metadata]~={version}'.format(
+    'invenio[{db},{es}]~={version}'.format(
         db=DATABASE, es=ELASTICSEARCH, version=INVENIO_VERSION),
+    'invenio-logging>=1.0.0,<1.1.0',
+    'invenio-indexer>=1.0.0,<1.1.0',
+    'invenio-jsonschemas>=1.0.0,<1.1.0',
+    'invenio-oaiserver>=1.0.0,<1.1.0',
+    'invenio-pidstore>=1.0.0,<1.1.0',
+    'invenio-records>=1.0.0,<1.1.0',
     'invenio-oaiharvester>=1.0.0a4'
 ]
 
@@ -82,9 +88,6 @@ setup(
     entry_points={
         'console_scripts': [
             'rero-ebooks = invenio_app.cli:cli',
-        ],
-        'invenio_base.blueprints': [
-            'rero_ebooks = rero_ebooks.views:blueprint',
         ],
         'invenio_config.module': [
             'rero_ebooks = rero_ebooks.config',
