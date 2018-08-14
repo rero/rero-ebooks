@@ -16,7 +16,7 @@ You overwrite and set instance-specific configuration by either:
 from __future__ import absolute_import, print_function
 
 from datetime import timedelta
-
+from invenio_oaiharvester.signals import oaiharvest_finished
 
 def _(x):
     """Identity function used to trigger string extraction."""
@@ -165,3 +165,12 @@ OAISERVER_RECORD_INDEX = 'ebooks'
 
 #: Switches off incept of redirects by Flask-DebugToolbar.
 DEBUG_TB_INTERCEPT_REDIRECTS = False
+
+# OAI_HARVESTER_TASKS
+# CELERYBEAT_SCHEDULE = {}
+# for harvest in OAI_HARVESTERS:
+#     task = {
+#         'task': 'rero_ebooks.tasks.harvest_{0}'.format(harvest['id']),
+#         'schedule': timedelta(minutes=harvest.get('timedelta', 60*24)),
+#     }
+#     CELERYBEAT_SCHEDULE[harvest['id']] = task
