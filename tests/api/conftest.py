@@ -24,3 +24,75 @@ def app_config(app_config):
     """Overwrite default configuration."""
     app_config['PIDSTORE_RECID_FIELD'] = 'pid'
     return app_config
+
+
+@pytest.yield_fixture()
+def cdf_record():
+    """La-chaux-de-fonds record."""
+    yield {
+        '__order__': [
+            'other_standard_identifier',
+            'electronic_location_and_access'
+        ],
+        'other_standard_identifier': [
+            {
+                '__order__': [
+                    'standard_number_or_code'
+                ],
+                'standard_number_or_code':
+                    'http://cantookstation.com/resources/'
+                    '5788be89dde6b2d458f42b35'
+            }
+        ],
+        'electronic_location_and_access': [
+            {
+                '__order__': [
+                    'uniform_resource_identifier',
+                    'access_method',
+                    'relationship',
+                ],
+                'relationship': 'Resource',
+                'access_method': 'HTTP',
+                'uniform_resource_identifier': [
+                    'http://la-chaux-de-fonds.ebibliomedia.ch/resources/'
+                    '5788be89dde6b2d458f42b35'
+                ],
+            }
+        ],
+    }
+
+
+@pytest.yield_fixture()
+def mv_record():
+    """Mediatheque-valais record."""
+    yield {
+        '__order__': [
+            'other_standard_identifier',
+            'electronic_location_and_access'
+        ],
+        'other_standard_identifier': [
+            {
+                '__order__': [
+                    'standard_number_or_code'
+                ],
+                'standard_number_or_code':
+                    'http://cantookstation.com/resources/'
+                    '5788be89dde6b2d458f42b35'
+            }
+        ],
+        'electronic_location_and_access': [
+            {
+                '__order__': [
+                    'uniform_resource_identifier',
+                    'access_method',
+                    'relationship',
+                ],
+                'relationship': 'Resource',
+                'access_method': 'HTTP',
+                'uniform_resource_identifier': [
+                    'http://mediatheque-valais.ebibliomedia.ch/resources/'
+                    '5788be89dde6b2d458f42b35'
+                ],
+            }
+        ],
+    }

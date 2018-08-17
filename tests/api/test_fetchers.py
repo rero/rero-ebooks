@@ -23,8 +23,8 @@ def test_item_id_fetcher(base_app, db):
     }
     # first record
     rec_uuid = uuid4()
-    ebook_pid_minter(rec_uuid, data)
+    ebook_pid_minter(rec_uuid, data, 'cantook')
     fetched_pid = ebook_pid_fetcher(rec_uuid, data)
     assert fetched_pid.pid_type == fetched_pid.provider.pid_type
     assert fetched_pid.pid_type == 'ebook'
-    assert fetched_pid.pid_value == '55373535cdd23087a9789b72'
+    assert fetched_pid.pid_value == 'cantook-55373535cdd23087a9789b72'

@@ -13,7 +13,23 @@ from invenio_oaiserver.minters import oaiid_minter
 from .providers import EbookPidProvider
 
 
-def ebook_pid_minter(record_uuid, data):
+def build_ebook_pid(data, source):
+        """Build ebook pid from record."""
+        assert 'other_standard_identifier' in data
+        assert (
+            'standard_number_or_code'
+            in data.get('other_standard_identifier')[0]
+        )
+
+        pid_value = (
+            data.get('other_standard_identifier')[0]
+            .get('standard_number_or_code')
+            .split('/')[-1]
+        )
+        return source + '-' + pid_value
+
+
+def ebook_pid_minter(record_uuid, data, source):
     """Mint record identifiers.
 
     This is a minter specific for ebooks.
@@ -35,12 +51,7 @@ def ebook_pid_minter(record_uuid, data):
     """
     pid_field = current_app.config['PIDSTORE_RECID_FIELD']
     assert pid_field not in data
-    assert 'other_standard_identifier' in data
-    assert 'standard_number_or_code' in \
-        data.get('other_standard_identifier')[0]
-
-    pid_value = data.get('other_standard_identifier')[0]\
-                    .get('standard_number_or_code').split('/')[-1]
+    pid_value = build_ebook_pid(data, source)
     provider = EbookPidProvider.create(
         object_type='rec', pid_value=pid_value, object_uuid=record_uuid)
     data[pid_field] = pid_value

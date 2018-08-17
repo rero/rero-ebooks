@@ -107,6 +107,9 @@ setup(
         'dojson.cli.rule': [
             'cantookmarc21 = rero_ebooks.dojson.marc21:marc21',
         ],
+        'flask.commands': [
+            'records = rero_ebooks.cli:records',
+        ],
         'rero_ebooks.marc21': [
             'bdleader = rero_ebooks.dojson.marc21.fields.bdleader',
             'bd00x = rero_ebooks.dojson.marc21.fields.bd00x',

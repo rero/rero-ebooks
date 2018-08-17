@@ -25,6 +25,6 @@ invenio index queue init purge
 # yaz-marcdump -i marcxml -o marcxml ../../var/instance/harvest/oaiharvest_2018-08-07_22eo1wrd.xml | dojson -l marcxml -d marcxml do cantookmarc21 do to_marc21 > marc21.xml
 
 # load small set of ebooks fixtures
-dojson -l marcxml -i data/ebooks.xml do cantookmarc21 | invenio records create --pid-minter ebook
-invenio index reindex -t ebook --yes-i-know
-invenio index run
+dojson -l marcxml -i data/ebooks.xml do cantookmarc21 | invenio records create_or_update --vendor cantook
+# invenio index reindex -t ebook --yes-i-know
+# invenio index run

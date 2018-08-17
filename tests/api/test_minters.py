@@ -22,5 +22,5 @@ def test_ebook_id_minter(base_app, db):
     }
     # first record
     rec_uuid = uuid4()
-    ebook_pid_minter(rec_uuid, data)
-    assert data.get('pid') == '55373535cdd23087a9789b72'
+    ebook_pid_minter(rec_uuid, data, 'cantook')
+    assert data.get('pid') == 'cantook-55373535cdd23087a9789b72'
