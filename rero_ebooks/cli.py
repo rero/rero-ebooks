@@ -30,10 +30,13 @@ import json
 import sys
 
 import click
+import yaml
 from flask.cli import with_appcontext
+from invenio_oaiharvester.cli import oaiharvester
 from invenio_records.cli import records
 
-from rero_ebooks.api import Ebook
+from .api import Ebook
+from .utils import add_oai_source
 
 
 @records.command()
@@ -54,3 +57,50 @@ def create_or_update(source, verbose, vendor):
             record, vendor=vendor, dbcommit=True, reindex=True
         )
         click.echo('record uuid: ' + str(record.id) + '| ' + status)
+
+
+@oaiharvester.command('addsource')
+@click.argument('name')
+@click.argument('baseurl')
+@click.option('-m', '--metadataprefix', default='marc21',
+              help='The prefix for the metadata')
+@click.option('-s', '--setspecs', default='',
+              help='The ‘set’ criteria for the harvesting')
+@click.option('-c', '--comment', default='',
+              help='Comment')
+@with_appcontext
+def add_oai_source_config(name, baseurl, metadataprefix, setspecs, comment):
+    """Add OAIHarvestConfig."""
+    click.echo('Add OAIHarvestConfig: {0} '.format(name), nl=False)
+    add_oai_source(
+        name=name,
+        baseurl=baseurl,
+        metadataprefix=metadataprefix,
+        setspecs=setspecs,
+        comment=comment
+    )
+    click.secho('Ok', fg='green')
+
+
+@oaiharvester.command('initconfig')
+@click.argument('configfile', type=click.File('rb'))
+@with_appcontext
+def init_oai_harvest_config(configfile):
+    """Init OAIHarvestConfig."""
+    configs = yaml.load(configfile)
+    for name, values in sorted(configs.items()):
+        baseurl = values['baseurl']
+        metadataprefix = values.get('metadataprefix', 'marc21')
+        setspecs = values.get('setspecs', '')
+        comment = values.get('comment', '')
+        click.echo(
+            'Add OAIHarvestConfig: {0} {1} '.format(name, baseurl), nl=False
+        )
+        add_oai_source(
+            name=name,
+            baseurl=baseurl,
+            metadataprefix=metadataprefix,
+            setspecs=setspecs,
+            comment=comment
+        )
+        click.secho('Ok', fg='green')

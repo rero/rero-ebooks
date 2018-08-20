@@ -59,7 +59,8 @@ install_requires = [
     'invenio-oaiserver>=1.0.0,<1.1.0',
     'invenio-pidstore>=1.0.0,<1.1.0',
     'invenio-records>=1.0.0,<1.1.0',
-    'invenio-oaiharvester>=1.0.0a4'
+    'invenio-oaiharvester>=1.0.0a4',
+    'PyYAML>=3.13'
 ]
 
 packages = find_packages()
@@ -89,6 +90,9 @@ setup(
         'console_scripts': [
             'rero-ebooks = invenio_app.cli:cli',
         ],
+        'invenio_base.apps': [
+            'rero_ebooks = rero_ebooks:ReroEBooks',
+        ],
         'invenio_config.module': [
             'rero_ebooks = rero_ebooks.config',
         ],
@@ -108,6 +112,7 @@ setup(
             'cantookmarc21 = rero_ebooks.dojson.marc21:marc21',
         ],
         'flask.commands': [
+            'oaiharvester = rero_ebooks.cli:oaiharvester'
             'records = rero_ebooks.cli:records',
         ],
         'rero_ebooks.marc21': [
@@ -126,6 +131,10 @@ setup(
             'bd80x83x = rero_ebooks.dojson.marc21.fields.bd80x83x',
             'bd84188x = rero_ebooks.dojson.marc21.fields.bd84188x'
         ],
+        'invenio_celery.tasks': [
+            'rero_ebooks = rero_ebooks.tasks'
+        ]
+
     },
     extras_require=extras_require,
     install_requires=install_requires,

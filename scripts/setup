@@ -15,6 +15,7 @@ invenio db init create
 invenio index destroy --force --yes-i-know
 invenio index init --force
 invenio index queue init purge
+invenio oaiharvester initconfig data/oaisources.yml
 
 # Create records (in progress...)
 # ===============================
