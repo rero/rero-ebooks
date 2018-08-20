@@ -16,6 +16,7 @@ from invenio_oaiharvester.signals import oaiharvest_finished
 
 from .api import Ebook
 
+from rero_ebooks.api import Ebook
 
 @shared_task(ignore_result=True)
 def create_records(records, verbose=False):
@@ -34,16 +35,11 @@ def create_records(records, verbose=False):
 
 
 @shared_task(ignore_result=True)
-def harvest(source, verbose=False):
-    """Async source harvesting."""
-    records = None
-    request, records = list_records(
-        name=source
-    )
-    if records:
-        oaiharvest_finished.send(
-            request,
-            records=records,
-            name=source,
-            verbose=verbose
-        )
+def harvest(source):
+    """Harvesting task."""
+    # TODO identifiers config
+    request, records = list_records(name=source)
+    oaiharvest_finished.send(
+                request,
+                records=records,
+            )

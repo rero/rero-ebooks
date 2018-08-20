@@ -56,7 +56,7 @@ def create_or_update(source, verbose, vendor):
         record, status = Ebook.create_or_update(
             record, vendor=vendor, dbcommit=True, reindex=True
         )
-        click.echo('record uuid: ' + str(record.id) + '| ' + status)
+        click.echo('record uuid: ' + str(record.id) + ' | ' + status)
 
 
 @oaiharvester.command('addsource')
