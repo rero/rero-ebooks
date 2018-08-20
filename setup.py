@@ -114,6 +114,7 @@ setup(
         'flask.commands': [
             'oaiharvester = rero_ebooks.cli:oaiharvester'
             'records = rero_ebooks.cli:records',
+            'oaiharvester = rero_ebooks.cli:oaiharvester'
         ],
         'rero_ebooks.marc21': [
             'bdleader = rero_ebooks.dojson.marc21.fields.bdleader',
@@ -132,9 +133,8 @@ setup(
             'bd84188x = rero_ebooks.dojson.marc21.fields.bd84188x'
         ],
         'invenio_celery.tasks': [
-            'rero_ebooks = rero_ebooks.tasks'
+                'rero_ebooks = rero_ebooks.tasks'
         ]
-
     },
     extras_require=extras_require,
     install_requires=install_requires,
