@@ -26,7 +26,7 @@ include scripts/server
 include scripts/setup
 include scripts/update
 prune docs/_build
-recursive-include rero_ebooks *.po *.pot *.mo
+# recursive-include rero_ebooks *.po *.pot *.mo
 recursive-include docker *.cfg *.conf *.crt *.ini *.key *.pem *.sh
 
 # added by check_manifest.py
@@ -49,6 +49,7 @@ recursive-include tests *.py
 
 # added by check_manifest.py
 recursive-include data *.xml
+recursive-include data *.yml
 recursive-include rero_ebooks *.json
 
 # added by check_manifest.py
