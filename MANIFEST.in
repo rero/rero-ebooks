@@ -25,6 +25,7 @@ include scripts/console
 include scripts/server
 include scripts/setup
 include scripts/update
+include scripts/worker_beat
 prune docs/_build
 # recursive-include rero_ebooks *.po *.pot *.mo
 recursive-include docker *.cfg *.conf *.crt *.ini *.key *.pem *.sh

@@ -17,12 +17,16 @@ def add_oai_source(name, baseurl, metadataprefix='marc21',
                    setspecs='', comment=''):
     """Add OAIHarvestConfig."""
     with current_app.app_context():
-        source = OAIHarvestConfig(
-            name=name,
-            baseurl=baseurl,
-            metadataprefix=metadataprefix,
-            setspecs=setspecs,
-            comment=comment
-        )
-        source.save()
-        db.session.commit()
+        if OAIHarvestConfig.query.filter_by(name=name).count() == 0:
+            source = OAIHarvestConfig(
+                name=name,
+                baseurl=baseurl,
+                metadataprefix=metadataprefix,
+                setspecs=setspecs,
+                comment=comment
+            )
+            source.save()
+            db.session.commit()
+            return True
+        else:
+            return False

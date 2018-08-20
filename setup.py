@@ -135,6 +135,7 @@ setup(
         'invenio_celery.tasks': [
                 'rero_ebooks = rero_ebooks.tasks'
         ]
+
     },
     extras_require=extras_require,
     install_requires=install_requires,

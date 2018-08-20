@@ -31,8 +31,10 @@ import sys
 
 import click
 import yaml
+from flask import current_app
 from flask.cli import with_appcontext
 from invenio_oaiharvester.cli import oaiharvester
+from invenio_oaiharvester.models import OAIHarvestConfig
 from invenio_records.cli import records
 
 from .api import Ebook
@@ -72,14 +74,16 @@ def create_or_update(source, verbose, vendor):
 def add_oai_source_config(name, baseurl, metadataprefix, setspecs, comment):
     """Add OAIHarvestConfig."""
     click.echo('Add OAIHarvestConfig: {0} '.format(name), nl=False)
-    add_oai_source(
+    if add_oai_source(
         name=name,
         baseurl=baseurl,
         metadataprefix=metadataprefix,
         setspecs=setspecs,
         comment=comment
-    )
-    click.secho('Ok', fg='green')
+    ):
+        click.secho('Ok', fg='green')
+    else:
+        click.secho('Exist', fg='red')
 
 
 @oaiharvester.command('initconfig')
@@ -96,11 +100,38 @@ def init_oai_harvest_config(configfile):
         click.echo(
             'Add OAIHarvestConfig: {0} {1} '.format(name, baseurl), nl=False
         )
-        add_oai_source(
+        if add_oai_source(
             name=name,
             baseurl=baseurl,
             metadataprefix=metadataprefix,
             setspecs=setspecs,
             comment=comment
-        )
-        click.secho('Ok', fg='green')
+        ):
+            click.secho('Ok', fg='green')
+        else:
+            click.secho('Exist', fg='red')
+
+
+@oaiharvester.command('schedules')
+@with_appcontext
+def schedules():
+    """List harvesting schedules."""
+    celery_ext = current_app.extensions.get('invenio-celery')
+    for key, value in celery_ext.celery.conf.beat_schedule.items():
+        click.echo(key + '\t', nl=False)
+        click.echo(value)
+
+
+@oaiharvester.command('info')
+@with_appcontext
+def info():
+    """List infos for tasks."""
+    oais = OAIHarvestConfig.query.all()
+    for oai in oais:
+        click.echo(oai.name)
+        click.echo('\tlastrun       : ', nl=False)
+        click.echo(oai.lastrun)
+        click.echo('\tbaseurl       : ' + oai.baseurl)
+        click.echo('\tmetadataprefix: ' + oai.metadataprefix)
+        click.echo('\tcomment       : ' + oai.comment)
+        click.echo('\tsetspecs      : ' + oai.setspecs)

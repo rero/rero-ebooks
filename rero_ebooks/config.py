@@ -100,14 +100,17 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': timedelta(minutes=5),
     },
     'Harvester-VS': {
-        'task': 'irero_ebooks.tasks.harvest',
-        'schedule': timedelta(days=1),
-        'args': ('VS',)
+        'task': 'invenio_oaiharvester.tasks.list_records_from_dates',
+        'schedule': timedelta(minutes=60),
+        'kwargs': dict(name='VS')
     },
     'Harvester-NJ': {
-        'task': 'irero_ebooks.tasks.harvest',
-        'schedule': timedelta(days=1),
-        'args': ('NJ',)
+        'task': 'invenio_oaiharvester.tasks.list_records_from_dates',
+        # Every 15 minutes
+        # from celery.schedules import crontab
+        # 'schedule': crontab(minute='*/15'),
+        'schedule': timedelta(minutes=60),
+        'kwargs': dict(name='NJ')
     },
 }
 

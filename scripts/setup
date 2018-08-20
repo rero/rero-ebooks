@@ -15,17 +15,10 @@ invenio db init create
 invenio index destroy --force --yes-i-know
 invenio index init --force
 invenio index queue init purge
+
+# init oaiharvester config from file
 invenio oaiharvester initconfig data/oaisources.yml
-
-# Create records (in progress...)
-# ===============================
-# harvest_path=$(invenio shell --no-term-title -c "print(app.instance_path)")"/harvest"
-# invenio oaiharvester harvest  -u https://la-chaux-de-fonds.ebibliomedia.ch/oai.xml -m marc21 -d $harvest_path -s ""
-
-# Marc21 conversion example
-# yaz-marcdump -i marcxml -o marcxml ../../var/instance/harvest/oaiharvest_2018-08-07_22eo1wrd.xml | dojson -l marcxml -d marcxml do cantookmarc21 do to_marc21 > marc21.xml
-
-# load small set of ebooks fixtures
-dojson -l marcxml -i data/ebooks.xml do cantookmarc21 | invenio records create_or_update --vendor cantook
-# invenio index reindex -t ebook --yes-i-know
-# invenio index run
+# load source NJ
+invenio oaiharvester harvest -n NJ -k -q
+# load source VS
+invenio oaiharvester harvest -n VS -k -q
