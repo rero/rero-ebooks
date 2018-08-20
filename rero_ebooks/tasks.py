@@ -9,14 +9,11 @@
 
 from __future__ import absolute_import, print_function
 
-import click
 from celery import shared_task
-from invenio_oaiharvester.api import list_records
-from invenio_oaiharvester.signals import oaiharvest_finished
+from flask import current_app
 
 from .api import Ebook
 
-from rero_ebooks.api import Ebook
 
 @shared_task(ignore_result=True)
 def create_records(records, verbose=False):
@@ -30,16 +27,7 @@ def create_records(records, verbose=False):
             reindex=True
         )
         if verbose:
-            click.echo('record uuid: ' + str(rec.id) + ' | ' + status)
-        # TODO bulk update and reindexing
-
-
-@shared_task(ignore_result=True)
-def harvest(source):
-    """Harvesting task."""
-    # TODO identifiers config
-    request, records = list_records(name=source)
-    oaiharvest_finished.send(
-                request,
-                records=records,
+            current_app.logger.info(
+                'record uuid: ' + str(rec.id) + ' | ' + status
             )
+        # TODO bulk update and reindexing
