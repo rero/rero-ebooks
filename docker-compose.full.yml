@@ -24,22 +24,6 @@ services:
     links:
       - web-ui
       - web-api
-  # UI Application
-  web-ui:
-    extends:
-      file: docker-services.yml
-      service: app
-    command: uwsgi /opt/rero-ebooks/var/instance/uwsgi_ui.ini
-    image: rero-ebooks-web-ui
-    ports:
-      - "5000"
-    volumes:
-      - static_data:/opt/rero-ebooks/var/instance/static
-    links:
-      - cache
-      - es
-      - mq
-      - db
   # API Rest Application
   web-api:
     extends:
@@ -64,6 +48,19 @@ services:
     restart: "always"
     command: "celery worker -A invenio_app.celery --loglevel=INFO"
     image: rero-ebooks-worker
+    links:
+      - cache
+      - es
+      - mq
+      - db
+  # Worker
+  scheduler:
+    extends:
+      file: docker-services.yml
+      service: app
+    restart: "always"
+    command: "celery beat -A invenio_app.celery --loglevel=INFO"
+    image: rero-ebooks-beat
     links:
       - cache
       - es

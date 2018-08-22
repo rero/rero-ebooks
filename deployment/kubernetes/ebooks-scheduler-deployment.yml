@@ -1,19 +1,19 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ebooks-tasks
+  name: ebooks-scheduler
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: ebooks
-        tier: tasks
+        tier: scheduler
     spec:
       containers:
       - name: rero-ebooks
         image: rero/rero-ebooks:latest
-        command: ["celery", "-A", "invenio_app.celery", "--loglevel=INFO", "worker"]
+        command: ["celery", "-A", "invenio_app.celery", "--loglevel=INFO", "beat"]
         imagePullPolicy: Always
         env:
         - name: PATH

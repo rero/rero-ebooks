@@ -63,6 +63,7 @@ class Ebook(Record):
         record = cls.get_record_by_pid(pid, with_deleted=False)
         if record:
             merged_data = cls._merge_uri(data, record)
+            # TODO: merge metadata
             record.update(merged_data, dbcommit=dbcommit, reindex=reindex)
             return record, 'updated'
         else:

@@ -19,6 +19,6 @@ invenio index queue init purge
 # init oaiharvester config from file
 invenio oaiharvester initconfig data/oaisources.yml
 # load source NJ
-invenio oaiharvester harvest -n NJ -k -q
+invenio oaiharvester harvest -n NJ -k -q --signals
 # load source VS
-invenio oaiharvester harvest -n VS -k -q
+invenio oaiharvester harvest -n VS -k -q --signals

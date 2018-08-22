@@ -3,13 +3,10 @@ FROM python:3.5-slim
 LABEL maintainer="software@rero.ch"
 LABEL description="Ebooks repository for RERO."
 
-RUN apt-get update && apt-get install -y curl git gcc \
-    && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+RUN apt-get update && apt-get install -y curl git gcc gnupg \
     && apt-get install -y nodejs \
     && pip install -U setuptools pip && \
-    pip install -U virtualenv && \
-    node --version && \
-    npm install -g node-sass clean-css clean-css-cli requirejs uglify-js
+    pip install -U virtualenv
 
 
 # Add Invenio sources to `code` and work there:
@@ -22,7 +19,7 @@ COPY README.rst /ebooks/ebooks/src/rero-ebooks/
 COPY requirements.txt /ebooks/ebooks/src/rero-ebooks/
 COPY rero_ebooks /ebooks/ebooks/src/rero-ebooks/rero_ebooks
 COPY scripts/setup /ebooks/scripts/setup
-COPY data/ebooks.xml /ebooks/data/ebooks.xml
+COPY data/oaisources.yml /ebooks/data/oaisources.yml
 
 # # Run container as user `invenio` with UID `1000`, which should match
 # # current host user in most situations:
@@ -40,14 +37,6 @@ RUN source ebooks/bin/activate && \
     pip install ebooks/src/rero-ebooks && \
     pip install flower && \
     pip install gunicorn
-
-RUN source ebooks/bin/activate && \
-    invenio npm && \
-    static_folder=$(invenio shell --no-term-title -c "print(app.static_folder)") && \
-    cd $static_folder && \
-    npm i && \
-    invenio collect -v && \
-    invenio assets build
 
 USER root
 RUN rm -rf /var/lib/apt/lists/*
