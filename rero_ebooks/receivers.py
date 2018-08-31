@@ -9,7 +9,7 @@
 
 from dojson.contrib.marc21.utils import create_record
 
-from rero_ebooks.tasks import create_records
+from rero_ebooks.tasks import create_records, delete_records
 
 from .dojson.marc21 import marc21
 
@@ -18,9 +18,13 @@ def publish_harvested_records(sender=None, records=[], *args, **kwargs):
     """Create, index the harvested records."""
     # name = kwargs['name']
     converted_records = []
+    deleted_records = []
     for record in records:
         rec = create_record(record.xml)
         rec = marc21.do(rec)
-        converted_records.append(rec)
-    verbose = kwargs.get('verbose', False)
-    create_records(converted_records, verbose=verbose)
+        if record.deleted:
+            deleted_records.append(rec)
+        else:
+            converted_records.append(rec)
+    create_records(converted_records)
+    delete_records(deleted_records)

@@ -27,6 +27,7 @@
 import copy
 from uuid import uuid4
 
+from elasticsearch.exceptions import NotFoundError
 from invenio_db import db
 from invenio_indexer.api import RecordIndexer
 from invenio_pidstore.errors import PIDDoesNotExistError
@@ -52,7 +53,6 @@ class Ebook(Record):
         cls,
         data,
         id_=None,
-        delete_pid=True,
         dbcommit=False,
         reindex=False,
         vendor=None,
@@ -70,7 +70,6 @@ class Ebook(Record):
                 data,
                 id_=None,
                 vendor=vendor,
-                delete_pid=True,
                 dbcommit=dbcommit,
                 reindex=reindex,
             )
@@ -81,7 +80,6 @@ class Ebook(Record):
         cls,
         data,
         id_=None,
-        delete_pid=True,
         dbcommit=False,
         reindex=False,
         vendor=None,
@@ -97,6 +95,26 @@ class Ebook(Record):
         if dbcommit:
             record.dbcommit(reindex)
         return record
+
+    @classmethod
+    def delete(
+        cls,
+        data,
+        vendor=None,
+        delindex=True,
+        force=False,
+    ):
+        """Delete a ebook record."""
+        pid = build_ebook_pid(data, vendor)
+        record = cls.get_record_by_pid(pid, with_deleted=False)
+        pid.delete()
+        result = record.delete(force=force)
+        if delindex:
+            try:
+                RecordIndexer().delete(record)
+            except NotFoundError:
+                pass
+        return result
 
     @classmethod
     def get_record_by_pid(cls, pid, with_deleted=False):
