@@ -63,7 +63,6 @@ class Ebook(Record):
         record = cls.get_record_by_pid(pid, with_deleted=False)
         if record:
             merged_data = cls._merge_uri(data, record)
-            # TODO: merge metadata
             record.update(merged_data, dbcommit=dbcommit, reindex=reindex)
             return record, 'updated'
         else:
@@ -121,6 +120,13 @@ class Ebook(Record):
         """Merge new and old records."""
         field = cls.uri_key
         new_e_res = new_record.get(field)
+        # change all tuples to lists
+        # the dojson produces tuples and we have lists in the record
+        for e_res in new_e_res:
+            for key, value in e_res.items():
+                if type(value) is tuple:
+                    e_res[key] = list(value)
+
         old_e_res = old_record.get(field)
         for e_res in old_e_res:
             # check if already exists!
