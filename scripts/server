@@ -6,9 +6,19 @@
 # RERO Ebooks is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-set -e
+sset -e
 
 script_path=$(dirname "$0")
-FLASK_ENV=development invenio run \
-    --cert "$script_path"/../docker/nginx/test.crt \
-    --key "$script_path"/../docker/nginx/test.key
+
+FLASK_ENV=development
+
+# Start Worker and Server
+celery worker -A invenio_app.celery --beat -l INFO & pid_celery=$!
+
+invenio run \
+       --cert "$script_path"/../docker/nginx/test.crt \
+       --key "$script_path"/../docker/nginx/test.key & pid_server=$!
+
+trap 'kill $pid_celery $pid_server &>/dev/null' EXIT
+
+wait $pid_celery $pid_server

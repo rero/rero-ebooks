@@ -30,7 +30,8 @@ def test_merge_records(db, cdf_record, mv_record):
         'uniform_resource_identifier'
     ]
     merged_record, merged_record_status = Ebook.create_or_update(
-        mv_record, vendor='cantook', dbcommit=True, reindex=True)
+        mv_record, vendor='cantook', dbcommit=True, reindex=True
+    )
     assert merged_record_status == 'updated'
     ela = merged_record['electronic_location_and_access']
     assert len(ela) == 2
@@ -38,6 +39,20 @@ def test_merge_records(db, cdf_record, mv_record):
     second_uri = ela[1]['uniform_resource_identifier'][0]
     assert mv == first_uri
     assert cdf == second_uri
+
+
+def test_merge_records_same(db, cdf_record, dojson_like_cdf_record):
+    """Test merge ebook records."""
+    cdf_record_pid = build_ebook_pid(cdf_record, 'cantook')
+    new_cdf_record, cdf_status = Ebook.create_or_update(
+        cdf_record, vendor='cantook', dbcommit=True, reindex=True
+    )
+    merged_record, merged_record_status = Ebook.create_or_update(
+        dojson_like_cdf_record, vendor='cantook', dbcommit=True, reindex=True
+    )
+    assert merged_record_status == 'updated'
+    ela = merged_record['electronic_location_and_access']
+    assert len(ela) == 1
 
 
 def test_create_or_update_record(db, cdf_record):
