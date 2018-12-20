@@ -25,4 +25,4 @@
 
 set -e
 
-invenio shell
+pipenv run invenio shell

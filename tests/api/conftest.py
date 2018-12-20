@@ -38,8 +38,10 @@ def create_app():
 
 @pytest.fixture(scope='module')
 def app_config(app_config):
-    """Overwrite default configuration."""
-    app_config['PIDSTORE_RECID_FIELD'] = 'pid'
+    """Create temporary instance dir for each test."""
+    app_config['RATELIMIT_STORAGE_URL'] = 'memory://'
+    app_config['CACHE_TYPE'] = 'simple'
+    app_config['SEARCH_ELASTIC_HOSTS'] = None
     return app_config
 
 

@@ -63,3 +63,9 @@ target/
 
 # Vim swapfiles
 .*.sw?
+
+# Celery Beat
+celerybeat-schedule
+
+# Environment variables
+.env
