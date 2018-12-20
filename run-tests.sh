@@ -23,8 +23,9 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-pydocstyle rero_ebooks tests docs && \
-isort -rc -c -df && \
-check-manifest --ignore ".travis-*,docs/_build*" && \
-sphinx-build -qnNW docs docs/_build/html && \
-python setup.py test
+pipenv run pydocstyle rero_ebooks tests docs && \
+pipenv run isort -rc -c -df && \
+pipenv run check-manifest --ignore ".travis-*,docs/_build*" && \
+pipenv run sphinx-build -qnNW docs docs/_build/html && \
+pipenv run test
+# python setup.py test

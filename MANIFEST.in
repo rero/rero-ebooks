@@ -72,3 +72,7 @@ recursive-include rero_ebooks *.json
 
 # added by check_manifest.py
 recursive-include deployment *.yml
+include *.lock
+include Pipfile
+recursive-include rero_ebooks *.png
+recursive-include rero_ebooks *.scss
