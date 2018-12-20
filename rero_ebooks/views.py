@@ -1,21 +1,20 @@
-#!/usr/bin/env bash
 # -*- coding: utf-8 -*-
 #
-# This file is part of RERO Ebooks.
+# This file is part of RERO MEF.
 # Copyright (C) 2018 RERO.
 #
-# RERO Ebooks is free software; you can redistribute it
+# RERO MEF is free software; you can redistribute it
 # and/or modify it under the terms of the GNU General Public License as
 # published by the Free Software Foundation; either version 2 of the
 # License, or (at your option) any later version.
 #
-# RERO Ebooks is distributed in the hope that it will be
+# RERO MEF is distributed in the hope that it will be
 # useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with RERO Ebooks; if not, write to the
+# along with RERO MEF; if not, write to the
 # Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
 # MA 02111-1307, USA.
 #
@@ -23,20 +22,24 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-set -e
 
-script_path=$(dirname "$0")
+"""Blueprint used for loading templates."""
 
-export FLASK_DEBUG=True
-FLASK_ENV=development
+from __future__ import absolute_import, print_function
 
-# Start Worker and Server
-pipenv run celery worker -A invenio_app.celery --beat -l INFO & pid_celery=$!
+from flask import Blueprint, render_template
 
-pipenv run invenio run \
-       --cert "$script_path"/../docker/nginx/test.crt \
-       --key "$script_path"/../docker/nginx/test.key & pid_server=$!
+from .version import __version__
 
-trap 'kill $pid_celery $pid_server &>/dev/null' EXIT
+blueprint = Blueprint(
+    'rero_ebooks',
+    __name__,
+    template_folder='templates',
+    static_folder='static',
+)
 
-wait $pid_celery $pid_server
+
+@blueprint.route('/')
+def index():
+    """Home Page."""
+    return render_template('rero_ebooks/frontpage.html', version=__version__)
