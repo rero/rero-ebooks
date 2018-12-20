@@ -17,6 +17,7 @@ invenio-oaiserver = "*"
 pipenv = "*"
 requests = ">=2.20.0"
 celery = "<4.3.0"
+lxml = "<4.2.6,>=3.5.0"
 
 [dev-packages]
 Sphinx = ">=1.5.1"
