@@ -22,24 +22,46 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-ARG VERSION=latest
-FROM rero/rero-ebooks-base:${VERSION}
+FROM python:3.6-slim-stretch
 
 LABEL maintainer="software@rero.ch"
-LABEL description="EBOOKS."
+LABEL description="EBOOKS"
 
-USER 0
+ENV DEBIAN_FRONTED=noninteractive
 
+# require debian packages
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install --no-install-recommends -y git vim-tiny curl gcc gnupg libc6-dev && rm -rf /var/lib/apt/lists/*
+RUN pip install --upgrade setuptools wheel pip pipenv
+
+# # uwsgi uwsgitop uwsgi-tools
+
+# Install Node
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install --no-install-recommends -y nodejs && rm -rf /var/lib/apt/lists/*
+# RUN npm update
+
+# RUN python -m site
+# RUN python -m site --user-site
+
+# Install Invenio
+ENV WORKING_DIR=/invenio
+ENV INVENIO_INSTANCE_PATH=${WORKING_DIR}/var/instance
+RUN mkdir -p ${INVENIO_INSTANCE_PATH}
+
+# copy everything inside /src
+RUN mkdir -p ${WORKING_DIR}/src
 COPY ./ ${WORKING_DIR}/src
 WORKDIR ${WORKING_DIR}/src
+
+# copy uwsgi config files
 COPY ./docker/uwsgi/ ${INVENIO_INSTANCE_PATH}
 
-RUN chown -R invenio:invenio ${WORKING_DIR}
+# create user
+RUN useradd invenio --uid 1000  --home ${WORKING_DIR} && \
+    chown -R invenio:invenio ${WORKING_DIR} && \
+    chmod -R go+w ${WORKING_DIR}
 
 USER 1000
-
-# workaround
-RUN npm uninstall --prefix `pipenv --venv` --silent -g node-sass clean-css uglify-js requirejs
-
 ENV INVENIO_COLLECT_STORAGE='flask_collect.storage.file'
-RUN ./scripts/bootstrap --deploy
+RUN ./scripts/bootstrap
