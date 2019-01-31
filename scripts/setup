@@ -23,19 +23,19 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-set -e
 
 # Clean redis
-invenio shell --no-term-title -c "import redis; redis.StrictRedis.from_url(app.config['CACHE_REDIS_URL']).flushall(); print('Cache cleared')"
-invenio db destroy --yes-i-know
-invenio db init create
-invenio index destroy --force --yes-i-know
-invenio index init --force
-invenio index queue init purge
+pipenv run invenio shell --no-term-title -c "import redis; redis.StrictRedis.from_url(app.config['CACHE_REDIS_URL']).flushall(); print('Cache cleared')"
+pipenv run invenio db destroy --yes-i-know
+pipenv run invenio db init create
+set -e
+pipenv run invenio index destroy --force --yes-i-know
+pipenv run invenio index init --force
+pipenv run invenio index queue init purge
 
 # init oaiharvester config from file
-invenio oaiharvester initconfig data/oaisources.yml
+pipenv run invenio oaiharvester initconfig data/oaisources.yml
 # load source NJ
-invenio oaiharvester harvest -n NJ -k -q --signals
+pipenv run invenio oaiharvester harvest -n NJ -k -q --signals
 # load source VS
-invenio oaiharvester harvest -n VS -k -q --signals
+pipenv run invenio oaiharvester harvest -n VS -k -q --signals

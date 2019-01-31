@@ -37,21 +37,37 @@ services:
       file: docker-services.yml
       service: frontend
     volumes:
-      - static_data:/opt/rero-ebooks/var/instance/static
+      - static_data:/invenio/instance/static
     links:
       - web-ui
       - web-api
+  # UI Application
+  web-ui:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: pipenv run uwsgi /invenio/var/instance/uwsgi_ui.ini
+    image: rero-ebooks-web--ui
+    ports:
+      - "5000:5000"
+    volumes:
+      - static_data:/invenio/var/instance/static
+    links:
+      - cache
+      - es
+      - mq
+      - db
   # API Rest Application
   web-api:
     extends:
       file: docker-services.yml
       service: app
-    command: uwsgi /opt/rero-ebooks/var/instance/uwsgi_rest.ini
+    command: pipenv run uwsgi /invenio/var/instance/uwsgi_rest.ini
     image: rero-ebooks-web-api
     ports:
-      - "5001"
+      - "5001:5001"
     volumes:
-      - static_data:/opt/rero-ebooks/var/instance/static
+      - static_data:/invenio/var/instance/static
     links:
       - cache
       - es
@@ -63,7 +79,7 @@ services:
       file: docker-services.yml
       service: app
     restart: "always"
-    command: "celery worker -A invenio_app.celery --loglevel=INFO"
+    command: "pipenv run celery worker -A invenio_app.celery --loglevel=INFO"
     image: rero-ebooks-worker
     links:
       - cache
@@ -76,7 +92,7 @@ services:
       file: docker-services.yml
       service: app
     restart: "always"
-    command: "celery beat -A invenio_app.celery --loglevel=INFO"
+    command: "pipenv run celery beat -A invenio_app.celery --loglevel=INFO"
     image: rero-ebooks-beat
     links:
       - cache

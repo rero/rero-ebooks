@@ -130,6 +130,7 @@ CELERY_BEAT_SCHEDULE = {
         'kwargs': dict(name='NJ')
     },
 }
+CELERY_BROKER_HEARTBEAT = 0
 
 # Database
 # ========

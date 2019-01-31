@@ -40,6 +40,10 @@ def create_app():
 def app_config(app_config):
     """Overwrite default configuration."""
     app_config['PIDSTORE_RECID_FIELD'] = 'pid'
+    app_config['RATELIMIT_STORAGE_URL'] = 'memory://'
+    app_config['CACHE_TYPE'] = 'simple'
+    app_config['SEARCH_ELASTIC_HOSTS'] = None
+    app_config['JSONSCHEMAS_HOST'] = 'ebooks.test.rero.ch'
     return app_config
 
 
