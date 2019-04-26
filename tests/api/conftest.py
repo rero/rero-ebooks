@@ -151,3 +151,124 @@ def mv_record():
             }
         ],
     }
+
+
+@pytest.yield_fixture()
+def cantook_mv_record():
+    """Mediatheque-valais Cantook record."""
+    yield {
+        "title": "Sylvothérapie : le pouvoir bienfaisant des arbres",
+        "title_prefix": null,
+        "title_sort": "sylvotherapie : le pouvoir bienfaisant des arbres",
+        "subtitle": null,
+        "description": null,
+        "summary": "Le besoin actuel de reconnexion avec la nature ...",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "http://images.immateriel.fr/covers/BH9WPJ8.png",
+        "cover_large": null,
+        "flipbook":
+        "http://livre.immateriel.fr/BH9WPJ8?no_sign_in=true&no_buy_link=true",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 160,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Jean-Marie",
+                "last_name": "Defossez",
+                "nature": "author",
+                "country": "",
+                "biography": "<p>Jean-Marie Defossez est né en 1971 ...</p>",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "immateriel.frO688313-9782889055784-epub",
+                "key": "9782889055784",
+                "issued_on": "2019-04-30T06:00:00+02:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "immateriel.frO688313-9782889119714-paper",
+                "key": "9782889119714",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "immateriel.frO688313",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/" +
+                "5b18c6bc235794540e2cbe72",
+        "created_at": "2018-06-07T07:46:36+02:00",
+        "updated_at": "2019-04-21T07:47:19+02:00",
+        "publisher_name": "Jouvence",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "SEL000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "self-help",
+                    "health"
+                ],
+                "captions": [
+                    {
+                        "fr": "Croissance personnelle",
+                        "en": "Self-Help"
+                    },
+                    {
+                        "fr": "Santé",
+                        "en": "Health"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBSEL000000",
+                    "FBHEA014000",
+                    "FBNFC000000",
+                    "FBHEA000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Développement Personnel",
+                        "en": "Self-help"
+                    },
+                    {
+                        "fr": "Bien-être",
+                        "en": "Well being"
+                    },
+                    {
+                        "fr": "Documentaires",
+                        "en": "Non-Fiction"
+                    },
+                    {
+                        "fr": "Santé & Vie quotidienne",
+                        "en": "Health & fitness"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Jouvence"
+        }
+    }
