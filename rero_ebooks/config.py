@@ -34,6 +34,9 @@ from __future__ import absolute_import, print_function
 
 from datetime import timedelta
 
+from invenio_indexer.api import RecordIndexer
+from invenio_search import RecordsSearch
+
 
 def _(x):
     """Identity function used to trigger string extraction."""
@@ -79,6 +82,11 @@ THEME_FRONTPAGE = False
 THEME_FRONTPAGE_TITLE = _('RERO Ebooks')
 #: Frontpage template.
 THEME_FRONTPAGE_TEMPLATE = 'rero_ebooks/frontpage.html'
+#: Footer base template.
+THEME_FOOTER_TEMPLATE = FOOTER_TEMPLATE
+#: Header base template.
+THEME_HEADER_TEMPLATE = HEADER_TEMPLATE
+
 
 # Email configuration
 # ===================
@@ -130,6 +138,7 @@ CELERY_BEAT_SCHEDULE = {
         'kwargs': dict(name='NJ')
     },
 }
+CELERY_BROKER_HEARTBEAT = 0
 
 # Database
 # ========
@@ -191,3 +200,28 @@ OAISERVER_RECORD_INDEX = 'ebooks'
 
 #: Switches off incept of redirects by Flask-DebugToolbar.
 DEBUG_TB_INTERCEPT_REDIRECTS = False
+
+RECORDS_REST_ENDPOINTS = dict(
+    ebook=dict(
+        pid_type='ebook',
+        pid_minter='ebook',
+        pid_fetcher='ebook',
+        search_class=RecordsSearch,
+        indexer_class=RecordIndexer,
+        search_index=None,
+        search_type=None,
+        record_serializers={
+            'application/json': ('invenio_records_rest.serializers'
+                                 ':json_v1_response'),
+        },
+        search_serializers={
+            'application/json': ('invenio_records_rest.serializers'
+                                 ':json_v1_search'),
+        },
+        list_route='/ebooks/',
+        item_route='/ebooks/<pid((ebook, record_class="rero_ebooks.api:Ebook")):pid_value>',
+        default_media_type='application/json',
+        max_result_window=10000,
+        error_handlers=dict(),
+    ),
+)
