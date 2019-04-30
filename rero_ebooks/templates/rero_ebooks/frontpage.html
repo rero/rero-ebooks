@@ -60,5 +60,5 @@
 
 {%- block css %}
 {{ super() }}
-{% assets "rero_ebooks_css" %}<link href="{{ ASSET_URL }}" rel="stylesheet">{% endassets %}
+{{ webpack['rero_ebooks-theme.css']}}
 {%- endblock css %}
