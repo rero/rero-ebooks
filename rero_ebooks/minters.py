@@ -31,19 +31,19 @@ from .providers import EbookPidProvider
 
 
 def build_ebook_pid(data, source):
-        """Build ebook pid from record."""
-        assert 'other_standard_identifier' in data
-        assert (
-            'standard_number_or_code'
-            in data.get('other_standard_identifier')[0]
-        )
+    """Build ebook pid from record."""
+    assert 'other_standard_identifier' in data
+    assert (
+        'standard_number_or_code'
+        in data.get('other_standard_identifier')[0]
+    )
 
-        pid_value = (
-            data.get('other_standard_identifier')[0]
-            .get('standard_number_or_code')
-            .split('/')[-1]
-        )
-        return source + '-' + pid_value
+    pid_value = (
+        data.get('other_standard_identifier')[0]
+        .get('standard_number_or_code')
+        .split('/')[-1]
+    )
+    return source + '-' + pid_value
 
 
 def ebook_pid_minter(record_uuid, data, source):

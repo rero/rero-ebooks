@@ -37,6 +37,8 @@ from datetime import timedelta
 from invenio_indexer.api import RecordIndexer
 from invenio_search import RecordsSearch
 
+from rero_ebooks.apiharvester.tasks import harvest_records  # needed by cellery
+
 
 def _(x):
     """Identity function used to trigger string extraction."""
@@ -124,18 +126,25 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'invenio_indexer.tasks.process_bulk_queue',
         'schedule': timedelta(minutes=5),
     },
-    'Harvester-VS': {
-        'task': 'invenio_oaiharvester.tasks.list_records_from_dates',
+    # 'Harvester-VS': {
+    #     'task': 'invenio_oaiharvester.tasks.list_records_from_dates',
+    #     'schedule': timedelta(minutes=60),
+    #     'kwargs': dict(name='VS')
+    # },
+    # 'Harvester-NJ': {
+    #     'task': 'invenio_oaiharvester.tasks.list_records_from_dates',
+    #     'schedule': timedelta(minutes=60),
+    #     'kwargs': dict(name='NJ')
+    # },
+    'Apiharvester-VS': {
+        'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
         'schedule': timedelta(minutes=60),
-        'kwargs': dict(name='VS')
+        'kwargs': dict(name='VS'),
     },
-    'Harvester-NJ': {
-        'task': 'invenio_oaiharvester.tasks.list_records_from_dates',
-        # Every 15 minutes
-        # from celery.schedules import crontab
-        # 'schedule': crontab(minute='*/15'),
+    'Apiharvester-NJ': {
+        'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
         'schedule': timedelta(minutes=60),
-        'kwargs': dict(name='NJ')
+        'kwargs': dict(name='NJ'),
     },
 }
 CELERY_BROKER_HEARTBEAT = 0

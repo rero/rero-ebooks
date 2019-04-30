@@ -34,9 +34,17 @@ pipenv run invenio index destroy --force --yes-i-know
 pipenv run invenio index init --force
 pipenv run invenio index queue init
 
-# init oaiharvester config from file
-pipenv run invenio oaiharvester initconfig data/oaisources.yml
-# load source NJ
-pipenv run invenio oaiharvester harvest -n NJ -k -q --signals
-# load source VS
-pipenv run invenio oaiharvester harvest -n VS -k -q --signals
+# init apiharvester config from file
+pipenv run invenio apiharvester sources data/apisources.yml
+if [ "$1" = "--deployment" ]
+then
+  # load source VS
+  pipenv run invenio apiharvester harvest -n VS -k
+  # load source NJ
+  pipenv run invenio apiharvester harvest -n NJ -k
+else
+  # load source VS
+  pipenv run invenio apiharvester harvest -n VS -v -m 100
+  # load source NJ
+  pipenv run invenio apiharvester harvest -n NJ -v -m 100
+fi

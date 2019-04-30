@@ -27,22 +27,6 @@
 from __future__ import absolute_import, print_function
 
 import pytest
-from invenio_app.factory import create_api
-
-
-@pytest.fixture(scope='module')
-def create_app():
-    """Create test app."""
-    return create_api
-
-
-@pytest.fixture(scope='module')
-def app_config(app_config):
-    """Create temporary instance dir for each test."""
-    app_config['RATELIMIT_STORAGE_URL'] = 'memory://'
-    app_config['CACHE_TYPE'] = 'simple'
-    app_config['SEARCH_ELASTIC_HOSTS'] = None
-    return app_config
 
 
 @pytest.yield_fixture()
@@ -158,17 +142,17 @@ def cantook_mv_record():
     """Mediatheque-valais Cantook record."""
     yield {
         "title": "Sylvothérapie : le pouvoir bienfaisant des arbres",
-        "title_prefix": null,
+        "title_prefix": None,
         "title_sort": "sylvotherapie : le pouvoir bienfaisant des arbres",
-        "subtitle": null,
-        "description": null,
+        "subtitle": None,
+        "description": None,
         "summary": "Le besoin actuel de reconnexion avec la nature ...",
-        "comments": null,
+        "comments": None,
         "tags": [],
         "back_cover": "",
-        "back_cover_large": null,
+        "back_cover_large": None,
         "cover": "http://images.immateriel.fr/covers/BH9WPJ8.png",
-        "cover_large": null,
+        "cover_large": None,
         "flipbook":
         "http://livre.immateriel.fr/BH9WPJ8?no_sign_in=true&no_buy_link=true",
         "languages": [
@@ -200,7 +184,7 @@ def cantook_mv_record():
                 "key_type": "isbn13",
                 "id": "immateriel.frO688313-9782889119714-paper",
                 "key": "9782889119714",
-                "issued_on": null,
+                "issued_on": None,
                 "current_holds": 0
             }
         ],
@@ -218,8 +202,8 @@ def cantook_mv_record():
                 ],
                 "captions": [
                     {
-                        "fr": null,
-                        "en": null
+                        "fr": None,
+                        "en": None
                     }
                 ]
             },

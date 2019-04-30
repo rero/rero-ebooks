@@ -54,5 +54,4 @@ class ReroEBooks(object):
     @staticmethod
     def register_signals(app):
         """Register Zenodo Deposit signals."""
-        oaiharvest_finished.connect(publish_harvested_records,
-                                    weak=False)
+        oaiharvest_finished.connect(publish_harvested_records, weak=False)
