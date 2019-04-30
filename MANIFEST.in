@@ -77,3 +77,6 @@ include *.lock
 include Pipfile
 recursive-include rero_ebooks *.png
 recursive-include rero_ebooks *.scss
+recursive-include rero_ebooks *.py
+recursive-include tests *.json
+recursive-include tests *.yml

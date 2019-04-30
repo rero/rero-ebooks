@@ -36,7 +36,16 @@ def test_json_system_control_number():
         'id': '1234'
     }
     assert cantook_json.do(data) == {
-        '__order__': ['leader', 'system_control_number'],
+        '__order__': [
+            'leader',
+            'other_standard_identifier',
+            'system_control_number'
+        ],
+        'other_standard_identifier': [{
+            'standard_number_or_code': 'cantook/1234',
+            'type_of_standard_number_or_code':
+                'Unspecified type of standard number or code'
+        }],
         'system_control_number': {
             'system_control_number': 'cantook-1234'
         },

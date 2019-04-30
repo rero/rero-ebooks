@@ -33,7 +33,7 @@ pytest-random-order = ">=0.5.4"
 pytest-runner = ">=3.0.0,<5"
 requests = ">=2.20.0"
 rero-ebooks = {editable = true,path = "."}
-pylint = "*"
+responses = "*"
 
 [requires]
 python_version = "3.6"

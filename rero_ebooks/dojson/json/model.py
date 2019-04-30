@@ -82,9 +82,11 @@ cantook_json = Underdo()
 def system_control_number(self, key, value):
     """System control number transformation.
 
-    The id field is transforme as system_control_number.
+    The id field is transforme as system_control_number and
+    other_standard_identifier
 
     The system_control_number is used in the Marc21 035 field.
+    The other_standard_identifier is used in the Marc21 024 field.
     A Marc21 Leader data is added.
     """
     self['leader'] = {
@@ -103,6 +105,11 @@ def system_control_number(self, key, value):
         'type_of_record': 'language_material',
         'undefined': 0
     }
+    self['other_standard_identifier'] = [{
+        'standard_number_or_code': 'cantook/' + value,
+        'type_of_standard_number_or_code':
+            'Unspecified type of standard number or code'
+    }]
     return {'system_control_number': 'cantook-' + value}
 
 
