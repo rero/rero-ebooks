@@ -1,0 +1,2126 @@
+[
+    {
+        "title": "Sylvothérapie : le pouvoir bienfaisant des arbres",
+        "title_prefix": null,
+        "title_sort": "sylvotherapie : le pouvoir bienfaisant des arbres",
+        "subtitle": null,
+        "description": null,
+        "summary": "Le besoin actuel de reconnexion avec la nature n’est pas anodin, et il existe aujourd’hui de nombreuses possibilités pour l’assouvir. À commencer par les arbres, éléments déterminants dans le développement des civilisations humaines, leurs liens avec l’homme sont immémoriaux.\nPrésents autant en ville qu’en campagne, ...",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "http://images.immateriel.fr/covers/BH9WPJ8.png",
+        "cover_large": null,
+        "flipbook": "http://livre.immateriel.fr/BH9WPJ8?no_sign_in=true&no_buy_link=true",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 160,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Jean-Marie",
+                "last_name": "Defossez",
+                "nature": "author",
+                "country": "",
+                "biography": "<p>Jean-Marie Defossez est né en 1971 en Belgique. Marié, père de deux garçons, il réside aujourd'hui dans le département français de la Loire-Atlantique. Il a goûté à bien des métiers avant de choisir de se consacrer exclusivement à l'écriture de romans pour la jeunesse.<br/>Ses principales sources d'inspiration ? La vie, le grand air et la musique. Son plus grand plaisir est de réussir un livre qui sonne vrai comme la vie et, grâce à cela, d'avoir le privilège de rencontrer ses lecteurs.</p>",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "immateriel.frO688313-9782889055784-epub",
+                "key": "9782889055784",
+                "issued_on": "2019-04-30T06:00:00+02:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "immateriel.frO688313-9782889119714-paper",
+                "key": "9782889119714",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "immateriel.frO688313",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5b18c6bc235794540e2cbe72",
+        "created_at": "2018-06-07T07:46:36+02:00",
+        "updated_at": "2019-04-21T07:47:19+02:00",
+        "publisher_name": "Jouvence",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "SEL000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "self-help",
+                    "health"
+                ],
+                "captions": [
+                    {
+                        "fr": "Croissance personnelle",
+                        "en": "Self-Help"
+                    },
+                    {
+                        "fr": "Santé",
+                        "en": "Health"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBSEL000000",
+                    "FBHEA014000",
+                    "FBNFC000000",
+                    "FBHEA000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Développement Personnel",
+                        "en": "Self-help"
+                    },
+                    {
+                        "fr": "Bien-être",
+                        "en": "Well being"
+                    },
+                    {
+                        "fr": "Documentaires",
+                        "en": "Non-Fiction"
+                    },
+                    {
+                        "fr": "Santé & Vie quotidienne",
+                        "en": "Health & fitness"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Jouvence"
+        }
+    },
+    {
+        "title": "Émotions : quand c'est plus fort que moi",
+        "title_prefix": null,
+        "title_sort": "emotions : quand c'est plus fort que moi",
+        "subtitle": "Peur, colère, tristesse : comment faire face ",
+        "description": null,
+        "summary": "Peur, colère, tristesse : comment faire face !Apprendre à « gérer » ses émotions, voilà un impératif communément admis pour qui voudrait réussir socialement, professionnellement, et surtout pour ceux qui voudraient moins souffrir.\nEt si ce n’était pas plutôt l’inverse qu’il fallait faire ?\nCe livre, ...",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "http://images.immateriel.fr/covers/FWK3BH5.png",
+        "cover_large": null,
+        "flipbook": "http://livre.immateriel.fr/FWK3BH5?no_sign_in=true&no_buy_link=true",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 256,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Aurore",
+                "last_name": "Aimelet",
+                "nature": "author",
+                "country": "",
+                "biography": "<strong>Aurore Aimelet</strong> est journaliste. Elle est notamment la co-auteure avec Christine Brunet de <em>Dis bonjour à la dame!</em> (Albin Michel, 2012)",
+                "website": ""
+            },
+            {
+                "first_name": "Catherine",
+                "last_name": "Aimelet-Périssol",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "immateriel.frO588299-9791028508067-epub",
+                "key": "9791028508067",
+                "issued_on": "2019-04-09T06:00:00+02:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "immateriel.frO588299-9791028503154-paper",
+                "key": "9791028514563",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "immateriel.frO588299",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/58e878ce235794558ef07803",
+        "created_at": "2017-04-08T07:44:46+02:00",
+        "updated_at": "2019-04-14T07:48:09+02:00",
+        "publisher_name": "Éditions Leduc.s",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "SEL000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "self-help",
+                    "psychology"
+                ],
+                "captions": [
+                    {
+                        "fr": "Croissance personnelle",
+                        "en": "Self-Help"
+                    },
+                    {
+                        "fr": "Psychologie",
+                        "en": "Psychology"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBSEL000000",
+                    "FBPSY013000",
+                    "FBNFC000000",
+                    "FSHUM000000N",
+                    "FBPSY000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Développement Personnel",
+                        "en": "Self-help"
+                    },
+                    {
+                        "fr": "Émotion",
+                        "en": "Emotions"
+                    },
+                    {
+                        "fr": "Documentaires",
+                        "en": "Non-Fiction"
+                    },
+                    {
+                        "fr": "Sciences humaines",
+                        "en": "Human Science"
+                    },
+                    {
+                        "fr": "Psychologie",
+                        "en": "Psychology"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Éditions Leduc.s"
+        }
+    },
+    {
+        "title": "Nouvelles d'ailleurs",
+        "title_prefix": null,
+        "title_sort": "nouvelles d'ailleurs",
+        "subtitle": "Au-delà des possibles",
+        "description": null,
+        "summary": "Georges CURTI, à travers 23 nouvelles, met en jeu des personnages condamnés par un sort implacable et par la fatalité. Au fil de leurs aventures se profile l’image de la femme idéale dont ils ont fait leur réalité.\nCelle-ci est cependant diaphane et leur échappe.\nEn même temps se mélangent le rêve et la fiction de leur vie, ...",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "http://images.immateriel.fr/covers/ARSP9L3.png",
+        "cover_large": null,
+        "flipbook": "http://livre.immateriel.fr/ARSP9L3?no_sign_in=true&no_buy_link=true",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 325,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Georges",
+                "last_name": "Curti",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "immateriel.frO972048-9782490775033-epub",
+                "key": "9782490775033",
+                "issued_on": "2019-03-21T05:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "immateriel.frO972048-9782490775026-paper",
+                "key": "9782490775026",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "immateriel.frO972048",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeef23579462156d09a3",
+        "created_at": "2019-03-29T07:45:03+01:00",
+        "updated_at": "2019-04-14T07:48:00+02:00",
+        "publisher_name": "ECHO Editions",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC029000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC029000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Nouvelles",
+                        "en": "Short Stories"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "ECHO Editions"
+        }
+    },
+    {
+        "title": "Haute-École",
+        "title_prefix": null,
+        "title_sort": "haute-ecole",
+        "subtitle": null,
+        "description": null,
+        "summary": "Dans une société proche de celle de la France à la veille de la Révolution, le sort des magiciens n’intéresse que quelques intellectuels contestataires. Les enfants dotés de pouvoirs magiques sont enlevés à leurs familles afin d’être éduqués à la Haute-École et contrôlés par la noblesse.\nAu moment où le règne d’Urbain IV s’achève, Mérot l’Ancien, ...",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "http://images.immateriel.fr/covers/DL7VHQA.png",
+        "cover_large": null,
+        "flipbook": "http://livre.immateriel.fr/DL7VHQA?no_sign_in=true&no_buy_link=true",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 464,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Sylvie",
+                "last_name": "Denis",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "immateriel.frO211407-9782367930879-epub",
+                "key": "9782367930879",
+                "issued_on": "2019-03-21T05:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "immateriel.frO211407-9782841728985-paper",
+                "key": "9782841728985",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "immateriel.frO211407",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeef23579462156d0999",
+        "created_at": "2019-03-29T07:45:03+01:00",
+        "updated_at": "2019-04-14T07:48:00+02:00",
+        "publisher_name": "L'Atalante",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC009000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "science-fiction-fantasy"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans science-fiction et fantastique",
+                        "en": "Science Fiction & Fantasy"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC009000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Fantasy",
+                        "en": "Fantasy"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "L'Atalante"
+        }
+    },
+    {
+        "title": "Un silence brutal",
+        "title_prefix": null,
+        "title_sort": "un silence brutal",
+        "subtitle": null,
+        "description": null,
+        "summary": "Dans cette contrée de Caroline du Nord, entre rivière et montagnes, que l’œuvre de Ron Rash explore inlassablement depuis Un pied au paradis, un monde est en train de s’effacer pour laisser la place à un autre. Le shérif Les, à trois semaines de la retraite, et Becky, poétesse obsédée par la protection de la nature, incarnent le premier. Chacun à sa manière va tenter de protéger Gerald, irréductible vieillard amoureux des truites, contre le représentant des nouvelles valeurs, Tucker. L’homme d’affaires, qui loue fort cher son coin de rivière à des citadins venus goûter les joies de la pêche en milieu sauvage, accuse Gerald d’avoir versé du kérosène dans l’eau, mettant ainsi son affaire en péril. \nLes aura recours à des méthodes peu orthodoxes pour découvrir la vérité. Et l’on sait déjà qu’avec son départ à la retraite va disparaître une vision du monde dépourvue de tout manichéisme au profit d’une approche moins nuancée.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/7f/2924f49149da547eef4f1f6ef8bb3277f4f184.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/496624",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 263,
+        "translated_from": "eng",
+        "contributors": [
+            {
+                "first_name": "Ron",
+                "last_name": "Rash",
+                "nature": "author",
+                "country": "FR",
+                "biography": "Né en 1953 en Caroline du Sud, Ron Rash est un poète inspiré par la région des Appalaches où il vit et un nouvelliste récompensé par de nombreux prix aux États-Unis. Admirateur de William Faulkner et de Jean Giono, il est l’auteur de six romans dont Une terre d’ombre, lauréat du Grand Prix de Littérature policière. Il enseigne la littérature à la Western Carolina University.",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN496624-9782072828652-epub",
+                "key": "9782072828652",
+                "issued_on": "2019-03-21T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN496624",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeef23579462156d0970",
+        "created_at": "2019-03-29T07:45:03+01:00",
+        "updated_at": "2019-04-14T07:48:00+02:00",
+        "publisher_name": "Editions Gallimard",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC062000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "detective-suspense"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans policiers et suspense",
+                        "en": "Mystery & Suspense"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC022010",
+                    "FBFIC000000",
+                    "FBFIC022000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Roman noir",
+                        "en": "Hard-Boiled"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    },
+                    {
+                        "fr": "Policiers & Mystères",
+                        "en": "Mystery & Detective"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Editions Gallimard"
+        }
+    },
+    {
+        "title": "Trois minutes",
+        "title_prefix": null,
+        "title_sort": "trois minutes",
+        "subtitle": null,
+        "description": null,
+        "summary": "Un chef d’œuvre du polar scandinave – traduit dans 18 langues et vendu à plus de 800  000 exemplaires dans le monde.Piet Hoffmann est l’homme le plus recherché de la planète. Après s’être évadé de Suède en se faisant passer pour mort, il travaille désormais pour le compte des renseignements américains. Sa mission  : infiltrer la mafia colombienne, reine du trafic de cocaïne, en échange de sa protection et de celle de sa famille. Mais au sein du milieu le plus violent et sanglant de la pègre, leur vie semble plus que jamais menacée. Lorsque le cartel enlève le président de la Chambre des représentants au cours d'une visite officielle en Colombie, Hoffmann se retrouve au cœur de ce que l'on appelle bientôt la «  guerre finale contre la drogue ». Alors que la liste des personnes les plus recherchées par le gouvernement devient une liste de cadavres, la DEA interrompt tout contact avec son infiltré, et la seule personne qui puisse aider Piet Hoffmann n’est autre que son pire ennemi  : l’inspecteur Ewert Grens qui n’a jamais renoncéà le retrouver mort ou vif… ",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "http://couverture.numilog.com/9782863747728.jpg",
+        "cover_large": null,
+        "flipbook": null,
+        "languages": [
+            "fre"
+        ],
+        "page_count": 560,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Anders",
+                "last_name": "Roslund",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            },
+            {
+                "first_name": "Börge",
+                "last_name": "Hellström",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "PRODUCT_ID:1442981-9782863747728-epub",
+                "key": "9782863747728",
+                "issued_on": "2019-03-20T05:00:00+01:00",
+                "current_holds": 9
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "PRODUCT_ID:1442981-9782863744918-paper",
+                "key": "9782863744918",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "PRODUCT_ID:1442981",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeef23579462156d0983",
+        "created_at": "2019-03-29T07:45:03+01:00",
+        "updated_at": "2019-04-14T07:48:00+02:00",
+        "publisher_name": "Fayard/Mazarine",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC022000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "detective-suspense"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans policiers et suspense",
+                        "en": "Mystery & Suspense"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC022000",
+                    "FBFIC031000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Policiers & Mystères",
+                        "en": "Mystery & Detective"
+                    },
+                    {
+                        "fr": "Thrillers",
+                        "en": "Thrillers"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Fayard/Mazarine"
+        }
+    },
+    {
+        "title": "Elena et les joueuses",
+        "title_prefix": null,
+        "title_sort": "elena et les joueuses",
+        "subtitle": null,
+        "description": null,
+        "summary": "Il fait si chaud à Paris l’après-midi du 29 août 2014. Eléna Filleul, ancienne joueuse de tennis, va chercher son fiancé Ismaël Chèvreloup à la gare de Lyon. Plus tôt, Eléna a vu ses amies de lycée. Elles se sont remémoré leur adolescence, le rôle joué par la famille Chèvreloup, et tout particulièrement celui de Catherine, figure emblématique pour ce groupe. Au cours de cette journée qui aurait pu ressembler à toutes les autres, Eléna se confronte aux fantômes et aux dieux de sa jeunesse.Ce roman ambitieux allie modernité et classicisme pour nous conter une histoire intemporelle dans le Paris du xxie siècle.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "http://couverture.numilog.com/9782234088009.jpg",
+        "cover_large": null,
+        "flipbook": null,
+        "languages": [
+            "fre"
+        ],
+        "page_count": 256,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Lolita",
+                "last_name": "Pille",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "PRODUCT_ID:1447127-9782234088009-epub",
+                "key": "9782234088009",
+                "issued_on": "2019-03-20T05:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "PRODUCT_ID:1447127-9782234087552-paper",
+                "key": "9782234087552",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "PRODUCT_ID:1447127",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeee23579462156d0921",
+        "created_at": "2019-03-29T07:45:02+01:00",
+        "updated_at": "2019-04-14T07:48:09+02:00",
+        "publisher_name": "Stock",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC000000",
+                    "FBFIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    },
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Stock"
+        }
+    },
+    {
+        "title": "Malva",
+        "title_prefix": null,
+        "title_sort": "malva",
+        "subtitle": null,
+        "description": null,
+        "summary": "En explorant le destin tragique de la fille de Pablo Neruda, Malva, lourdement handicapée et abandonnée par son père, Hagar Peeters revient sur sa propre histoire d’enfant rejetée par son père car issue d’un amour éphémère.Le plus “latino” des romans néerlandais, imprégné de réalisme magique sud-américain, porté par une langue foisonnante et poétique.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/b5/d10390a7821569f18f40925b893321140e87cd.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/498270",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 265,
+        "translated_from": "dut",
+        "contributors": [
+            {
+                "first_name": "Hagar",
+                "last_name": "Peeters",
+                "nature": "author",
+                "country": "NL",
+                "biography": "Née en 1972, Hagar Peeters a fait de brillantes études d'histoire contemporaine et de littérature à l'université d'Utrcht. Si Malva est son premier roman, elle a déjà publié cinq recueils de poésie, qui ont tous remporté des prix prestigieux.",
+                "website": ""
+            },
+            {
+                "first_name": "Sandrine",
+                "last_name": "Maufroy",
+                "nature": "translated_by",
+                "country": "FR",
+                "biography": "",
+                "website": ""
+            },
+            {
+                "first_name": "Philippe",
+                "last_name": "Noble",
+                "nature": "translated_by",
+                "country": "BE",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN498270-9782330104849-epub",
+                "key": "9782330104849",
+                "issued_on": "2019-03-20T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN498270-9782330118501-paper",
+                "key": "9782330118501",
+                "issued_on": "2019-03-20T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN498270",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeed23579462156d0915",
+        "created_at": "2019-03-29T07:45:01+01:00",
+        "updated_at": "2019-04-14T07:47:58+02:00",
+        "publisher_name": "Actes Sud Littérature",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC019000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Actes Sud Littérature"
+        }
+    },
+    {
+        "title": "Vies de chien",
+        "title_prefix": null,
+        "title_sort": "vies de chien",
+        "subtitle": null,
+        "description": null,
+        "summary": "Tom a le ronflement facile, les intestins capricieux et il déteste les chats. Quoi de plus banal pour un bouledogue français ? Mais, coincé dans son box à la SPA, il prend conscience qu’il y a pire dans la vie.\nMaël, sans soutien parental, erre dans le système de l’aide sociale à l’enfance depuis son plus jeune âge. L'adolescent a fait de la guitare son exutoire et n’a qu’une quête : trouver une famille d’accueil.\nLes chemins accidentés de Tom et Maël vont se croiser dans la maison d'Alicia, Jacques et leur fils, Pierre. Cinq personnalités et un défi : cohabiter.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/cb/8a388269e47c2b9706f61e8a40aa0efe6cc7d5.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/496728",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 438,
+        "translated_from": "fre",
+        "contributors": [
+            {
+                "first_name": "Laura",
+                "last_name": "Trompette",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN496728-9782756427898-epub",
+                "key": "9782756427898",
+                "issued_on": "2019-03-20T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN496728-9782756427881-paper",
+                "key": "9782756427881",
+                "issued_on": "2019-03-20T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN496728",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeec23579462156d089a",
+        "created_at": "2019-03-29T07:45:00+01:00",
+        "updated_at": "2019-04-14T07:47:56+02:00",
+        "publisher_name": "Pygmalion",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC000000",
+                    "FBFIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    },
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Pygmalion"
+        }
+    },
+    {
+        "title": "Hors limites",
+        "title_prefix": null,
+        "title_sort": "hors limites",
+        "subtitle": null,
+        "description": null,
+        "summary": "À la suite d’un terrible accident de la route qui met en cause des adolescents, le commandant Karen Pirie est chargée d’enquêter sur une affaire vieille de vingt ans. Des tests ADN réalisés sur l’une des victimes révèlent en effet que ce simple fait divers pourrait bien être lié à une enquête pour homicide non résolue. Spécialiste des cold cases, Karen Pirie est passée maître dans l’art de résoudre les dossiers les plus épineux. Sous ses yeux, les pièces éparpillées du puzzle s’emboîtent peu à peu et mettent au jour des secrets extrêmement dangereux. Des secrets que certaines personnes seraient prêtes à protéger à n’importe quel prix.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/af/de9ad63fdc4712e117e53a79e9e0a3d734aafd.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/496558",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 507,
+        "translated_from": "eng",
+        "contributors": [
+            {
+                "first_name": "Val",
+                "last_name": "McDermid",
+                "nature": "author",
+                "country": "GB",
+                "biography": "Née en Écosse dans les années 1950, Val McDermid est, à 17 ans, la première élève issue d’une école publique à fréquenter la célèbre université d’Oxford. Elle travaille comme journaliste pendant quinze ans, notamment à Glasgow et à Manchester, avant de vivre de sa plume. Elle est désormais critique de littérature policière pour la presse et participe à des programmes sur <oeu>BBC Radio 4 </oeu>et <oeu>BBC Radio Scotland</oeu>. <br/>Auteur de trois séries policières d’une grande noirceur, mettant notamment en scène l’inspectrice Carol Jordan et le profileur Tony Hill dans <oeu>Le chant des sirènes </oeu>ou encore <oeu>La fureur dans le sang</oeu>, elle développe dans ses romans ses thèmes de prédilection de femme engagée et féministe. Elle a reçu de nombreux prix littéraires anglo-saxons, dont le Gold Dagger Award en 1995 pour <oeu>Le chant des sirènes</oeu>, le Anthony Award pour <oeu>Au lieu d’exécution</oeu> en 2001, premier polar anglais à remporter cette récompense américaine, et le Barry Award pour <oeu>Quatre garçons dans la nuit</oeu> en 2004.",
+                "website": ""
+            },
+            {
+                "first_name": "Perrine",
+                "last_name": "Chambon",
+                "nature": "translated_by",
+                "country": "FR",
+                "biography": "",
+                "website": ""
+            },
+            {
+                "first_name": "Arnaud",
+                "last_name": "Baignot",
+                "nature": "translated_by",
+                "country": "FR",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN496558-9782081426511-epub",
+                "key": "9782081426511",
+                "issued_on": "2019-03-20T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN496558-9782081426504-paper",
+                "key": "9782081426504",
+                "issued_on": "2019-03-20T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN496558",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeea23579462156d083d",
+        "created_at": "2019-03-29T07:44:58+01:00",
+        "updated_at": "2019-04-14T07:47:50+02:00",
+        "publisher_name": "Flammarion",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC031000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "detective-suspense"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans policiers et suspense",
+                        "en": "Mystery & Suspense"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC031000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Thrillers",
+                        "en": "Thrillers"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Flammarion"
+        }
+    },
+    {
+        "title": "Cherche ton bonheur partout",
+        "title_prefix": null,
+        "title_sort": "cherche ton bonheur partout",
+        "subtitle": null,
+        "description": null,
+        "summary": "Régine et Tom s’aiment. D’ailleurs, ils vivent ensemble. Presque. Quasiment. Disons qu’ils se fréquentent. Enfin, ils se fréquentent… Où en est leur relation, exactement, quand Tom veut du concret, et que Régine refuse de s’engager ?\nMais un événement imprévu va la forcer à prendre une décision. Et elle choisit : la panique. Et la fuite, au volant de sa voiture. Tout plaquer, pour jouir de sa liberté, tant qu’elle le peut encore. Sauf qu’en voulant filer à l’anglaise, elle va se faire happer par le pire des pots de colle : Olga, la mère de Tom…\nMonique a la soixantaine, et autant de complexes. Plus de mari, des enfants partis vivre leur vie, aussi s’est-elle résolue à finir la sienne en tête à tête avec son chat.\nMais la solitude, c’est d’un ennui… Alors, quand son amie Lutèce propose de la convier à une soirée de célibataires, elle accepte. Mais était-ce une si bonne idée?\nL’amour, c’est pas facile tous les jours.\nMais le bonheur, ça se cherche. Partout.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/6c/23bbc095615d6b1df4c8e03acab045f11de3b3.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/495714",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 327,
+        "translated_from": "fre",
+        "contributors": [
+            {
+                "first_name": "Agnès",
+                "last_name": "Abécassis",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN495714-9782081470002-epub",
+                "key": "9782081470002",
+                "issued_on": "2019-03-20T00:00:00+01:00",
+                "current_holds": 4
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN495714-9782081452657-paper",
+                "key": "9782081452657",
+                "issued_on": "2019-03-20T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN495714",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbee923579462156d07f9",
+        "created_at": "2019-03-29T07:44:57+01:00",
+        "updated_at": "2019-04-14T07:47:44+02:00",
+        "publisher_name": "Flammarion",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC000000",
+                    "FBFIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    },
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Flammarion"
+        }
+    },
+    {
+        "title": "Le Singe sous la montagne",
+        "title_prefix": null,
+        "title_sort": "le singe sous la montagne",
+        "subtitle": null,
+        "description": null,
+        "summary": "Cette histoire suit les pas du moine Sanzang, parti vers l’Ouest chercher les écritures du Bouddha. Sur les sentiers escarpés, par les plaines et les rizières, que découvrira-t-il ? Trouvera-t-il la réalité de sa voie ?À vingt-deux ans, Aodren Buart redonne vie à une Chine lointaine pour son premier roman.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "http://images.immateriel.fr/covers/UC9P2E8.png",
+        "cover_large": null,
+        "flipbook": "http://livre.immateriel.fr/UC9P2E8?no_sign_in=true&no_buy_link=true",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 128,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Aodran",
+                "last_name": "Buart",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "immateriel.frO974273-9782752911933-epub",
+                "key": "9782752911933",
+                "issued_on": "2019-03-14T05:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "immateriel.frO974273-9782752911926-paper",
+                "key": "9782752911926",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "immateriel.frO974273",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeee23579462156d0935",
+        "created_at": "2019-03-29T07:45:02+01:00",
+        "updated_at": "2019-04-14T07:47:59+02:00",
+        "publisher_name": "Phébus",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC000000",
+                    "FBFIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    },
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Phébus"
+        }
+    },
+    {
+        "title": "La Citadelle",
+        "title_prefix": null,
+        "title_sort": "la citadelle",
+        "subtitle": null,
+        "description": null,
+        "summary": "Après une année passée sous le soleil gris de Paris à rédiger des devoirs sans fin, Émile atterrit en Corse avec des amis. Le paysage splendide de Calvi illumine son été, ainsi qu’Andréa, une jeune Corse rencontrée au pied de la citadelle. Par orgueil, Émile refuse de tomber amoureux, quitte à en éprouver de terribles regrets. L’énigme d’Andréa ne cessera jamais de le hanter, au point de bouleverser son existence. \nCe sont là les débuts d’Émile dans la vie. L’histoire d’une défaite autant que d’un succès, où il est question d’espoirs, de remords et d’envie.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/42/04c30913f20c4f0663e1c6abcef49bf967a413.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/500370",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 208,
+        "translated_from": "fre",
+        "contributors": [
+            {
+                "first_name": "Éric",
+                "last_name": "Metzger",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": "www.gallimard.fr"
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN500370-9782072844126-epub",
+                "key": "9782072844126",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN500370-9782072844119-paper",
+                "key": "9782072844119",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN500370",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbef023579462156d09d8",
+        "created_at": "2019-03-29T07:45:04+01:00",
+        "updated_at": "2019-04-21T07:47:18+02:00",
+        "publisher_name": "Editions Gallimard",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC000000",
+                    "FBFIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    },
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Editions Gallimard"
+        }
+    },
+    {
+        "title": "Weetzie Bat",
+        "title_prefix": null,
+        "title_sort": "weetzie bat",
+        "subtitle": null,
+        "description": null,
+        "summary": "La série jeunes adultes culte aux États-Unis, bientôt au cinéma !Weetzie est un petit brin de fille qui a grandi avec sa mère, starlette alcoolique, et son père, scénariste junkie, dans le Los Angeles des années 1980. Pour trouver l'amour, Weetzie fait équipe avec Dirk, son meilleur ami. Cette quête les mènera jusqu'à un réalisateur qui ne quitte jamais son imper, le mystérieux Max, et à un surfeur aux cheveux platine, Duck. Mais, déstabilisée par des événements tragiques et menacée par l'ex aigrie (et un peu sorcière sur les bords) de Max, Weetzie devra retirer les lunettes qui lui font voir la vie en rose pour se confronter à la noirceur du monde et découvrir la recette du bonheur...  \" Transcendant ! \" The New York Times Book Review",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/0a/8e896bc69d45aaf204f277266d6c07bcb859f4.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/502196",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 0,
+        "translated_from": "eng",
+        "contributors": [
+            {
+                "first_name": "Francesca LIA",
+                "last_name": "BLOCK",
+                "nature": "author",
+                "country": "",
+                "biography": "En 1989, Francesca Lia Block a fait une entr&#xE9;e fracassante sur la sc&#xE8;ne litt&#xE9;raire avec ce qui n'allait pas tarder &#xE0; devenir le livre le plus discut&#xE9; des ann&#xE9;es 90 : \n<i>Weetzie Bat</i>. Cette ode &#xE0; l'amour et &#xE0; Los Angeles, depuis enrichie de plusieurs autres courts romans, a bris&#xE9; tous les codes lors de sa parution et s&#xE9;duit plusieurs g&#xE9;n&#xE9;rations de lecteurs de tous les &#xE2;ges, propulsant son auteure au rang d'ic&#xF4;ne.\n<br>",
+                "website": ""
+            },
+            {
+                "first_name": "Axelle",
+                "last_name": "DEMOULIN",
+                "nature": "translated_by",
+                "country": "",
+                "biography": "",
+                "website": ""
+            },
+            {
+                "first_name": "Nicolas",
+                "last_name": "ANCION",
+                "nature": "translated_by",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN502196-9782221242292-epub",
+                "key": "9782221242292",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN502196-9782221240984-paper",
+                "key": "9782221240984",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN502196",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbef023579462156d09cc",
+        "created_at": "2019-03-29T07:45:04+01:00",
+        "updated_at": "2019-04-19T07:45:00+02:00",
+        "publisher_name": "R-jeunes adultes",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "JUV058000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "juvenile-fiction",
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Jeunesse - albums et romans",
+                        "en": "Juvenile Fiction"
+                    },
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC019000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "R-jeunes adultes"
+        }
+    },
+    {
+        "title": "L'île aux enfants",
+        "title_prefix": null,
+        "title_sort": "l'ile aux enfants",
+        "subtitle": null,
+        "description": null,
+        "summary": "Pauline, six ans, et sa petite sœur Clémence coulent des jours heureux sur l'île qui les a vues naître, la Réunion. Un matin de 1963, elles sont kidnappées au bord de la route et embarquent de force dans un avion pour la métropole, à neuf mille kilomètres de leurs parents. À Guéret, dans la Creuse, elles sont séparées. 1998 : quelques phrases à la radio rouvrent de vieilles blessures. Frappée par le silence dans lequel est murée sa mère, Caroline, jeune journaliste, décide d'enquêter et s'envole pour la Réunion, où elle découvre peu à peu les détails d'un mensonge d'État.  À travers l'évocation de l'enlèvement méconnu d'au moins deux mille enfants réunionnais entre 1963 et 1982, dans le but de repeupler des départements sinistrés de la métropole, Ariane Bois raconte le destin de deux générations de femmes victimes de l'arbitraire et du secret. L'histoire d'une quête des origines et d'une résilience, portée par un grand souffle romanesque.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/83/6e5e2f9af3c771d3be6e84f3dc4516ce59a6a0.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/502230",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 0,
+        "translated_from": "",
+        "contributors": [
+            {
+                "first_name": "Ariane",
+                "last_name": "BOIS",
+                "nature": "author",
+                "country": "",
+                "biography": "Grand reporter et critique litt&#xE9;raire, \n<b>Ariane Bois</b> a d&#xE9;j&#xE0; publi&#xE9; quatre romans, \n<i>Et le jour pour eux sera comme la nuit</i> (Ramsay, 2009 ; J'ai lu, 2010), \n<i>Le Monde d'Hannah</i> (Robert Laffont, 2011 ; J'ai Lu 2014), \n<i>Sans oublier </i>(Belfond, 2014) et \n<i>Le gardien de nos fr&#xE8;res</i> (Belfond, 2016). Tous quatre ont &#xE9;t&#xE9; salu&#xE9;s unanimement par la critique, par sept prix litt&#xE9;raires, et traduits &#xE0; l'&#xE9;tranger. Pour \n<i>Le Gardien de nos fr&#xE8;res</i> (Belfond, 2016), elle a notamment re&#xE7;u le Prix Wizo 2016. \n<i>Dakota song </i>est son cinqui&#xE8;me roman.\n<br>",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN502230-9782714481498-epub",
+                "key": "9782714481498",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN502230-9782714481481-paper",
+                "key": "9782714481481",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN502230",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbef023579462156d09c2",
+        "created_at": "2019-03-29T07:45:04+01:00",
+        "updated_at": "2019-04-21T07:47:18+02:00",
+        "publisher_name": "Belfond",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC019000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Belfond"
+        }
+    },
+    {
+        "title": "Une confession",
+        "title_prefix": null,
+        "title_sort": "une confession",
+        "subtitle": null,
+        "description": null,
+        "summary": "\" Un roman inoubliable. \" Georges Simenon  Le chef d'œuvre inconnu de l'auteur de Garde à vue. À cinquante ans, John Duxbury est secrètement déçu par son existence. Son travail est devenu une routine, son mariage sombre dans la grisaille, il ne sait plus comment être heureux, ni s'il le sera à nouveau un jour. Sa vie est-elle un échec irrémédiable ? Bientôt, c'est un drame qui s'abat sur lui. Alors qu'il est en vacances avec sa femme, Maude, celle-ci fait une chute mortelle. Quelques temps plus tard, un homme se présente au commissariat. Il a été témoin des faits et prétend que c'est John qui a poussé sa femme dans le vide. L'inspecteur Harker, chargé de l'enquête, s'engage à corps perdu dans la recherche de la vérité, jusqu'à l'ultime face-à-face.  Pourquoi ce formidable roman publié en 1984, n'a-t-il jamais été traduit en français ? C'est incompréhensible. Ce qu'on comprend aisément, en revanche, c'est la raison pour laquelle il a émerveillé Simenon. On ne peut en effet s'empêcher à la lecture de penser aux grands chefs-d'œuvre du maître.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/ae/38b70e7f066c4b20eae79c6e8fb460de4aba9c.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": null,
+        "languages": [
+            "fre"
+        ],
+        "page_count": 0,
+        "translated_from": "eng",
+        "contributors": [
+            {
+                "first_name": "John",
+                "last_name": "WAINWRIGHT",
+                "nature": "author",
+                "country": "",
+                "biography": "John Wainwright (1921-1995) est n&#xE9; dans le Yorkshire, &#xE0; l'Ouest en Angleterre. Il quitte l'&#xE9;cole &#xE0; 15 ans, et s'engage dans l'aviation anglaise o&#xF9; il devient canonnier lors de la Seconde Guerre mondiale. Il a ensuite travaill&#xE9; dans la police d'investigation, ce qui a nourri durablement son &#x153;uvre et donne un r&#xE9;alisme confondant &#xE0; sa peinture des commissariats britanniques. Parall&#xE8;lement &#xE0; son activit&#xE9; professionnelle, il reprend des &#xE9;tudes et obtient un dipl&#xF4;me de droit en 1956. Il quitte son poste dans la police en 1966, pour se consacrer enti&#xE8;rement &#xE0; l'&#xE9;criture.\n<br> L'&#xE9;crivain britannique est notamment connu pour ses romans policiers. Tr&#xE8;s prolifique, il a &#xE9;crit 83 ouvrages et de nombreuses nouvelles nouvelles tout au long de sa vie. Il a &#xE9;galement &#xE9;crit sous le pseudonyme de Jack Ripley, sous lequel il a publi&#xE9; quatre titres.\n<br> Son roman \n<i>A table</i> est publi&#xE9; en S&#xE9;rie noire et adapt&#xE9; au cin&#xE9;ma en 1981 par Claude Miller avec Michel Serrault et Lino Ventura.\n<br> John Wainwright meurt en septembre 1995, peu apr&#xE8;s la parution de son dernier roman, \n<i>The Life and Times of Christmas Calvert... Assassin</i>.\n<br>",
+                "website": ""
+            },
+            {
+                "first_name": "Laurence",
+                "last_name": "Romance",
+                "nature": "translated_by",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN502228-9782355847523-epub",
+                "key": "9782355847523",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 1
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN502228-9782355847394-paper",
+                "key": "9782355847394",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN502228",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbef023579462156d09b7",
+        "created_at": "2019-03-29T07:45:04+01:00",
+        "updated_at": "2019-04-21T07:47:18+02:00",
+        "publisher_name": "Sonatine",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC031000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "detective-suspense"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans policiers et suspense",
+                        "en": "Mystery & Suspense"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC031000",
+                    "FBFIC022000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Thrillers",
+                        "en": "Thrillers"
+                    },
+                    {
+                        "fr": "Policiers & Mystères",
+                        "en": "Mystery & Detective"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Sonatine"
+        }
+    },
+    {
+        "title": "Le huitième soir",
+        "title_prefix": null,
+        "title_sort": "le huitieme soir",
+        "subtitle": null,
+        "description": null,
+        "summary": "'Je suis ici parce que j’ai lu Loti et que la France m’ennuie. Je me rêvais pèlerin d’Angkor et me voilà planté dans une grande mare de boue. Embarqué dans une sale histoire en un coin où l’on se tue avec une inépuisable énergie.' \nDans l’enfer de la bataille de Dien Bien Phu, en ce crépuscule de l’Indochine, un jeune homme se retourne sur sa vie. Parce que le temps lui est compté, il se penche sur ses rêves et ses amours enfuis. \nAu-delà de la guerre, son histoire est celle de l’Homme face à l’épreuve, quand elle fait sortir la vérité d’un être. Elle raconte la résilience après un accident, la souffrance d’un fils devant une mère qui se meurt, la quête de sens au milieu de l’absurde. Derrière la dramaturgie de ce combat dantesque, ces pages chantent aussi la sensualité et la poésie du monde. Elles sont un hymne à la fraternité\nhumaine et à la vie, par-dessus tout.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/2d/a85adcaa849f6b9e73791e6291d7039c307d6a.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/500364",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 160,
+        "translated_from": "fre",
+        "contributors": [
+            {
+                "first_name": "Arnaud de La",
+                "last_name": "Grange",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": "www.gallimard.fr"
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN500364-9782072825705-epub",
+                "key": "9782072825705",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN500364-9782072825675-paper",
+                "key": "9782072825675",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN500364",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeef23579462156d0968",
+        "created_at": "2019-03-29T07:45:03+01:00",
+        "updated_at": "2019-04-14T07:48:00+02:00",
+        "publisher_name": "Editions Gallimard",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC000000",
+                    "FBFIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    },
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Editions Gallimard"
+        }
+    },
+    {
+        "title": "L'Etoffe du destin",
+        "title_prefix": null,
+        "title_sort": "l'etoffe du destin",
+        "subtitle": null,
+        "description": null,
+        "summary": "Artisan teinturier avant-gardiste, Christophe Oberkampf révolutionne l'industrie des tissus imprimés, et le quotidien des élégantes, grâce à sa manufacture des toiles de Jouy. Prodige des mathématiques, Alina Diop bouleverse la finance de marché pour servir la cause des femmes à travers le monde.Le premier, allemand et protestant, participe à la Révolution française. La seconde, jeune Sénégalaise écartelée entre les cultures mandingue et wolof, fuit des groupuscules islamistes qui ont enlevé les siens. Malgré les siècles qui les séparent, Christophe et Alina partagent de nombreux points communs. Et un destin.  Roman d'une ébouriffante modernité, L'Étoffe du destin s'empare du sujet brûlant de l'immigration sous la plume précise et engagée de Sébastien Palle. De revers de fortune en drames privés, de bouleversements politiques en stratégies d'affaires, Histoire et fiction se mêlent pour déjouer les préjugés.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/6d/2bd826c1d9837af8ec0ff69aa1dce7e78b0e49.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": null,
+        "languages": [
+            "fre"
+        ],
+        "page_count": 0,
+        "translated_from": "fre",
+        "contributors": [
+            {
+                "first_name": "Sebastien",
+                "last_name": "Palle",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN500182-9782350875149-epub",
+                "key": "9782350875149",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN500182-9782350875132-paper",
+                "key": "9782350875132",
+                "issued_on": null,
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN500182",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeee23579462156d095e",
+        "created_at": "2019-03-29T07:45:02+01:00",
+        "updated_at": "2019-04-21T07:47:18+02:00",
+        "publisher_name": "Héloïse d'Ormesson",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC014000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "historical-fiction",
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans historiques",
+                        "en": "Historical Fiction"
+                    },
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC014000",
+                    "FBFIC019000",
+                    "FBFIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Historique",
+                        "en": "Historical"
+                    },
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    },
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Héloïse d'Ormesson"
+        }
+    },
+    {
+        "title": "Vivre dans le désordre",
+        "title_prefix": null,
+        "title_sort": "vivre dans le desordre",
+        "subtitle": null,
+        "description": null,
+        "summary": "À peine installé dans le XIIIe arrondissement de Paris, le narrateur de Vivre dans le désordre rencontre un personnage rocambolesque, Barbe, qui va l'initier aux mystères des bordures urbaines, évoquant son adolescence aventureuse en compagnie du charismatique Putsch, lui-même passionné par les mutations ancestrales du quartier. De fil en aiguille, on bascule dans un récit fantasmagorique, comme une zone d'autonomie onirique où se croisent, pêle-mêle, l'insolite nomade Cronche, des cataphiles de la Petite Ceinture, Jean Genet, les princes et princesses du royaume d'Argot, Victor Hugo ou les femmes fontaines de La Salpêtrière.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/47/de099f45d1b9aa73867120fb0974b983af6eed.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/498164",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 184,
+        "translated_from": "fre",
+        "contributors": [
+            {
+                "first_name": "Ismaël",
+                "last_name": "Jude",
+                "nature": "author",
+                "country": "",
+                "biography": "",
+                "website": "www.gallimard.fr"
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN498164-9782072830785-epub",
+                "key": "9782072830785",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 1
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN498164-9782072830778-paper",
+                "key": "9782072830778",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN498164",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/5c9dbeed23579462156d08e1",
+        "created_at": "2019-03-29T07:45:01+01:00",
+        "updated_at": "2019-04-14T07:47:58+02:00",
+        "publisher_name": "Editions Gallimard",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "FIC000000"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "novel-fiction"
+                ],
+                "captions": [
+                    {
+                        "fr": "Romans et nouvelles",
+                        "en": "Literature"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBFIC000000",
+                    "FBFIC019000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Fiction",
+                        "en": "Fiction"
+                    },
+                    {
+                        "fr": "Roman",
+                        "en": "Literary"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Editions Gallimard"
+        }
+    },
+    {
+        "title": "GEOguide Sicile",
+        "title_prefix": null,
+        "title_sort": "geoguide sicile",
+        "subtitle": null,
+        "description": null,
+        "summary": "Pour cette édition numérique, les nouvelles fonctionnalités de la lecture interactive sur tablette ou smartphone offrent une vraie différence qualitative pour la consultation des GEOguides en mobilité : zoom HD sur les plans, hyperliens entre adresses pucées présentées avec les plans et les commentaires correspondants, sites Internet des adresses interactifs, indexation, recherche dans le texte, navigation hypertextuelle d’une adresse à une autre, d’une partie du guide à une autre, sommaire actif, et environnement ergonomique personnalisable.\n\nDans ce GEOguide, découvrez :\n- 4 circuits incontournables : trois jours à Palerme, cinq jours autour de Syracuse, cinq jours autour de l'Etna, une semaine sur les îles Éoliennes ;\n- des itinéraires sur mesure et des sélections pour personnaliser votre séjour ;\n- des centaines d'adresses authentiques choisies par nos auteurs-voyageurs ;\n- 25 cartes et plans (sans connexion Internet nécessaire) ;\n- et une présentation culturelle complète de la destination.",
+        "comments": null,
+        "tags": [],
+        "back_cover": "",
+        "back_cover_large": null,
+        "cover": "https://assets.edenlivres.fr/medias/b2/cfbe07e1abfd6c969fbe17d3cee47ef7043a07.jpg?h=-&w=200",
+        "cover_large": null,
+        "flipbook": "https://www.edenlivres.fr/p/172480",
+        "languages": [
+            "fre"
+        ],
+        "page_count": 0,
+        "translated_from": "fre",
+        "contributors": [
+            {
+                "first_name": "",
+                "last_name": "Collectif",
+                "nature": "author",
+                "country": "FR",
+                "biography": "",
+                "website": ""
+            }
+        ],
+        "media": [
+            {
+                "nature": "epub",
+                "key_type": "isbn13",
+                "id": "EDEN172480-9782742441457-epub",
+                "key": "9782742441457",
+                "issued_on": "2019-03-23T00:00:00+01:00",
+                "current_holds": 0
+            },
+            {
+                "nature": "paper",
+                "key_type": "isbn13",
+                "id": "EDEN172480-9782742449897-paper",
+                "key": "9782742454495",
+                "issued_on": "2019-03-14T00:00:00+01:00",
+                "current_holds": 0
+            }
+        ],
+        "id": "EDEN172480",
+        "link": "http://mediatheque-valais.cantookstation.eu/resources/57db86c52357943a72623f71",
+        "created_at": "2016-09-16T07:44:37+02:00",
+        "updated_at": "2019-04-14T07:48:01+02:00",
+        "publisher_name": "Gallimard Loisirs",
+        "classifications": [
+            {
+                "standard": "bisac",
+                "identifiers": [
+                    "TRV009000",
+                    "TRV009110"
+                ],
+                "captions": [
+                    {
+                        "fr": null,
+                        "en": null
+                    },
+                    {
+                        "fr": null,
+                        "en": null
+                    }
+                ]
+            },
+            {
+                "standard": "cantook",
+                "identifiers": [
+                    "tourism-travel"
+                ],
+                "captions": [
+                    {
+                        "fr": "Tourisme et voyages",
+                        "en": "Tourism & Travel"
+                    }
+                ]
+            },
+            {
+                "standard": "feedbooks",
+                "identifiers": [
+                    "FBTRV009110",
+                    "FBNFC000000",
+                    "FBTRV000000",
+                    "FBTRV009000"
+                ],
+                "captions": [
+                    {
+                        "fr": "Italie",
+                        "en": "Italy"
+                    },
+                    {
+                        "fr": "Documentaires",
+                        "en": "Non-Fiction"
+                    },
+                    {
+                        "fr": "Voyage",
+                        "en": "Travel"
+                    },
+                    {
+                        "fr": "Europe",
+                        "en": "Europe"
+                    }
+                ]
+            }
+        ],
+        "publisher": {
+            "name": "Gallimard Loisirs"
+        }
+    }
+]
