@@ -23,3 +23,68 @@
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
 """Common pytest fixtures and plugins."""
+
+import json
+from os.path import dirname, join
+
+import pytest
+
+from rero_ebooks.apiharvester.models import ApiHarvestConfig
+from rero_ebooks.apiharvester.utils import api_source
+
+
+@pytest.fixture(scope="module")
+def data():
+    """Init data."""
+    with open(join(dirname(__file__), 'data/data.json')) as f:
+        data = json.load(f)
+        return data
+
+
+@pytest.fixture(scope="module")
+def apiharvester_config_vs(data):
+    """Config for VS."""
+    return data.get('apiharvester_config_vs')
+
+
+@pytest.fixture(scope="module")
+def apiharvester_config_nj(data):
+    """Json response NJ."""
+    return data.get('apiharvester_config_nj')
+
+
+@pytest.fixture(scope="module")
+def apiharvester_apiresponse_vs(data):
+    """Json response VS."""
+    return data.get('apiresponse_vs')
+
+
+@pytest.fixture(scope='module')
+def config_vs(apiharvester_config_vs):
+    """Create api config VS."""
+    api_source(
+        name='VS',
+        url=apiharvester_config_vs['url'],
+        classname=apiharvester_config_vs['classname'],
+        code=apiharvester_config_vs['code'],
+        update=True)
+    config = ApiHarvestConfig.query.filter_by(name='VS').first()
+    return config
+
+
+@pytest.fixture(scope='module')
+def create_app():
+    """Create test app."""
+    from invenio_app.factory import create_api
+
+    return create_api
+
+
+@pytest.fixture(scope='module')
+def app_config(app_config):
+    """Create temporary instance dir for each test."""
+    app_config['RATELIMIT_STORAGE_URL'] = 'memory://'
+    app_config['ACCOUNTS_USE_CELERY'] = False,
+    app_config['CACHE_TYPE'] = 'simple'
+    app_config['SEARCH_ELASTIC_HOSTS'] = None
+    return app_config
