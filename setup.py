@@ -75,8 +75,8 @@ setup(
         'console_scripts': [
             'rero-ebooks = invenio_app.cli:cli',
         ],
-        'invenio_assets.bundles': [
-            'rero_ebooks_css = rero_ebooks.bundles:ebooks_css',
+        'invenio_assets.webpack': [
+            'rero_ebooks_theme = rero_ebooks.theme.webpack:theme',
         ],
         'invenio_base.apps': [
             'rero_ebooks = rero_ebooks:ReroEBooks',
