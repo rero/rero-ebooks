@@ -100,8 +100,14 @@ setup(
             'ebooks = rero_ebooks.mappings',
         ],
         'dojson.cli.rule': [
+            'tomarc21 = dojson.contrib.to_marc21:to_marc21',
             'cantookmarc21 = rero_ebooks.dojson.marc21:marc21',
+            'cantookjson = rero_ebooks.dojson.json.model:cantook_json'
         ],
+        'dojson.cli.dump': [
+            'pjson = rero_ebooks.dojson.utils:dump'
+        ],
+
         'flask.commands': [
             'oaiharvester = rero_ebooks.cli:oaiharvester'
             'records = rero_ebooks.cli:records',
