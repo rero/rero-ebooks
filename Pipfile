@@ -16,7 +16,7 @@ invenio-oaiharvester = {ref = "v1.0.0a4",git = "https://github.com/inveniosoftwa
 invenio-oaiserver = "*"
 pipenv = "*"
 requests = ">=2.20.0"
-celery = "*"
+celery = "==4.2.0"
 
 [dev-packages]
 Sphinx = ">=1.5.1"
