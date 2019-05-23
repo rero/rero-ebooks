@@ -160,7 +160,7 @@ def test_json_physical_description():
     }
     assert cantook_json.do(data) == {
         '__order__': ['physical_description'],
-        'physical_description': [{'extent': '1234'}]
+        'physical_description': [{'extent': '1234 pages'}]
     }
 
 
