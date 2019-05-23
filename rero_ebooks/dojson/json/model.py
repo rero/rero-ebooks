@@ -175,12 +175,17 @@ def publisher_name(self, key, value):
 @cantook_json.over('physical_description', 'page_count')
 @utils.for_each_value
 @utils.filter_values
+@utils.ignore_value
 def physical_description(self, key, value):
     """Physical description transformation.
 
     extent (Number of physical pages, volumes...): Marc21 300 $a field.
     """
-    return {'extent': str(value)}
+    extent = None
+    if int(value) != 0:
+        pages = "{value} pages".format(value=value)
+        extent = {'extent': pages}
+    return extent
 
 
 @cantook_json.over('summary', 'summary')
