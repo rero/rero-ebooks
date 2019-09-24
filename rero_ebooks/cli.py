@@ -26,39 +26,14 @@
 
 from __future__ import absolute_import, print_function
 
-import json
-import sys
-
 import click
 import yaml
 from flask import current_app
 from flask.cli import with_appcontext
 from invenio_oaiharvester.cli import oaiharvester
 from invenio_oaiharvester.models import OAIHarvestConfig
-from invenio_records.cli import records
 
-from .api import Ebook
 from .utils import add_oai_source
-
-
-@records.command()
-@click.argument('source', type=click.File('r'), default=sys.stdin)
-@click.option('-v', '--verbose', 'verbose', is_flag=True, default=False)
-@click.option('-s', '--vendor', 'vendor', default='cantook')
-@with_appcontext
-def create_or_update(source, verbose, vendor):
-    """Create or update ebook records."""
-    click.secho('Create or update book records:', fg='green')
-    data = json.load(source)
-
-    if isinstance(data, dict):
-        data = [data]
-
-    for record in data:
-        record, status = Ebook.create_or_update(
-            record, vendor=vendor, dbcommit=True, reindex=True
-        )
-        click.echo('record uuid: ' + str(record.id) + ' | ' + status)
 
 
 @oaiharvester.command('addsource')
