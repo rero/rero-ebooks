@@ -109,8 +109,7 @@ setup(
         ],
 
         'flask.commands': [
-            'oaiharvester = rero_ebooks.cli:oaiharvester'
-            'records = rero_ebooks.cli:records',
+            'oaiharvester = rero_ebooks.cli:oaiharvester',
             'apiharvester = rero_ebooks.apiharvester.cli:apiharvester'
         ],
         'rero_ebooks.marc21': [
