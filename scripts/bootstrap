@@ -23,18 +23,30 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
+NC='\033[0m'            # Default color
+COLORED='\033[1;97;44m' # Bold + white + blue background
+
 set -e
 
+msg() {
+  echo -e "${COLORED}${EMPHASIS}[INFO]${NC}${COLORED}: ${1}${NC}" 1>&2
+}
 
 # The real bootstrap script starts 20 lines below ;-)
 flags=()
+deploy=false
+cmd="pipenv sync"
+ci=false
 while test $# -gt 0; do
     case "$1" in
+        --deploy)
+            # We are probably inside travis, check for env variables
+            deploy=true
+            shift
+            ;;
         --ci)
             # We are probably inside travis, check for env variables
-            if [ "$REQUIREMENTS" == "prod" ]; then
-                flags=("--dev" "--ignore-pipfile")
-            fi
+            ci=true
             shift
             ;;
         *)
@@ -44,14 +56,26 @@ while test $# -gt 0; do
             ;;
     esac
 done
-if [ ${#flags[0]} -eq 0 ]; then
-    flags=("--dev" "--skip-lock")
+
+if ! $deploy || $ci ; then
+    flags=("--dev")
 fi
 
+if ! $deploy ; then
+    if $ci ; then
+        cmd="pipenv install --skip-lock --sequential"
+    fi
+fi
+
+# go generate a clean lock file
+# pipenv --rm; pipenv install --sequential
+
 # install the application and all the dependencies
-pipenv install ${flags[@]}
+msg "Install with command: ${cmd} ${flags[@]}"
+${cmd} ${flags[@]}
 
 # build the web assets
+msg "Build web assets: collect"
 pipenv run invenio collect -v
-
+msg "Build webpack"
 pipenv run invenio webpack buildall
