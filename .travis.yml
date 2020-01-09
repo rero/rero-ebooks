@@ -50,9 +50,11 @@ env:
     - E2E_OUTPUT=base64
     # Enable end-to-end tests
     - E2E=no
+    # Enable Europe/Zurich timezone
+    - TZ="Europe/Zurich"
   matrix:
-    - REQUIREMENTS=prod
-    - REQUIREMENTS=qa
+    - REQUIREMENTS="--deploy" E2E=yes
+    - REQUIREMENTS=""
 
 python:
   - "3.6"
@@ -66,14 +68,15 @@ before_install:
   # Chrome webdriver for Selenium
   - "PATH=$PATH:$HOME/webdrivers"
   - "if [ ${E2E} == 'yes' ] && [ ! -f $HOME/webdrivers/chromedriver ]; then wget https://chromedriver.storage.googleapis.com/2.31/chromedriver_linux64.zip -P $HOME/webdrivers; unzip -d $HOME/webdrivers $HOME/webdrivers/chromedriver_linux64.zip; fi"
-  - "nvm install 6; nvm use 6"
-  - "travis_retry pip install --upgrade setuptools py pipenv==2018.10.9"
+  - "nvm install 8; nvm use 8"
+  - "travis_retry pip install --upgrade setuptools py poetry"
   - "travis_retry pip install twine wheel coveralls"
-  # patch default version of travis which is mark as unsave by pipenv check
+  # patch default version of travis which is mark as unsave by safety check
   - "travis_retry pip install --upgrade numpy"
 
 install:
   - "./scripts/bootstrap --ci"
+  - "poetry show"  # To have details about installed libs (isort, pytest, etc.)
 
 before_script:
   # https://docs.travis-ci.com/user/gui-and-headless-browsers/
@@ -83,7 +86,7 @@ before_script:
   - "./docker/wait-for-services.sh"
 
 script:
-  - ./run-tests.sh # E2E tests are skipped if E2E env is set to 'no'
+  - poetry run run-tests # E2E tests are skipped if E2E env is set to 'no'
 
 after_success:
   - coveralls

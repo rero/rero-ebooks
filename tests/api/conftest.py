@@ -35,6 +35,7 @@ def cdf_record():
     yield {
         '__order__': [
             'other_standard_identifier',
+            'electronic_location_and_access',
             'electronic_location_and_access'
         ],
         'other_standard_identifier': [
@@ -49,19 +50,23 @@ def cdf_record():
         ],
         'electronic_location_and_access': [
             {
-                '__order__': [
-                    'uniform_resource_identifier',
-                    'access_method',
-                    'relationship',
-                ],
-                'relationship': 'Resource',
                 'access_method': 'HTTP',
-                'uniform_resource_identifier': [
+                'materials_specified': 'Image de couverture',
+                'relationship': 'Related resource',
+                'uniform_resource_identifier':
+                    'http://images.immateriel.fr/covers/X8WRJB3.png'},
+            {
+                'access_method': 'HTTP',
+                'electronic_format_type': 'epub',
+                'materials_specified': 'Texte intégral',
+                'nonpublic_note': 'mv-cantook',
+                'relationship': 'Resource',
+                'uniform_resource_identifier': (
                     'http://la-chaux-de-fonds.ebibliomedia.ch/resources/'
                     '5788be89dde6b2d458f42b35'
-                ],
+                )
             }
-        ],
+        ]
     }
 
 
@@ -72,6 +77,7 @@ def dojson_like_cdf_record():
         '__order__': (
             'other_standard_identifier',
             'electronic_location_and_access',
+            'electronic_location_and_access'
         ),
         'other_standard_identifier': [
             {
@@ -85,19 +91,24 @@ def dojson_like_cdf_record():
         ],
         'electronic_location_and_access': [
             {
-                '__order__': (
-                    'uniform_resource_identifier',
-                    'access_method',
-                    'relationship',
-                ),
-                'relationship': 'Resource',
                 'access_method': 'HTTP',
+                'materials_specified': 'Image de couverture',
+                'relationship': 'Related resource',
+                'uniform_resource_identifier':
+                    'http://images.immateriel.fr/covers/X8WRJB3.png'
+            },
+            {
+                'access_method': 'HTTP',
+                'electronic_format_type': 'epub',
+                'materials_specified': 'Texte intégral',
+                'nonpublic_note': 'mv-cantook',
+                'relationship': 'Resource',
                 'uniform_resource_identifier': (
                     'http://la-chaux-de-fonds.ebibliomedia.ch/resources/'
-                    '5788be89dde6b2d458f42b35',
-                ),
+                    '5788be89dde6b2d458f42b35'
+                )
             }
-        ],
+        ]
     }
 
 
@@ -121,17 +132,15 @@ def mv_record():
         ],
         'electronic_location_and_access': [
             {
-                '__order__': [
-                    'uniform_resource_identifier',
-                    'access_method',
-                    'relationship',
-                ],
-                'relationship': 'Resource',
                 'access_method': 'HTTP',
-                'uniform_resource_identifier': [
+                'electronic_format_type': 'epub',
+                'materials_specified': 'Texte intégral',
+                'nonpublic_note': 'mv-cantook',
+                'relationship': 'Resource',
+                'uniform_resource_identifier': (
                     'http://mediatheque-valais.ebibliomedia.ch/resources/'
                     '5788be89dde6b2d458f42b35'
-                ],
+                )
             }
         ],
     }

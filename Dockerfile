@@ -35,9 +35,7 @@ RUN chown -R invenio:invenio ${WORKING_DIR}
 
 USER 1000
 
-# workaround
-RUN rm -rf /invenio/src/ui/admin/node_modules
-RUN npm uninstall --prefix `pipenv --venv` --silent -g node-sass clean-css uglify-js requirejs
+RUN npm uninstall --prefix `poetry env info -p` --silent -g node-sass clean-css uglify-js requirejs
 
 ENV INVENIO_COLLECT_STORAGE='flask_collect.storage.file'
-RUN ./scripts/bootstrap --deploy
+RUN poetry run bootstrap --deploy
