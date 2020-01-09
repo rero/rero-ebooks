@@ -64,7 +64,7 @@ services:
     ports:
       - "6379:6379"
   db:
-    image: postgres:9.6
+    image: postgres:12
     restart: "always"
     environment:
       - "POSTGRES_USER=rero-ebooks"
@@ -79,7 +79,7 @@ services:
       - "15672:15672"
       - "5672:5672"
   es:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.2
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.2
     restart: "always"
     environment:
       - bootstrap.memory_lock=true
@@ -93,7 +93,7 @@ services:
       - "9200:9200"
       - "9300:9300"
   kibana:
-    image: docker.elastic.co/elasticsearch/kibana-oss:6.6.2
+    image: docker.elastic.co/elasticsearch/kibana-oss:7.6.2
     environment:
       - "ELASTICSEARCH_URL=http://es:9200"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"

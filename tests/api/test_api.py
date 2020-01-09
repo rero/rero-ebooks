@@ -28,7 +28,7 @@ from rero_ebooks.api import Ebook
 from rero_ebooks.minters import build_ebook_pid
 
 
-def test_merge_records(db, cdf_record, mv_record):
+def test_merge_records(es, db, cdf_record, mv_record):
     """Test merge ebook records."""
     cdf = 'http://la-chaux-de-fonds.ebibliomedia.ch/resources/'\
           '5788be89dde6b2d458f42b35'
@@ -58,7 +58,7 @@ def test_merge_records(db, cdf_record, mv_record):
     assert cdf == second_uri
 
 
-def test_merge_records_same(db, cdf_record, dojson_like_cdf_record):
+def test_merge_records_same(es, db, cdf_record, dojson_like_cdf_record):
     """Test merge ebook records."""
     cdf_record_pid = build_ebook_pid(cdf_record, 'cantook')
     new_cdf_record, cdf_status = Ebook.create_or_update(

@@ -69,10 +69,17 @@ fi
 
 # go generate a clean lock file
 # pipenv --rm; pipenv install --sequential
+# !!! delete apnope from Pipfile.lock !!!
 
 # install the application and all the dependencies
 msg "Install with command: ${cmd} ${flags[@]}"
 ${cmd} ${flags[@]}
+
+# to avoid IPython dependency problem on Mac OS X
+if [ "$(uname -s)" == "Darwin" ]; then
+  msg "Install 'appnope' for Mac OS X"
+  pipenv run pip install appnope
+fi
 
 # build the web assets
 msg "Build web assets: collect"

@@ -184,6 +184,44 @@ SESSION_COOKIE_SECURE = True
 #: should be set to the correct host and it is strongly recommended to only
 #: route correct hosts to the application.
 APP_ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# TODO: review theses rules for security purposes
+APP_DEFAULT_SECURE_HEADERS = {
+    # disabled as https is not used by the application:
+    # https is done by the haproxy
+    'force_https': False,
+    'force_https_permanent': False,
+    'force_file_save': False,
+    'frame_options': 'sameorigin',
+    'frame_options_allow_from': None,
+    'strict_transport_security': True,
+    'strict_transport_security_preload': False,
+    'strict_transport_security_max_age': 31556926,  # One year in seconds
+    'strict_transport_security_include_subdomains': True,
+    'content_security_policy': {
+        'default-src': ['*'],
+        'img-src': [
+            '*',
+            "'self'",
+            'data:'
+        ],
+        'style-src': [
+            '*',
+            "'unsafe-inline'"
+        ],
+        'script-src': [
+            "'self'",
+            "'unsafe-eval'",
+            "'unsafe-inline'",
+            # '*.rero.ch',
+            'https://www.googletagmanager.com',
+            'https://www.google-analytics.com'
+        ]
+    },
+    'content_security_policy_report_uri': None,
+    'content_security_policy_report_only': False,
+    'session_cookie_secure': True,
+    'session_cookie_http_only': True,
+}
 
 # Indexer
 # =======
@@ -200,6 +238,12 @@ OAISERVER_ID_PREFIX = 'oai:ebooks.rero.ch:'
 OAISERVER_CONTROL_NUMBER_FETCHER = 'ebook'
 #: OAI default ES index
 OAISERVER_RECORD_INDEX = 'ebooks'
+
+OAISERVER_XSL_URL = '/static/xsl/oai.xsl'
+
+OAISERVER_ADMIN_EMAILS = [
+    'software@rero.ch',
+]
 
 # Debug
 # =====
