@@ -52,14 +52,20 @@ class ApiCantook():
     def __init__(self, config, file=None, indent=None, verbose=False):
         """Class init."""
         self.config = config
+        self._url = self.config.url
+        self._code = self.config.code
         self.verbose = verbose
         self.file = file
         if self.file:
             file.write('[\n')
         self.indent = indent
         self._count = 0
+        self._count_new = 0
+        self._count_upd = 0
+        self._count_del = 0
         self._max = 0
         self._vendor = 'cantook'
+        self._available_ids = {}
 
     @classmethod
     def get_config(cls, name):
@@ -76,7 +82,7 @@ class ApiCantook():
             start_date=start_date,
             page=page
         )
-        return self.config.url + '/v1/resources.json?{params}'.format(
+        return self._url + '/v1/resources.json?{params}'.format(
             params=params
         )
 
@@ -96,8 +102,8 @@ class ApiCantook():
                     '/'
                 )[:3]
             )
-            if url == self.config.url:
-                electronic_location['nonpublic_note'] = self.config.code
+            if url == self._url:
+                electronic_location['nonpublic_note'] = self._code
             new_electronic_locations.append(electronic_location)
         return record
 
@@ -113,21 +119,49 @@ class ApiCantook():
         )
         return record, msg
 
+    def remove_uri(self, record):
+        """Create new record or update record."""
+        record = cantook_json.do(record)
+        record, msg = Ebook.remove_uri(
+            data=record,
+            vendor=self._vendor,
+            url=self._url,
+            dbcommit=True,
+            reindex=True
+        )
+        return record, msg
+
+    def msg_text(self, pid, msg):
+        """Logging message text."""
+        return '{count}: {vendor}:{code} {pid} = {msg}'.format(
+            vendor=self._vendor,
+            code=self._code,
+            count=self._count,
+            pid=pid,
+            msg=msg
+        )
+
     def process_records(self, records):
         """Process records."""
         for record in records:
             self._count += 1
             if self._count < self._max or self._max == 0:
-                self.save_record(record)
-                record, msg = self.create_update_record(record)
-                if self.verbose:
-                    click.echo(
-                        '{count}: {pid} {msg}'.format(
-                            count=self._count,
-                            pid=record['pid'],
-                            msg=msg
-                        )
-                    )
+                if self._available_ids.get(record['id']):
+                    self.save_record(record)
+                    record, msg = self.create_update_record(record)
+                    if msg == 'UPDATE':
+                        self._count_upd += 1
+                    else:
+                        self._count_new += 1
+                    if self.verbose:
+                        click.echo(self.msg_text(pid=record['pid'],
+                                                 msg=msg))
+                else:
+                    record, msg = self.remove_uri(record)
+                    self._count_del += 1
+                    if self.verbose:
+                        click.echo(self.msg_text(pid=record['pid'],
+                                                 msg=msg))
             else:
                 break
 
@@ -135,6 +169,44 @@ class ApiCantook():
         """Print verbose message."""
         if self.verbose:
             click.echo(msg)
+
+    def init_available_ids(self, from_date):
+        """Get all aavailable pids.
+
+        from_date: record changed after this date to get
+        """
+        url = self.get_request_url(start_date=from_date, page=1)
+        url += '&available=1'
+        request = requests_get(url)
+        total_pages = int(request.headers.get('X-Total-Pages', -1))
+        total_items = int(request.headers.get('X-Total-Items', -1))
+        # per_pages = int(request.headers.get('X-Per-Page', 0))
+        current_page = int(request.headers.get('X-Current-Page', -1))
+        count = 0
+        self._available_ids = {}
+        while (request.status_code == requests_codes.ok and
+               current_page <= total_pages):
+            self.verbose_print(
+                'API page: {page} url: {url}'.format(
+                    page=current_page,
+                    url=url
+                )
+            )
+            for record in request.json().get('resources', []):
+                count += 1
+                self._available_ids[record['id']] = count
+            # get next page and update current_page
+            url = self.get_request_url(
+                start_date=from_date,
+                page=current_page+1
+            )
+            url += '&available=1'
+            request = requests_get(url)
+            current_page = int(request.headers.get('X-Current-Page', 0))
+        if total_items != count:
+            # we had an ERROR
+            raise('ERROR to get all available ids')
+        return self._available_ids
 
     def get_records(self, from_date, max=0, file=None):
         """Get cantook records.
@@ -151,6 +223,7 @@ class ApiCantook():
         total_items = int(request.headers.get('X-Total-Items', 0))
         # per_pages = int(request.headers.get('X-Per-Page', 0))
         current_page = int(request.headers.get('X-Current-Page', 0))
+        self.init_available_ids(from_date=from_date)
         while (request.status_code == requests_codes.ok and
                current_page <= total_pages and
                (self._count < self._max or self._max == 0)):
@@ -171,10 +244,36 @@ class ApiCantook():
         if self.file:
             file.write(']')
         if (
-            (max != 0 and self._count != max) or
+            (max != 0 and total_items >= max and self._count != max) or
+            (max != 0 and total_items < max and self._count != total_items) or
             (max == 0 and total_items != self._count)
            ):
             # we had an ERROR
             raise('ERROR not all records harvested')
 
-        return total_items, self._count
+        return total_items
+
+    @property
+    def count(self):
+        """Get count."""
+        return self._count
+
+    @property
+    def count_new(self):
+        """Get new count."""
+        return self._count_new
+
+    @property
+    def count_upd(self):
+        """Get updated count."""
+        return self._count_upd
+
+    @property
+    def count_del(self):
+        """Get delted count."""
+        return self._count_del
+
+    @property
+    def count_available(self):
+        """Get available count."""
+        return len(self._available_ids)

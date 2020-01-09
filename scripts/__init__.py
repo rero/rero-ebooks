@@ -23,6 +23,21 @@
 # waive the privileges and immunities granted to it by virtue of its status
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
-set -e
+"""Poetry script utils."""
 
-celery worker --app invenio_app --loglevel INFO -B
+import os
+# import subprocess
+import sys
+
+# def __getattr__(name):  # python 3.7+, otherwise define each script manually
+#     name = name.replace('_', '-')
+#     subprocess.run(
+#         ['python', '-u', '-m', name] + sys.argv[1:]
+#     )  # run whatever you like based on 'name'
+
+
+def run(prg_name):  # python 3.7+, otherwise define each script manually
+    def fn():
+        # Replace current Python program by prg_name (same PID)
+        os.execvp(prg_name, [prg_name] + sys.argv[1:])
+    return fn

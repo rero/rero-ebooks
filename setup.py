@@ -47,7 +47,7 @@ class EggInfoWithCompile(egg_info):
 
 readme = open('README.rst').read()
 
-INVENIO_VERSION = "3.1.0"
+INVENIO_VERSION = "3.2.1"
 
 packages = find_packages()
 
@@ -132,7 +132,8 @@ setup(
             'apiharvester = rero_ebooks.apiharvester.models'
         ],
         'invenio_celery.tasks': [
-            'rero_ebooks = rero_ebooks.tasks'
+            'rero_ebooks = rero_ebooks.tasks',
+            'apiharvester = rero_ebooks.apiharvester.tasks'
         ]
 
     },

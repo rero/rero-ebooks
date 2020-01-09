@@ -24,11 +24,7 @@
 
 """RERO DOC Invenio application."""
 
-
-from invenio_oaiharvester.signals import oaiharvest_finished
-
 from . import config
-from .receivers import publish_harvested_records
 
 
 class ReroEBooks(object):
@@ -38,7 +34,6 @@ class ReroEBooks(object):
         """Extension initialization."""
         if app:
             self.init_app(app)
-        self.register_signals(app)
 
     def init_app(self, app):
         """Flask application initialization."""
@@ -50,8 +45,3 @@ class ReroEBooks(object):
         for k in dir(config):
             if k.startswith('REROEBOOKS_APP_'):
                 app.config.setdefault(k, getattr(config, k))
-
-    @staticmethod
-    def register_signals(app):
-        """Register Zenodo Deposit signals."""
-        oaiharvest_finished.connect(publish_harvested_records, weak=False)

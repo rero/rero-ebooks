@@ -24,27 +24,89 @@
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 
 
+# COLORS for messages
+NC='\033[0m'                    # Default color
+INFO_COLOR='\033[1;97;44m'      # Bold + white + blue background
+SUCCESS_COLOR='\033[1;97;42m'   # Bold + white + green background
+ERROR_COLOR='\033[1;97;41m'     # Bold + white + red background
+
+PROGRAM=`basename $0`
+
+# MESSAGES
+msg() {
+  echo -e "${1}" 1>&2
+}
+# Display a colored message
+# More info: https://misc.flogisoft.com/bash/tip_colors_and_formatting
+# $1: choosen color
+# $2: title
+# $3: the message
+colored_msg() {
+  msg "${1}[${2}]: ${3}${NC}"
+}
+
+info_msg() {
+  colored_msg "${INFO_COLOR}" "INFO" "${1}"
+}
+
+error_msg() {
+  colored_msg "${ERROR_COLOR}" "ERROR" "${1}"
+}
+
+error_msg+exit() {
+    error_msg "${1}" && exit 1
+}
+
+success_msg() {
+  colored_msg "${SUCCESS_COLOR}" "SUCCESS" "${1}"
+}
+
+invert_warning_option() {
+  if ${ENABLE_WARNINGS}
+  then
+    ENABLE_WARNINGS=false
+  else
+    ENABLE_WARNINGS=true
+  fi
+}
+
+# Displays program name
+PROGRAM=`basename $0`
+msg "PROGRAM: ${PROGRAM}"
+
+# POETRY is a mandatory condition to launch this program!
+if [[ -z "${VIRTUAL_ENV}" ]]; then
+  error_msg+exit "Error - Launch this script via poetry command:\n\tpoetry run ${PROGRAM}"
+fi
+
+# Purge celery
+info_msg "Purge celery"
+celery purge -A rero_ebooks.celery -f
 # Clean redis
-pipenv run invenio shell --no-term-title -c "import redis; redis.StrictRedis.from_url(app.config['CACHE_REDIS_URL']).flushall(); print('Cache cleared')"
-pipenv run invenio db destroy --yes-i-know
-pipenv run invenio db init create
-pipenv run invenio index queue purge delete
+info_msg "Clean redis"
+invenio shell --no-term-title -c "import redis; redis.StrictRedis.from_url(app.config['CACHE_REDIS_URL']).flushall(); print('Cache cleared')"
+
+invenio db destroy --yes-i-know
+invenio db init create
+invenio index queue purge delete
 set -e
-pipenv run invenio index destroy --force --yes-i-know
-pipenv run invenio index init --force
-pipenv run invenio index queue init
+invenio index destroy --force --yes-i-know
+invenio index init --force
+invenio index queue init
 
 # init apiharvester config from file
-pipenv run invenio apiharvester sources data/apisources.yml
+invenio apiharvester sources data/apisources.yml
 if [ "$1" = "--deployment" ]
 then
   # load source VS
-  pipenv run invenio apiharvester harvest -n VS -k
+  invenio apiharvester harvest -n VS -k
   # load source NJ
-  pipenv run invenio apiharvester harvest -n NJ -k
+  invenio apiharvester harvest -n NJ -k
 else
   # load source VS
-  pipenv run invenio apiharvester harvest -n VS -v -m 100
+  invenio apiharvester harvest -n VS -v -m 100
   # load source NJ
-  pipenv run invenio apiharvester harvest -n NJ -v -m 100
+  invenio apiharvester harvest -n NJ -v -m 100
 fi
+
+invenio apiharvester initsets data/oaisets.yml -v

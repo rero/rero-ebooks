@@ -24,7 +24,7 @@
 
 """Marc21 data conversion."""
 
-from dojson import Overdo, utils
+from dojson import Overdo
 
 marc21 = Overdo(entry_point_group='rero_ebooks.marc21')
 """MARC 21 Format for Bibliographic Data."""
