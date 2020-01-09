@@ -36,7 +36,7 @@ from werkzeug.local import LocalProxy
 from rero_ebooks.apiharvester.tasks import harvest_records
 
 from .models import ApiHarvestConfig
-from .utils import api_source
+from .utils import add_set, api_source
 
 datastore = LocalProxy(lambda: current_app.extensions['security'].datastore)
 
@@ -106,6 +106,22 @@ def api_source_config_from_file(configfile, update):
                 filename=configfile.name
             )
         )
+
+
+@apiharvester.command('initsets')
+@click.argument('configfile', type=click.File('rb'))
+@click.option('-v', '--verbose', 'verbose', is_flag=True, default=False)
+@with_appcontext
+def init_oai_sets(configfile, verbose):
+    """Init OAIsets."""
+    configs = yaml.load(configfile, Loader=yaml.FullLoader)
+    for name, values in sorted(configs.items()):
+        description = values.get('description', '...')
+        pattern = values['pattern']
+        msg = add_set(spec=name, name=name, description=description,
+                      pattern=pattern)
+        if verbose:
+            click.echo(msg)
 
 
 @apiharvester.command('harvest')

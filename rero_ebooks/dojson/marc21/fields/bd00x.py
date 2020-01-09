@@ -9,8 +9,6 @@
 
 """MARC 21 model definition."""
 
-from dojson import utils
-
 from ..model import marc21
 
 

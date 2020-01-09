@@ -31,13 +31,15 @@ from celery import shared_task
 from flask import current_app
 from invenio_records_rest.utils import obj_or_import_string
 
-from .models import ApiHarvestConfig
+from .utils import get_apiharvest_object
 
 
 @shared_task(ignore_result=True, soft_time_limit=3600)
 def harvest_records(name, from_date=None, max=0, verbose=False):
     """Harvest records."""
-    config = ApiHarvestConfig.query.filter_by(name=name).first()
+    count = -1
+
+    config = get_apiharvest_object(name=name)
     if config:
         if not from_date:
             from_date = config.lastrun.isoformat()
@@ -53,18 +55,28 @@ def harvest_records(name, from_date=None, max=0, verbose=False):
         HarvestClass = obj_or_import_string(config.classname)
         harvest = HarvestClass(config=config, verbose=verbose)
         config.update_lastrun()
-        total, count = harvest.get_records(from_date=from_date, max=max)
-        msg = 'API harvest {total} items | got {count} from {name}'.format(
+        total = harvest.get_records(
+            from_date=from_date,
+            max=max
+        )
+        msg = ('API harvest items={total} available={count_available} |'
+               ' got={count} new={count_new} updated={count_upd}'
+               ' deleted={count_del}'
+               ' from {name}.').format(
             total=total,
-            count=count,
+            count_available=harvest.count_available,
+            count=harvest.count,
+            count_new=harvest.count_new,
+            count_upd=harvest.count_upd,
+            count_del=harvest.count_del,
             name=name
         )
         if verbose:
             click.echo(msg)
         current_app.logger.info(msg)
+        count = harvest.count
     else:
         current_app.logger.error('No config found: {name}'.format(
             name=name
         ))
-        count = -1
     return count

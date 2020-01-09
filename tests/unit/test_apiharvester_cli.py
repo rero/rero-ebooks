@@ -29,7 +29,6 @@ from __future__ import absolute_import, print_function
 import os
 import re
 
-import pytest
 import responses
 from click.testing import CliRunner
 from flask.cli import ScriptInfo
@@ -80,9 +79,9 @@ def test_config(app, apiharvester_config_vs):
     assert res.output == 'Add ApiHarvestConfig: NJ\n'
 
 
-@pytest.mark.skip(
-    reason="Have to wait for response to implement re.compile for add_passthru"
-)
+# @pytest.mark.skip(
+#     reason="Have to wait for response to implement re.compile foadd_passthru"
+# )
 @responses.activate
 def test_harvest(app, apiharvester_config_vs, apiharvester_apiresponse_vs):
     """Test harvest cli."""
@@ -93,9 +92,10 @@ def test_harvest(app, apiharvester_config_vs, apiharvester_apiresponse_vs):
     responses.add_passthru(
         re.compile('http://localhost:9200/(.*)')
     )
-    url1 = '{url}{static}'.format(
+    url = '{url}{static}'.format(
         url=apiharvester_config_vs.get('url'),
-        static='/v1/resources.json?start_at=1900-01-01T00:00:00&page=1',
+        static=('/v1/resources.json?start_at=1900-01-01T00:00:00'
+                '&page={page}{available}')
     )
     headers1 = {
         'X-Total-Pages': '1',
@@ -105,26 +105,27 @@ def test_harvest(app, apiharvester_config_vs, apiharvester_apiresponse_vs):
     }
     responses.add(
         responses.GET,
-        url1,
+        url=url.format(page=1, available='&available=1'),
         status=200,
         json=apiharvester_apiresponse_vs,
         headers=headers1
     )
-    url2 = '{url}{static}'.format(
-        url=apiharvester_config_vs.get('url'),
-        static='/v1/resources.json?start_at=1900-01-01T00:00:00&page=2'
-    )
-    headers2 = {
-        'X-Total-Pages': '1',
-        'X-Total-Items': '1',
-        'X-Per-Page': '20',
-        'X-Current-Page': '2'
-    }
     responses.add(
         responses.GET,
-        url2,
+        url=url.format(page=2, available='&available=1'),
+        status=400,
+    )
+    responses.add(
+        responses.GET,
+        url=url.format(page=1, available=''),
         status=200,
-        headers=headers2
+        json=apiharvester_apiresponse_vs,
+        headers=headers1
+    )
+    responses.add(
+        responses.GET,
+        url=url.format(page=2, available=''),
+        status=400,
     )
 
     res = runner.invoke(
@@ -134,13 +135,15 @@ def test_harvest(app, apiharvester_config_vs, apiharvester_apiresponse_vs):
         ],
         obj=script_info
     )
+
     assert 0 == res.exit_code
-    output = '{line1}\n{line2}\n{line3}\n{line4}\n'.format(
-        line1='Harvest api: VS',
-        line2=('API page: 1 url: {url}').format(url=url1),
-        line3='1: {link}'.format(
-            link=apiharvester_apiresponse_vs['resources'][0]['link']
-        ),
-        line4='API harvest 1 items | got 1 from VS'
-    )
-    assert res.output == output
+    assert res.output.strip().split('\n') == [
+        'Harvest api: VS',
+        ('API page: 1 url: http://mediatheque-valais.cantookstation.eu/v1/'
+         'resources.json?start_at=1900-01-01T00:00:00&page=1&available=1'),
+        ('API page: 1 url: http://mediatheque-valais.cantookstation.eu/v1/'
+         'resources.json?start_at=1900-01-01T00:00:00&page=1'),
+        '1: cantook:mv-cantook cantook-immateriel.frO692039 = CREATE',
+        ('API harvest items=1 available=1 |'
+         ' got=1 new=1 updated=0 deleted=0 from VS.')
+    ]

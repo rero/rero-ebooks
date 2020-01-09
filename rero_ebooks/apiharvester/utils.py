@@ -28,8 +28,30 @@ from __future__ import absolute_import, print_function
 
 from flask import current_app
 from invenio_db import db
+from invenio_oaiserver.models import OAISet
 
+from .errors import ApiHarvesterConfigNotFound
 from .models import ApiHarvestConfig
+
+
+def add_set(spec, name, pattern, description='...'):
+    """Add OAI set.
+
+    :param spec: set identifier
+    :param name: human readable name of the set
+    :param pattern: search pattern to get records
+    :param description: human readable description
+    """
+    try:
+        oaiset = OAISet(spec=spec, name=name, description=description)
+        oaiset.search_pattern = pattern
+        db.session.add(oaiset)
+        db.session.commit()
+        msg = 'OAIset added: {name}'.format(name=name)
+    except Exception as err:
+        db.session.rollback()
+        msg = 'OAIset exist: {name}'.format(name=name)
+    return msg
 
 
 def api_source(name, url='', classname=None, code='', update=False):
@@ -42,6 +64,7 @@ def api_source(name, url='', classname=None, code='', update=False):
     update: update configuration if exist
     """
     with current_app.app_context():
+        msg = 'No Update'
         source = ApiHarvestConfig.query.filter_by(name=name).first()
         if not source:
             source = ApiHarvestConfig(
@@ -52,7 +75,7 @@ def api_source(name, url='', classname=None, code='', update=False):
             )
             source.save()
             db.session.commit()
-            return 'Add'
+            msg = 'Add'
         elif update:
             source.name = name
             msg = []
@@ -66,5 +89,21 @@ def api_source(name, url='', classname=None, code='', update=False):
                 source.code = code
                 msg.append('code:{}'.format(code))
             db.session.commit()
-            return 'Update {}'.format(', '.join(msg))
-        return 'No Update'
+            msg = 'Update {}'.format(', '.join(msg))
+        return msg
+
+
+def get_apiharvest_object(name):
+    """Query and returns an ApiHarvestConfig object based on its name.
+
+    :param name: The name of the ApiHarvestConfig object.
+    :return: The ApiHarvestConfig object.
+    """
+    obj = ApiHarvestConfig.query.filter_by(name=name).first()
+    if not obj:
+        raise ApiHarvesterConfigNotFound(
+            'Unable to find ApiHarvesterConfig obj with name %s.'
+            % name
+        )
+
+    return obj

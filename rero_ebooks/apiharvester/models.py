@@ -29,14 +29,12 @@ from __future__ import absolute_import
 import datetime
 
 from invenio_db import db
-from invenio_pidstore.models import RecordIdentifier
 
 
-class ApiHarvestConfig(RecordIdentifier):
-    """Sequence generator for Document identifiers."""
+class ApiHarvestConfig(db.Model):
+    """Represents a ApiHarvestConfig record."""
 
     __tablename__ = 'apiharvest_config'
-    __mapper_args__ = {'concrete': True}
 
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(255), nullable=False, server_default='')
@@ -56,4 +54,6 @@ class ApiHarvestConfig(RecordIdentifier):
         """Update the 'lastrun' attribute of object to now."""
         self.lastrun = new_date or datetime.datetime.now()
         self.save()
-        db.session.commit()
+
+
+__all__ = ('ApiHarvestConfig',)

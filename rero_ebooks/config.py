@@ -37,8 +37,6 @@ from datetime import timedelta
 from invenio_indexer.api import RecordIndexer
 from invenio_search import RecordsSearch
 
-from rero_ebooks.apiharvester.tasks import harvest_records  # needed by cellery
-
 
 def _(x):
     """Identity function used to trigger string extraction."""
@@ -47,8 +45,10 @@ def _(x):
 
 # Rate limiting
 # =============
-#: Storage for ratelimiter.
 RATELIMIT_STORAGE_URL = 'redis://localhost:6379/3'
+RATELIMIT_DEFAULT = '5000/second'
+RATELIMIT_ENABLED = False
+
 
 # I18N
 # ====
@@ -121,6 +121,7 @@ CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 #: URL of backend for result storage (default is Redis).
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'
 #: Scheduled tasks configuration (aka cronjobs).
+# imports have to be configured in setup.py:invenio_celery.tasks
 CELERY_BEAT_SCHEDULE = {
     'indexer': {
         'task': 'invenio_indexer.tasks.process_bulk_queue',
@@ -136,15 +137,15 @@ CELERY_BEAT_SCHEDULE = {
     #     'schedule': timedelta(minutes=60),
     #     'kwargs': dict(name='NJ')
     # },
-    'Apiharvester-VS': {
-        'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
-        'schedule': timedelta(minutes=60),
-        'kwargs': dict(name='VS'),
-    },
     'Apiharvester-NJ': {
         'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
         'schedule': timedelta(minutes=60),
         'kwargs': dict(name='NJ'),
+    },
+    'Apiharvester-VS': {
+        'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
+        'schedule': timedelta(minutes=60),
+        'kwargs': dict(name='VS')
     },
 }
 CELERY_BROKER_HEARTBEAT = 0
@@ -184,6 +185,44 @@ SESSION_COOKIE_SECURE = True
 #: should be set to the correct host and it is strongly recommended to only
 #: route correct hosts to the application.
 APP_ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# TODO: review theses rules for security purposes
+APP_DEFAULT_SECURE_HEADERS = {
+    # disabled as https is not used by the application:
+    # https is done by the haproxy
+    'force_https': False,
+    'force_https_permanent': False,
+    'force_file_save': False,
+    'frame_options': 'sameorigin',
+    'frame_options_allow_from': None,
+    'strict_transport_security': True,
+    'strict_transport_security_preload': False,
+    'strict_transport_security_max_age': 31556926,  # One year in seconds
+    'strict_transport_security_include_subdomains': True,
+    'content_security_policy': {
+        'default-src': ['*'],
+        'img-src': [
+            '*',
+            "'self'",
+            'data:'
+        ],
+        'style-src': [
+            '*',
+            "'unsafe-inline'"
+        ],
+        'script-src': [
+            "'self'",
+            "'unsafe-eval'",
+            "'unsafe-inline'",
+            # '*.rero.ch',
+            'https://www.googletagmanager.com',
+            'https://www.google-analytics.com'
+        ]
+    },
+    'content_security_policy_report_uri': None,
+    'content_security_policy_report_only': False,
+    'session_cookie_secure': True,
+    'session_cookie_http_only': True,
+}
 
 # Indexer
 # =======
@@ -200,6 +239,12 @@ OAISERVER_ID_PREFIX = 'oai:ebooks.rero.ch:'
 OAISERVER_CONTROL_NUMBER_FETCHER = 'ebook'
 #: OAI default ES index
 OAISERVER_RECORD_INDEX = 'ebooks'
+
+OAISERVER_XSL_URL = '/static/xsl/oai.xsl'
+
+OAISERVER_ADMIN_EMAILS = [
+    'software@rero.ch',
+]
 
 # Debug
 # =====
