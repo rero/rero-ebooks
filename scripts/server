@@ -96,7 +96,7 @@ fi
 export FLASK_DEBUG=True
 export FLASK_ENV=development
 # Start Worker and Server
-celery worker -A rero_ebooks.celery --beat -l INFO & pid_celery=$!
+celery -A rero_ebooks.celery worker --beat -l INFO & pid_celery=$!
 
 if ${HTTP}
 then

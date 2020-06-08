@@ -79,7 +79,7 @@ services:
       - "15672:15672"
       - "5672:5672"
   es:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.2
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.9.3
     restart: "always"
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -95,13 +95,13 @@ services:
       - "9200:9200"
       - "9300:9300"
   kibana:
-    image: docker.elastic.co/elasticsearch/kibana-oss:7.6.2
+    image: docker.elastic.co/elasticsearch/kibana-oss:7.9.3
     environment:
       - "ELASTICSEARCH_URL=http://es:9200"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports: ['5601:5601']
   flower:
-    image: mher/flower
+    image: mher/flower:0.9.4
     command: --broker=amqp://guest:guest@mq:5672/ --broker_api=http://guest:guest@mq:15672/api/
     ports:
       - "5555:5555"

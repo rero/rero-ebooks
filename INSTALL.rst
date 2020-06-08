@@ -82,7 +82,7 @@ Start the a background worker:
 
 .. code-block:: console
 
-    $ celery worker -A invenio_app.celery -l INFO
+    $ celery -A invenio_app.celery worker -l INFO
 
 Start a Python shell:
 
