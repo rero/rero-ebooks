@@ -81,7 +81,7 @@ fi
 
 # Purge celery
 info_msg "Purge celery"
-celery purge -A rero_ebooks.celery -f
+celery -A rero_ebooks.celery purge -f
 # Clean redis
 info_msg "Clean redis"
 invenio shell --no-term-title -c "import redis; redis.StrictRedis.from_url(app.config['CACHE_REDIS_URL']).flushall(); print('Cache cleared')"
