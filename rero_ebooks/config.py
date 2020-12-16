@@ -34,9 +34,6 @@ from __future__ import absolute_import, print_function
 
 from datetime import timedelta
 
-from invenio_indexer.api import RecordIndexer
-from invenio_search import RecordsSearch
-
 
 def _(x):
     """Identity function used to trigger string extraction."""
@@ -137,16 +134,16 @@ CELERY_BEAT_SCHEDULE = {
     #     'schedule': timedelta(minutes=60),
     #     'kwargs': dict(name='NJ')
     # },
-    'Apiharvester-NJ': {
-        'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
-        'schedule': timedelta(minutes=60),
-        'kwargs': dict(name='NJ'),
-    },
-    'Apiharvester-VS': {
-        'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
-        'schedule': timedelta(minutes=60),
-        'kwargs': dict(name='VS')
-    },
+    # 'Apiharvester-NJ': {
+    #     'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
+    #     'schedule': timedelta(minutes=60),
+    #     'kwargs': dict(name='NJ'),
+    # },
+    # 'Apiharvester-VS': {
+    #     'task': 'rero_ebooks.apiharvester.tasks.harvest_records',
+    #     'schedule': timedelta(minutes=60),
+    #     'kwargs': dict(name='VS')
+    # },
 }
 CELERY_BROKER_HEARTBEAT = 0
 
@@ -162,11 +159,6 @@ DB_VERSIONING = False
 # ===========
 #: Hostname used in URLs for local JSONSchemas.
 JSONSCHEMAS_HOST = 'ebooks.rero.ch'
-
-# PIDStore
-# ========
-#: PID field name.
-PIDSTORE_RECID_FIELD = 'pid'
 
 # Flask configuration
 # ===================
@@ -260,8 +252,9 @@ RECORDS_REST_ENDPOINTS = dict(
         pid_type='ebook',
         pid_minter='ebook',
         pid_fetcher='ebook',
-        search_class=RecordsSearch,
-        indexer_class=RecordIndexer,
+        search_class="rero_ebooks.api:EbooksSearch",
+        indexer_class="invenio_indexer.api:RecordIndexer",
+        record_class="rero_ebooks.api:Ebook",
         search_index=None,
         search_type=None,
         record_serializers={

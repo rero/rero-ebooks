@@ -26,24 +26,21 @@
 
 from collections import namedtuple
 
-from flask import current_app
-
 from .providers import EbookPidProvider
 
 FetchedPID = namedtuple('FetchedPID', ['provider', 'pid_type', 'pid_value'])
 """A pid fetcher."""
 
 
-def ebook_pid_fetcher(record_uuid, data):
+def ebook_pid_fetcher(record_uuid, data, pid_key='pid'):
     """Fetch a ebook's identifiers.
 
     :param record_uuid: The record UUID.
     :param data: The record metadata.
     :returns: A :data:`invenio_pidstore.fetchers.FetchedPID` instance.
     """
-    pid_field = current_app.config['PIDSTORE_RECID_FIELD']
     return FetchedPID(
         provider=EbookPidProvider,
         pid_type=EbookPidProvider.pid_type,
-        pid_value=str(data[pid_field]),
+        pid_value=str(data[pid_key]),
     )

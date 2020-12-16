@@ -29,6 +29,7 @@ from __future__ import absolute_import, print_function
 from flask import current_app
 from invenio_db import db
 from invenio_oaiserver.models import OAISet
+from sqlalchemy.exc import OperationalError
 
 from .errors import ApiHarvesterConfigNotFound
 from .models import ApiHarvestConfig
@@ -99,7 +100,20 @@ def get_apiharvest_object(name):
     :param name: The name of the ApiHarvestConfig object.
     :return: The ApiHarvestConfig object.
     """
-    obj = ApiHarvestConfig.query.filter_by(name=name).first()
+    get_config_error_count = 0
+    get_config_ok = False
+    while not get_config_ok and get_config_error_count < 5:
+        try:
+            obj = ApiHarvestConfig.query.filter_by(name=name).first()
+            get_config_ok = True
+        except OperationalError:
+            get_config_error_count += 1
+            msg = 'ApiHarvestConfig OperationalError: {count} {name}'.format(
+                count=get_config_error_count,
+                name=name
+            )
+            current_app.logger.error(msg)
+
     if not obj:
         raise ApiHarvesterConfigNotFound(
             'Unable to find ApiHarvesterConfig obj with name %s.'

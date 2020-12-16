@@ -6,12 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dependencies: ['locked', 'deploy']
+        dependencies: ['dev', 'deploy']
     steps:
-    - name: Cancel Previous Runs
-      uses: styfle/cancel-workflow-action@0.5.0
-      with:
-        access_token: ${{ github.token }}
+    # - name: Cancel Previous Runs
+    #   uses: styfle/cancel-workflow-action@0.5.0
+    #   with:
+    #     access_token: ${{ github.token }}
 
     - uses: actions/checkout@v2
 
@@ -42,21 +42,15 @@ jobs:
           ~/.npm
         key: ${{ runner.os }}-pip-venv-${{ hashFiles('**/poetry.lock') }}
 
-    - name: Bootstrap locked
-      if: ${{ matrix.dependencies == 'locked' }}
+    - name: Bootstrap dev
+      if: ${{ matrix.dependencies == 'dev' }}
       run: |
-        pip install "poetry<1.1.0"
         poetry run bootstrap --ci
 
     - name: Bootstrap deploy
       if: ${{ matrix.dependencies == 'deploy' }}
       run: |
         poetry run bootstrap --ci --deploy E2E=yes
-
-    - name: Update pip and coveralls
-      run: |
-        poetry run pip install --upgrade pip
-        poetry run pip install --upgrade coveralls
 
     - name: Run Test
       run: poetry run run-tests
