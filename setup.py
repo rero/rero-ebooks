@@ -84,6 +84,9 @@ setup(
         'invenio_base.blueprints': [
             'rero_ebooks = rero_ebooks.theme.views:blueprint',
         ],
+        'invenio_base.api_blueprints': [
+            'api_rero_ebooks = rero_ebooks.theme.views:api_blueprint',
+        ],
         'invenio_config.module': [
             'rero_ebooks = rero_ebooks.config',
         ],

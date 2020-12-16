@@ -24,7 +24,6 @@
 
 """Ebooks minters."""
 
-from flask import current_app
 from invenio_oaiserver.minters import oaiid_minter
 
 from .providers import EbookPidProvider
@@ -46,7 +45,8 @@ def build_ebook_pid(data, source):
     return source + '-' + pid_value
 
 
-def ebook_pid_minter(record_uuid, data, source):
+def ebook_pid_minter(record_uuid, data, source, pid_key='pid',
+                     object_type='rec'):
     """Mint record identifiers.
 
     This is a minter specific for ebooks.
@@ -66,11 +66,10 @@ def ebook_pid_minter(record_uuid, data, source):
     :param data: The record metadata.
     :returns: A fresh `invenio_pidstore.models.PersistentIdentifier` instance.
     """
-    pid_field = current_app.config['PIDSTORE_RECID_FIELD']
-    assert pid_field not in data
+    assert pid_key not in data
     pid_value = build_ebook_pid(data, source)
     provider = EbookPidProvider.create(
         object_type='rec', pid_value=pid_value, object_uuid=record_uuid)
-    data[pid_field] = pid_value
+    data[pid_key] = pid_value
     oaiid_minter(record_uuid, data)
     return provider.pid

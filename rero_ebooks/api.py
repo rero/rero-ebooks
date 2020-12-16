@@ -55,6 +55,11 @@ class EbooksSearch(RecordsSearch):
         """Search only on documents index."""
 
         index = 'ebooks'
+        doc_types = None
+        fields = ('*', )
+        facets = {}
+
+        default_filter = None
 
 
 class Ebook(Record):
