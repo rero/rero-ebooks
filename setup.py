@@ -82,7 +82,7 @@ setup(
             'rero_ebooks = rero_ebooks:ReroEBooks',
         ],
         'invenio_base.blueprints': [
-            'rero_ebooks = rero_ebooks.views:blueprint',
+            'rero_ebooks = rero_ebooks.theme.views:blueprint',
         ],
         'invenio_config.module': [
             'rero_ebooks = rero_ebooks.config',
