@@ -198,7 +198,7 @@ class ApiCantook():
             current_page = int(request.headers.get('X-Current-Page', 0))
         if total_items != count:
             # we had an ERROR
-            raise('ERROR to get all available ids')
+            raise ValueError('ERROR to get all available ids')
         return self._available_ids
 
     def get_records(self, from_date, max=0, file=None):
