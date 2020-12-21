@@ -259,7 +259,9 @@ RECORDS_REST_ENDPOINTS = dict(
                                  ':json_v1_search'),
         },
         list_route='/ebooks/',
-        item_route='/ebooks/<pid((ebook, record_class="rero_ebooks.api:Ebook")):pid_value>',
+        item_route=('/ebooks/'
+                    '<pid((ebook, record_class="rero_ebooks.api:Ebook"))'
+                    ':pid_value>'),
         default_media_type='application/json',
         max_result_window=10000,
         error_handlers=dict(),

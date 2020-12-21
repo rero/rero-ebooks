@@ -20,15 +20,13 @@ FROM rero/rero-ebooks-base:${VERSION}
 
 USER 0
 
-COPY ./ ${WORKING_DIR}/src
+ENV WORKING_DIR=/invenio
 WORKDIR ${WORKING_DIR}/src
-COPY ./docker/uwsgi/ ${INVENIO_INSTANCE_PATH}
+ENV INVENIO_INSTANCE_PATH=${WORKING_DIR}/var/instance
 
 RUN chown -R invenio:invenio ${WORKING_DIR}
 
 USER 1000
-
-RUN npm uninstall --prefix `poetry env info -p` --silent -g node-sass clean-css uglify-js requirejs
 
 ENV INVENIO_COLLECT_STORAGE='flask_collect.storage.file'
 RUN poetry run bootstrap --deploy

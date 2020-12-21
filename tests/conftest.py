@@ -25,6 +25,8 @@ import pytest
 from rero_ebooks.apiharvester.models import ApiHarvestConfig
 from rero_ebooks.apiharvester.utils import api_source
 
+pytest_plugins = ("celery.contrib.pytest", )
+
 
 @pytest.fixture(scope='module')
 def es(appctx):
