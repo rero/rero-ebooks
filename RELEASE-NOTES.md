@@ -6,6 +6,11 @@ license: GNU Affero General Public License
 
 # Release notes
 
+## v0.6.0
+
+- Moves the license from GPLv2 to AGPLv3.
+- Upgrades Invenio to `3.4`.
+
 ## v0.5.0
 
 ## Harvesting
