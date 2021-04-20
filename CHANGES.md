@@ -1,8 +1,21 @@
 # Changelog
 
-## [v0.2.0](https://github.com/rero/rero-ebooks/tree/v0.2.0) (2020-12-18)
+## [v0.6.0](https://github.com/rero/rero-ebooks/tree/v0.6.0) (2021-04-20)
 
-[Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.1.0a1...v0.2.0)
+[Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.5.0...v0.6.0)
+
+**Closed issues:**
+
+- Is the license the one we want? [\#36](https://github.com/rero/rero-ebooks/issues/36)
+
+**Merged pull requests:**
+
+- dependencies: upgrade invenio to 3.4 [\#43](https://github.com/rero/rero-ebooks/pull/43) ([rerowep](https://github.com/rerowep))
+- license: move from GPLv2 to AGPLv3 [\#42](https://github.com/rero/rero-ebooks/pull/42) ([rerowep](https://github.com/rerowep))
+
+## [v0.5.0](https://github.com/rero/rero-ebooks/tree/v0.5.0) (2020-12-18)
+
+[Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.1.0a1...v0.5.0)
 
 **Closed issues:**
 
@@ -11,8 +24,8 @@
 
 **Merged pull requests:**
 
-- assets: move to webpack [\#39](https://github.com/rero/rero-ebooks/pull/39) ([rerowep](https://github.com/rerowep))
-- invenio 3.3 [\#38](https://github.com/rero/rero-ebooks/pull/38) ([rerowep](https://github.com/rerowep))
+- release: v0.5.0 [\#41](https://github.com/rero/rero-ebooks/pull/41) ([iGormilhit](https://github.com/iGormilhit))
+- oai harvesting [\#40](https://github.com/rero/rero-ebooks/pull/40) ([rerowep](https://github.com/rerowep))
 
 ## [v0.1.0a1](https://github.com/rero/rero-ebooks/tree/v0.1.0a1) (2019-05-27)
 
