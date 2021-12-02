@@ -64,8 +64,17 @@ fi
 
 set -e
 # TODO: find out why we have following error:
-# | pipenv                     | 2018.11.2 | <2020.5.28               | 38334    |
-safety check --ignore 38334
+# +============================+===========+==========================+==========+
+# | package                    | installed | affected                 | ID       |
+# +============================+===========+==========================+==========+
+# | wtforms                    | 2.3.3     | <3.0.0a1                 | 42852    |
+# | werkzeug                   | 1.0.1     | <2.0.2                   | 42050    |
+# | sqlalchemy-utils           | 0.35.0    | >=0.27.0                 | 42194    |
+# | flask-caching              | 1.10.1    | <=1.10.1                 | 40459    |
+# | celery                     | 5.1.2     | <5.2.0                   | 42498    |
+# | celery                     | 5.1.2     | <5.2.2                   | 43738    |
+# +============================+===========+==========================+==========+
+safety check -i 42852 -i 42050 -i 42194 -i 40459 -i 42498 -i 43738
 info_msg "Test pydocstyle:"
 pydocstyle rero_ebooks tests docs
 info_msg "Test isort:"
