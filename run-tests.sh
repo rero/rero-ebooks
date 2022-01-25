@@ -92,5 +92,4 @@ autoflake -c -r --remove-all-unused-imports --ignore-init-module-imports . &> /d
 info_msg "Sphinx-build:"
 sphinx-build -qnNW docs docs/_build/html
 info_msg "Tests:"
-export PYTEST_ADDOPTS="--color=yes"
 poetry run pytest

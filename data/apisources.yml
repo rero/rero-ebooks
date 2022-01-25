@@ -18,7 +18,7 @@
 
 # API harvester configuration.
 VS:
-    url: http://mediatheque-valais.cantookstation.eu
+    url: https://mediatheque-valais.cantookstation.eu
     classname: 'rero_ebooks.cantook.api.ApiCantook'
     code: 'mv-cantook'
 
