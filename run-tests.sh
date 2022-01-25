@@ -67,14 +67,16 @@ set -e
 # +============================+===========+==========================+==========+
 # | package                    | installed | affected                 | ID       |
 # +============================+===========+==========================+==========+
-# | wtforms                    | 2.3.3     | <3.0.0a1                 | 42852    |
-# | werkzeug                   | 1.0.1     | <2.0.2                   | 42050    |
-# | sqlalchemy-utils           | 0.35.0    | >=0.27.0                 | 42194    |
-# | flask-caching              | 1.10.1    | <=1.10.1                 | 40459    |
+# | click                      | 7.1.2     | <8.0.0                   | 47833    |
 # | celery                     | 5.1.2     | <5.2.0                   | 42498    |
 # | celery                     | 5.1.2     | <5.2.2                   | 43738    |
+# | flask-security             | 3.0.0     | <3.1.0                   | 45183    |
+# | flask-security             | 3.0.0     | >0                       | 44501    |
+# | wtforms                    | 2.3.3     | <3.0.0a1                 | 42852    |
+# | flask-caching              | 1.10.1    | <=1.10.1                 | 40459    |
+# | sqlalchemy-utils           | 0.38.2    | >=0.27.0                 | 42194    |
 # +============================+===========+==========================+==========+
-safety check -i 42852 -i 42050 -i 42194 -i 40459 -i 42498 -i 43738
+safety check -i 47833 -i 42498 -i 43738 -i 45183 -i 44501 -i 42852 -i 40459 -i 42194
 info_msg "Test pydocstyle:"
 pydocstyle rero_ebooks tests docs
 info_msg "Test isort:"
@@ -90,4 +92,5 @@ autoflake -c -r --remove-all-unused-imports --ignore-init-module-imports . &> /d
 info_msg "Sphinx-build:"
 sphinx-build -qnNW docs docs/_build/html
 info_msg "Tests:"
-poetry run tests
+export PYTEST_ADDOPTS="--color=yes"
+poetry run pytest

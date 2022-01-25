@@ -23,30 +23,26 @@ python = ">= 3.7, < 3.10"
 #------------------------------------------------------------------------------
 # Default from Invenio
 lxml = ">=4.3.0,<5.0.0"
-# TODO: from not working with marshmallow > 3.0.0
 marshmallow = ">=3.0.0,<4.0.0"
 uwsgi = ">=2.0"
 uwsgi-tools = ">=1.1.1"
 uwsgitop = ">=0.11"
 
 ## Third party invenio modules used by RERO ILS
-invenio-oaiharvester = {tag = "v1.0.0a4", git = "https://github.com/inveniosoftware/invenio-oaiharvester.git"}
+invenio-oaiharvester = { git = "https://github.com/inveniosoftware/invenio-oaiharvester.git", tag = "v1.0.0a4" }
 
 ## Invenio 3.4 base modules used by RERO ILS
 # same as invenio metadata extras without invenio-search-ui
 invenio-indexer = ">=1.2.0,<1.3.0"
 invenio-jsonschemas = ">=1.1.1,<1.2.0"
-invenio-oaiserver = ">=1.2.0,<1.3.0"
+invenio-oaiserver = ">=1.4.1"
 invenio-pidstore = ">=1.2.1,<1.3.0"
 invenio-records-rest = ">=1.8.0,<1.9.0"
 invenio-records-ui= ">=1.2.0,<1.3.0"
-invenio-records = ">=1.4.0,<1.6.0"
+invenio-records = ">=1.6.0"
 
 ## Default from Invenio
-invenio = {version = ">=3.4.0,<5.4.0", extras = ["base", "postgresql", "auth", "elasticsearch7", "docs", "tests" ]}
-
-# TODO: jedi > 0.17 crashs the console
-jedi = "<0.18.0"
+invenio = {version = ">=3.4.0,<3.5.0", extras = ["base", "postgresql", "auth", "elasticsearch7", "docs", "tests" ]}
 
 ## RERO ILS specific python modules
 PyYAML = ">=5.3.1"
@@ -58,11 +54,19 @@ responses = "*"
 # sentry
 invenio-logging = { version = ">=1.3.0,<1.4.0", extras = ["sentry-sdk", "sentry"] }
 python-dotenv = ">=0.13.0"
-python-dateutil = "^2.8.1"
 
 ## Third party optional modules used by RERO ILS
 celery = ">=5.0.0"
-pycparser = ">=2.0"
+
+# pkg_resources needs jsonschema<4.0.0,>=3.0.0
+jsonschema = ">=3.0.0,<4.0.0"
+wtforms = "<3.0.0"
+Flask = "<2.0.0"
+flask-wtf = "<1.0.0"
+# TODO: ImportError: cannot import name 'soft_unicode' from 'markupsafe'
+markupsafe = "<2.1.0"
+poethepoet = "*"
+jedi = "<0.18.0"
 
 [tool.poetry.dev-dependencies]
 ## Python packages development dependencies (order matters)
@@ -78,14 +82,80 @@ mock = ">=2.0.0"
 autoflake = ">=1.3.1"
 appnope = { version = "*", optional = true }
 
-[tool.poetry.scripts]
-bootstrap = "scripts:run('./scripts/bootstrap')"
-console = "scripts:run('./scripts/console')"
-run-tests = "scripts:run('./run-tests.sh')"
-server = "scripts:run('./scripts/server')"
-setup = "scripts:run('./scripts/setup')"
-tests = "scripts:run('pytest')"
-update = "scripts:run('./scripts/update')"
+[tool.poetry.plugins."console_scripts"]
+rero-ebooks = "invenio_app.cli:cli"
+
+[tool.poetry.plugins."invenio_assets.webpack"]
+rero_ebooks_theme = "rero_ebooks.theme.webpack:theme"
+
+[tool.poetry.plugins."invenio_base.apps"]
+rero_ebooks = "rero_ebooks:ReroEBooks"
+
+[tool.poetry.plugins."invenio_base.blueprints"]
+rero_ebooks = "rero_ebooks.theme.views:blueprint"
+
+[tool.poetry.plugins."invenio_base.api_blueprints"]
+api_rero_ebooks = "rero_ebooks.theme.views:api_blueprint"
+
+[tool.poetry.plugins."invenio_config.module"]
+rero_ebooks = "rero_ebooks.config"
+
+[tool.poetry.plugins."invenio_i18n.translations"]
+messages = "rero_ebooks"
+
+[tool.poetry.plugins."invenio_pidstore.minters"]
+ebook = "rero_ebooks.minters:ebook_pid_minter"
+
+[tool.poetry.plugins."invenio_pidstore.fetchers"]
+ebook = "rero_ebooks.fetchers:ebook_pid_fetcher"
+
+[tool.poetry.plugins."invenio_search.mappings"]
+ebooks = "rero_ebooks.mappings"
+
+[tool.poetry.plugins."dojson.cli.rule"]
+tomarc21 = "dojson.contrib.to_marc21:to_marc21"
+cantookmarc21 = "rero_ebooks.dojson.marc21:marc21"
+cantookjson = "rero_ebooks.dojson.json.model:cantook_json"
+
+[tool.poetry.plugins."dojson.cli.dump"]
+pjson = "rero_ebooks.dojson.utils:dump"
+
+[tool.poetry.plugins."flask.commands"]
+oaiharvester = "rero_ebooks.cli:oaiharvester"
+apiharvester = "rero_ebooks.apiharvester.cli:apiharvester"
+
+[tool.poetry.plugins."rero_ebooks.marc21"]
+bdleader = "rero_ebooks.dojson.marc21.fields.bdleader"
+bd00x = "rero_ebooks.dojson.marc21.fields.bd00x"
+bd01x09x = "rero_ebooks.dojson.marc21.fields.bd01x09x"
+bd1xx = "rero_ebooks.dojson.marc21.fields.bd1xx"
+bd20x24x = "rero_ebooks.dojson.marc21.fields.bd20x24x"
+bd25x28x = "rero_ebooks.dojson.marc21.fields.bd25x28x"
+bd3xx = "rero_ebooks.dojson.marc21.fields.bd3xx"
+bd4xx = "rero_ebooks.dojson.marc21.fields.bd4xx"
+bd5xx = "rero_ebooks.dojson.marc21.fields.bd5xx"
+bd6xx = "rero_ebooks.dojson.marc21.fields.bd6xx"
+bd70x75x = "rero_ebooks.dojson.marc21.fields.bd70x75x"
+bd76x78x = "rero_ebooks.dojson.marc21.fields.bd76x78x"
+bd80x83x = "rero_ebooks.dojson.marc21.fields.bd80x83x"
+bd84188x = "rero_ebooks.dojson.marc21.fields.bd84188x"
+
+[tool.poetry.plugins."invenio_db.models"]
+apiharvester = "rero_ebooks.apiharvester.models"
+
+[tool.poetry.plugins."invenio_celery.tasks"]
+rero_ebooks = "rero_ebooks.tasks"
+apiharvester = "rero_ebooks.apiharvester.tasks"
+
+[tool.poe.tasks]
+bootstrap = {cmd = "./scripts/bootstrap", help = "Runs bootstrap"}
+console = {cmd = "./scripts/console", help = "Opens invenio shell"}
+run_tests = {cmd = "./run-tests.sh", help = "Runs all tests"}
+tests = {cmd = "pytest", help = "pytest"}
+tests_debug = {cmd = "./scripts/pytest -s --v --no-cov", help = "pytest -s --v --no-cov"}
+server = {cmd = "./scripts/server", help = "Starts the server "}
+setup = {cmd = "./scripts/setup", help = "Runs setup"}
+update = {cmd = "./scripts/update", help = "Runs update"}
 
 [build-system]
 requires = ["poetry>=0.12"]

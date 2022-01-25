@@ -106,6 +106,9 @@ fi
 info_msg "Upgrade pip"
 poetry run pip install --upgrade pip
 
+info_msg "Install poethepoet"
+poetry run pip install poethepoet
+
 # install the application and all the dependencies
 info_msg "Install with command: ${cmd} ${flags[@]}"
 ${cmd} ${flags[@]}
@@ -117,16 +120,9 @@ if ! $deploy ; then
     fi
 fi
 
-
-# collect static files and compile html/css assets
-# ------------------------------------------------
-# install the npm dependencies
-info_msg "Search static folder location"
-static_folder=$(invenio shell --no-term-title -c "print('static_folder:%s' % app.static_folder)"|grep static_folder| cut -d: -f2-)
-
 # build the web assets
 info_msg "Build web assets: collect"
-invenio collect
+invenio collect -v
 
 info_msg "Build web assets: using webpack for invenio-admin"
 invenio webpack buildall
