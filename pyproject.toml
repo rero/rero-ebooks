@@ -23,7 +23,6 @@ python = ">= 3.7, < 3.10"
 #------------------------------------------------------------------------------
 # Default from Invenio
 lxml = ">=4.3.0,<5.0.0"
-# TODO: from not working with marshmallow > 3.0.0
 marshmallow = ">=3.0.0,<4.0.0"
 uwsgi = ">=2.0"
 uwsgi-tools = ">=1.1.1"
@@ -36,17 +35,15 @@ invenio-oaiharvester = {tag = "v1.0.0a4", git = "https://github.com/inveniosoftw
 # same as invenio metadata extras without invenio-search-ui
 invenio-indexer = ">=1.2.0,<1.3.0"
 invenio-jsonschemas = ">=1.1.1,<1.2.0"
-invenio-oaiserver = ">=1.2.0,<1.3.0"
+# invenio-oaiserver = ">=1.2.0,<1.3.0"
+invenio-oaiserver = ">=1.4.1"
 invenio-pidstore = ">=1.2.1,<1.3.0"
 invenio-records-rest = ">=1.8.0,<1.9.0"
 invenio-records-ui= ">=1.2.0,<1.3.0"
-invenio-records = ">=1.4.0,<1.6.0"
+invenio-records = ">=1.6.0"
 
 ## Default from Invenio
-invenio = {version = ">=3.4.0,<5.4.0", extras = ["base", "postgresql", "auth", "elasticsearch7", "docs", "tests" ]}
-
-# TODO: jedi > 0.17 crashs the console
-jedi = "<0.18.0"
+invenio = {version = ">=3.4.0,<3.5.0", extras = ["base", "postgresql", "auth", "elasticsearch7", "docs", "tests" ]}
 
 ## RERO ILS specific python modules
 PyYAML = ">=5.3.1"
@@ -63,6 +60,9 @@ python-dateutil = "^2.8.1"
 ## Third party optional modules used by RERO ILS
 celery = ">=5.0.0"
 pycparser = ">=2.0"
+
+# pkg_resources needs jsonschema<4.0.0,>=3.0.0
+jsonschema = ">=3.0.0,<4.0.0"
 
 [tool.poetry.dev-dependencies]
 ## Python packages development dependencies (order matters)
