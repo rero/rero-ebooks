@@ -30,8 +30,6 @@ jobs:
 
     - name: Install Poetry
       uses: snok/install-poetry@v1.1.1
-      with:
-        version: 1.0.10
 
     # - name: Use Cache
     #   uses: actions/cache@v2
@@ -45,15 +43,15 @@ jobs:
     - name: Bootstrap dev
       if: ${{ matrix.dependencies == 'dev' }}
       run: |
-        poetry run bootstrap --ci
+        poetry run ./scripts/bootstrap --ci
 
     - name: Bootstrap deploy
       if: ${{ matrix.dependencies == 'deploy' }}
       run: |
-        poetry run bootstrap --ci --deploy E2E=yes
+        poetry run ./scripts/bootstrap --ci --deploy E2E=yes
 
     - name: Run Test
-      run: poetry run run-tests
+      run: poetry run ./run-tests.sh
 
     # - name: Upload Coverage ${{ matrix.tests }}
     #   if: ${{ matrix.dependencies == 'locked' }}
