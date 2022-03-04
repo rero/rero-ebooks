@@ -1,0 +1,18 @@
+# Command to generate: github_changelog_generator --since-tag <last release> --future-release <new release> -t <github token>
+
+# Running the command updates the file with info from rero/rero-ils:staging
+base=CHANGELOG.md
+user=rero
+project=rero-ebooks
+release-branch=staging
+
+# Limit issues fetched so as to not reach secondary API limit
+max-issues=400
+# Exclude labels from changelog
+exclude-labels=stale,duplicate,wontfix,translations
+
+bug-labels=bug,Bug,bug (critical),correction
+security-labels=dev: security
+
+breaking-labels=dev: dependencies
+breaking-label=Dependencies upgrades:
