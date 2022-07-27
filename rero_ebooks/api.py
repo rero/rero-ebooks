@@ -17,6 +17,8 @@
 
 """API for manipulating Ebooks records."""
 
+
+import contextlib
 import copy
 from uuid import uuid4
 
@@ -124,11 +126,10 @@ class Ebook(Record):
         for e_res in not_available_e_res:
             # check if exists!
             res_url = e_res.get('uniform_resource_identifier')
-            if res_url.startswith(url):
-                if e_res in old_e_res:
-                    epub_count += 1
-                    old_e_res.remove(e_res)
-                    old_record['__order__'].remove(field)
+            if res_url.startswith(url) and e_res in old_e_res:
+                epub_count += 1
+                old_e_res.remove(e_res)
+                old_record['__order__'].remove(field)
 
         return old_record, epub_count
 
@@ -142,7 +143,7 @@ class Ebook(Record):
             merged_data, epub_count = cls._delete_uri(data, record, url)
             record.replace(merged_data, dbcommit=dbcommit, reindex=reindex,
                            forceindex=reindex)
-            return record, 'REMOVE URIs: {count}'.format(count=epub_count)
+            return record, f'REMOVE URIs: {epub_count}'
         data['pid'] = pid
         return data, 'REMOVE missing'
 
@@ -216,9 +217,7 @@ class Ebook(Record):
         new_data = copy.deepcopy(data)
         pid = new_data.get('pid')
         if not pid:
-            raise EbookError.PidMissing(
-                'missing pid={pid}'.format(pid=self.pid)
-            )
+            raise EbookError.PidMissing(f'missing pid={self.pid}')
         self.clear()
         self = self.update(new_data, dbcommit=dbcommit, reindex=reindex,
                            forceindex=forceindex)
@@ -239,10 +238,8 @@ class Ebook(Record):
 
     def delete_from_index(self):
         """Delete record from index."""
-        try:
+        with contextlib.suppress(NotFoundError):
             RecordIndexer().delete(self)
-        except NotFoundError:
-            pass
 
     @classmethod
     def get_persistent_identifier(cls, pid):

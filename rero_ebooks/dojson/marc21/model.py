@@ -29,10 +29,7 @@ def order(self, key, value):
     order = []
     for field in value:
         name = marc21.index.query(field)
-        if name:
-            name = name[0]
-        else:
-            name = field
+        name = name[0] if name else field
         order.append(name)
 
     return order
