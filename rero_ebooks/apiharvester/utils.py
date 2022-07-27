@@ -41,10 +41,10 @@ def add_set(spec, name, pattern, description='...'):
         oaiset.search_pattern = pattern
         db.session.add(oaiset)
         db.session.commit()
-        msg = 'OAIset added: {name}'.format(name=name)
+        msg = f'OAIset added: {name}'
     except Exception as err:
         db.session.rollback()
-        msg = 'OAIset exist: {name}'.format(name=name)
+        msg = f'OAIset exist: {name}'
     return msg
 
 
@@ -75,15 +75,14 @@ def api_source(name, url='', classname=None, code='', update=False):
             msg = []
             if url != '':
                 source.url = url
-                msg.append('url:{}'.format(url))
-            if classname != '':
+                msg.append(f'url:{url}')
                 source.classname = classname
-                msg.append('classname:{}'.format(classname))
+                msg.append(f'classname:{classname}')
             if code != '':
                 source.code = code
-                msg.append('code:{}'.format(code))
+                msg.append(f'code:{code}')
             db.session.commit()
-            msg = 'Update {}'.format(', '.join(msg))
+            msg = f'Update {", ".join(msg)}'
         return msg
 
 
@@ -101,16 +100,14 @@ def get_apiharvest_object(name):
             get_config_ok = True
         except OperationalError:
             get_config_error_count += 1
-            msg = 'ApiHarvestConfig OperationalError: {count} {name}'.format(
-                count=get_config_error_count,
-                name=name
+            current_app.logger.error(
+                'ApiHarvestConfig OperationalError: '
+                f'{get_config_error_count} {name}'
             )
-            current_app.logger.error(msg)
 
     if not obj:
         raise ApiHarvesterConfigNotFound(
-            'Unable to find ApiHarvesterConfig obj with name %s.'
-            % name
+            f'Unable to find ApiHarvesterConfig obj with name {name}.'
         )
 
     return obj

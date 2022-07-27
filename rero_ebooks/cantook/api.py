@@ -71,13 +71,8 @@ class ApiCantook():
         start_date: date from where records havs to be harvested
         page: page from whre records have to be harvested
         """
-        params = 'start_at={start_date}&page={page}'.format(
-            start_date=start_date,
-            page=page
-        )
-        return self._url + '/v1/resources.json?{params}'.format(
-            params=params
-        )
+        params = f'start_at={start_date}&page={page}'
+        return f'{self._url}/v1/resources.json?{params}'
 
     def save_record(self, record):
         """Save record to file."""
@@ -126,37 +121,26 @@ class ApiCantook():
 
     def msg_text(self, pid, msg):
         """Logging message text."""
-        return '{count}: {vendor}:{code} {pid} = {msg}'.format(
-            vendor=self._vendor,
-            code=self._code,
-            count=self._count,
-            pid=pid,
-            msg=msg
-        )
+        return f'{self._count}: {self._vendor}:{self._code} {pid} = {msg}'
 
     def process_records(self, records):
         """Process records."""
         for record in records:
             self._count += 1
-            if self._count < self._max or self._max == 0:
-                if self._available_ids.get(record['id']):
-                    self.save_record(record)
-                    record, msg = self.create_update_record(record)
-                    if msg == 'UPDATE':
-                        self._count_upd += 1
-                    else:
-                        self._count_new += 1
-                    if self.verbose:
-                        click.echo(self.msg_text(pid=record['pid'],
-                                                 msg=msg))
-                else:
-                    record, msg = self.remove_uri(record)
-                    self._count_del += 1
-                    if self.verbose:
-                        click.echo(self.msg_text(pid=record['pid'],
-                                                 msg=msg))
-            else:
+            if self._count >= self._max and self._max != 0:
                 break
+            if self._available_ids.get(record['id']):
+                self.save_record(record)
+                record, msg = self.create_update_record(record)
+                if msg == 'UPDATE':
+                    self._count_upd += 1
+                else:
+                    self._count_new += 1
+            else:
+                record, msg = self.remove_uri(record)
+                self._count_del += 1
+            if self.verbose:
+                click.echo(self.msg_text(pid=record['pid'], msg=msg))
 
     def verbose_print(self, msg):
         """Print verbose message."""
@@ -179,12 +163,7 @@ class ApiCantook():
         self._available_ids = {}
         while (request.status_code == requests_codes.ok and
                current_page <= total_pages):
-            self.verbose_print(
-                'API page: {page} url: {url}'.format(
-                    page=current_page,
-                    url=url
-                )
-            )
+            self.verbose_print(f'API page: {current_page} url: {url}')
             for record in request.json().get('resources', []):
                 count += 1
                 self._available_ids[record['id']] = count
@@ -220,12 +199,7 @@ class ApiCantook():
         while (request.status_code == requests_codes.ok and
                current_page <= total_pages and
                (self._count < self._max or self._max == 0)):
-            self.verbose_print(
-                'API page: {page} url: {url}'.format(
-                    page=current_page,
-                    url=url
-                )
-            )
+            self.verbose_print(f'API page: {current_page} url: {url}')
             self.process_records(request.json().get('resources', []))
             # get next page and update current_page
             url = self.get_request_url(

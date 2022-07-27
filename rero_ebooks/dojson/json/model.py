@@ -49,7 +49,7 @@ class Underdo(Overdo):
             'electronic_location_and_access',
         ]
 
-        # get all keys from reas as list
+        # get all keys from res as list
         keys = [*res]
         # sort the list with help of order list
         keys = sorted(keys, key=lambda x: order.index(x))
@@ -57,8 +57,7 @@ class Underdo(Overdo):
         all_keys = []
         for key in keys:
             if type(res[key]) == list:
-                for count in range(0, len(res[key])):
-                    all_keys.append(key)
+                all_keys.extend(key for _ in range(len(res[key])))
             else:
                 all_keys.append(key)
         res['__order__'] = all_keys
@@ -98,11 +97,11 @@ def system_control_number(self, key, value):
         'undefined': 0
     }
     self['other_standard_identifier'] = [{
-        'standard_number_or_code': 'cantook/' + value,
+        'standard_number_or_code': f'cantook/{value}',
         'type_of_standard_number_or_code':
             'Unspecified type of standard number or code'
     }]
-    return {'system_control_number': 'cantook-' + value}
+    return {'system_control_number': f'cantook-{value}'}
 
 
 @cantook_json.over('language_code', 'languages|translated_from')
@@ -161,7 +160,6 @@ def publisher_name(self, key, value):
         'name_of_producer_publisher_distributor_manufacturer': value,
         'function_of_entity': 'Publication'
     })
-    return None
 
 
 @cantook_json.over('physical_description', 'page_count')
@@ -173,11 +171,10 @@ def physical_description(self, key, value):
 
     extent (Number of physical pages, volumes...): Marc21 300 $a field.
     """
-    extent = None
     if int(value) != 0:
-        pages = "{value} pages".format(value=value)
-        extent = {'extent': pages}
-    return extent
+        pages = f'{value} pages'
+        return {'extent': pages}
+#    return {'extent': f'{value}'} if int(value) != 0 else None
 
 
 @cantook_json.over('summary', 'summary')
@@ -203,8 +200,7 @@ def index_term_uncontrolled(self, key, value):
                 uncontrolled_term.append(fr)
                 order.append('uncontrolled_term')
                 need_to_append_term = True
-            en = caption.get('en')
-            if en:
+            if en := caption.get('en'):
                 uncontrolled_term.append(en)
                 order.append('uncontrolled_term')
                 need_to_append_term = True
@@ -224,14 +220,16 @@ def added_entry_personal_name(self, key, value):
 
     added_entry_personal_name: Marc21 700 field.
     """
-    result = {}
     names = []
-    result['type_of_personal_name_entry_element'] = 'Forename'
     if value.get('first_name'):
         names.append(value.get('first_name'))
     if value.get('last_name'):
         names.insert(0, value.get('last_name'))
-    result['personal_name'] = ', '.join(names)
+    result = {
+        'type_of_personal_name_entry_element': 'Forename',
+        'personal_name': ', '.join(names)
+    }
+
     if len(names) > 1:
         result['type_of_personal_name_entry_element'] = 'Surname'
     if value.get('nature') == 'author':

@@ -35,7 +35,7 @@ def build_ebook_pid(data, source):
         .get('standard_number_or_code')
         .split('/')[-1]
     )
-    return source + '-' + pid_value
+    return f'{source}-{pid_value}'
 
 
 def ebook_pid_minter(record_uuid, data, source, pid_key='pid',

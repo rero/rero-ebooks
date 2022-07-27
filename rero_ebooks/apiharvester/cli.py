@@ -57,12 +57,7 @@ def api_source_config(name, url, classname, code, update):
         code=code,
         update=update
     )
-    click.echo(
-        '{msg} ApiHarvestConfig: {name}'.format(
-            msg=msg,
-            name=name
-        )
-    )
+    click.echo(f'{msg} ApiHarvestConfig: {name}')
 
 
 @apiharvester.command('sources')
@@ -73,8 +68,7 @@ def api_source_config(name, url, classname, code, update):
 @with_appcontext
 def api_source_config_from_file(configfile, update):
     """Add or update ApiHarvestConfigs from file."""
-    configs = yaml.load(configfile, Loader=yaml.FullLoader)
-    if configs:
+    if configs := yaml.load(configfile, Loader=yaml.FullLoader):
         for name, values in sorted(configs.items()):
             url = values.get('url', '')
             classname = values.get('classname', '')
@@ -86,18 +80,11 @@ def api_source_config_from_file(configfile, update):
                 code=code,
                 update=update
             )
-            click.echo(
-                '{msg} ApiHarvestConfig: {name}'.format(
-                    msg=msg,
-                    name=name
-                )
-            )
+            click.echo(f'{msg} ApiHarvestConfig: {name}')
 
     else:
         click.secho(
-            'ERROR: no YML config found in: {filename}'.format(
-                filename=configfile.name
-            )
+            f'ERROR: no YML config found in: {configfile.name}'
         )
 
 
@@ -131,14 +118,14 @@ def init_oai_sets(configfile, verbose):
 def harvest(name, from_date, enqueue, max, verbose):
     """Harvest records from an API repository."""
     if name:
-        click.secho('Harvest api: {name}'.format(name=name), fg='green')
+        click.secho(f'Harvest api: {name}', fg='green')
     if from_date:
         from_date = parser.parse(from_date).isoformat()
     if enqueue:
         async_id = harvest_records.delay(name=name, from_date=from_date,
                                          max=max, verbose=verbose)
         if verbose:
-            click.echo('AsyncResult {id}'.format(id=async_id))
+            click.echo(f'AsyncResult {async_id}')
     else:
         harvest_records(name=name, from_date=from_date,
                         max=max, verbose=verbose)
@@ -151,7 +138,7 @@ def info():
     apis = ApiHarvestConfig.query.all()
     for api in apis:
         click.echo(api.name)
-        click.echo('\tlastrun   : {lastrun}'.format(lastrun=api.lastrun))
-        click.echo('\turl       : {url}'.format(url=api.url))
-        click.echo('\tclassname : {classname}'.format(classname=api.classname))
-        click.echo('\tcode   : {code}'.format(code=api.code))
+        click.echo(f'\tlastrun   : {api.lastrun}')
+        click.echo(f'\turl       : {api.url}')
+        click.echo(f'\tclassname : {api.classname}')
+        click.echo(f'\tcode   : {api.code}')

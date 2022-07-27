@@ -32,18 +32,12 @@ def harvest_records(name, from_date=None, max=0, verbose=False):
     """Harvest records."""
     count = -1
 
-    config = get_apiharvest_object(name=name)
-    if config:
+    if config := get_apiharvest_object(name=name):
         if not from_date:
             from_date = config.lastrun.isoformat()
-        msg = 'API harvest {name} class name: {classname} '.format(
-            name=name,
-            classname=config.classname
-        )
-        msg += 'from date: {from_date} url: {url}'.format(
-            from_date=from_date,
-            url=config.url
-        )
+        msg = f'API harvest {name} class name: {config.classname} '
+        msg += f'from date: {from_date} url: {config.url}'
+
         current_app.logger.info(msg)
         HarvestClass = obj_or_import_string(config.classname)
         harvest = HarvestClass(config=config, verbose=verbose)
@@ -52,24 +46,16 @@ def harvest_records(name, from_date=None, max=0, verbose=False):
             from_date=from_date,
             max=max
         )
-        msg = ('API harvest items={total} available={count_available} |'
-               ' got={count} new={count_new} updated={count_upd}'
-               ' deleted={count_del}'
-               ' from {name}.').format(
-            total=total,
-            count_available=harvest.count_available,
-            count=harvest.count,
-            count_new=harvest.count_new,
-            count_upd=harvest.count_upd,
-            count_del=harvest.count_del,
-            name=name
+        msg = (
+            f'API harvest items={total} available={harvest.count_available} |'
+            f' got={harvest.count} new={harvest.count_new}'
+            f' updated={harvest.count_upd} deleted={harvest.count_del}'
+            f' from {name}.'
         )
         if verbose:
             click.echo(msg)
         current_app.logger.info(msg)
         count = harvest.count
     else:
-        current_app.logger.error('No config found: {name}'.format(
-            name=name
-        ))
+        current_app.logger.error(f'No config found: {name}')
     return count
