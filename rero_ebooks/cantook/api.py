@@ -138,25 +138,16 @@ class ApiCantook():
         """Process records."""
         for record in records:
             self._count += 1
-            if self._count < self._max or self._max == 0:
-                if self._available_ids.get(record['id']):
-                    self.save_record(record)
-                    record, msg = self.create_update_record(record)
-                    if msg == 'UPDATE':
-                        self._count_upd += 1
-                    else:
-                        self._count_new += 1
-                    if self.verbose:
-                        click.echo(self.msg_text(pid=record['pid'],
-                                                 msg=msg))
-                else:
-                    record, msg = self.remove_uri(record)
-                    self._count_del += 1
-                    if self.verbose:
-                        click.echo(self.msg_text(pid=record['pid'],
-                                                 msg=msg))
-            else:
+            if self._count >= self._max and self._max != 0:
                 break
+            self.save_record(record)
+            record, msg = self.create_update_record(record)
+            if msg == 'UPDATE':
+                self._count_upd += 1
+            else:
+                self._count_new += 1
+            if self.verbose:
+                click.echo(self.msg_text(pid=record['pid'], msg=msg))
 
     def verbose_print(self, msg):
         """Print verbose message."""
