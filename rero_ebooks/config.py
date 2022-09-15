@@ -249,7 +249,6 @@ RECORDS_REST_ENDPOINTS = dict(
         indexer_class="invenio_indexer.api:RecordIndexer",
         record_class="rero_ebooks.api:Ebook",
         search_index=None,
-        search_type=None,
         record_serializers={
             'application/json': ('invenio_records_rest.serializers'
                                  ':json_v1_response'),

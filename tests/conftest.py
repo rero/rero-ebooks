@@ -114,5 +114,5 @@ def app_config(app_config):
     app_config['RATELIMIT_STORAGE_URL'] = 'memory://'
     app_config['ACCOUNTS_USE_CELERY'] = False,
     app_config['CACHE_TYPE'] = 'simple'
-    app_config['SEARCH_ELASTIC_HOSTS'] = None
+    app_config['SEARCH_HOSTS'] = None
     return app_config
