@@ -64,19 +64,15 @@ fi
 
 set -e
 # TODO: find out why we have following error:
-# +============================+===========+==========================+==========+
-# | package                    | installed | affected                 | ID       |
-# +============================+===========+==========================+==========+
-# | click                      | 7.1.2     | <8.0.0                   | 47833    |
-# | celery                     | 5.1.2     | <5.2.0                   | 42498    |
-# | celery                     | 5.1.2     | <5.2.2                   | 43738    |
-# | flask-security             | 3.0.0     | <3.1.0                   | 45183    |
-# | flask-security             | 3.0.0     | >0                       | 44501    |
-# | wtforms                    | 2.3.3     | <3.0.0a1                 | 42852    |
-# | flask-caching              | 1.10.1    | <=1.10.1                 | 40459    |
-# | sqlalchemy-utils           | 0.38.2    | >=0.27.0                 | 42194    |
-# +============================+===========+==========================+==========+
-safety check -i 47833 -i 42498 -i 43738 -i 45183 -i 44501 -i 42852 -i 40459 -i 42194
+# -> Vulnerability found in sqlalchemy version 1.4.48
+#    Vulnerability ID: 51668
+# -> Vulnerability found in sqlalchemy-utils version 0.38.3
+#    Vulnerability ID: 42194
+# -> Vulnerability found in wtforms version 2.3.3
+#    Vulnerability ID: 42852
+# -> Vulnerability found in py version 1.11.0
+#    Vulnerability ID: 51457
+safety check -o bare -i 51668 -i 42194 -i 42852 -i 51457
 info_msg "Test pydocstyle:"
 pydocstyle rero_ebooks tests docs
 info_msg "Test isort:"
