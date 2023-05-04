@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.6.1](https://github.com/rero/rero-ebooks/tree/v0.6.1) (2023-05-04)
+
+[Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.6.0...v0.6.1)
+
+**Changes:**
+* dependencies: fix security issues and update flask to >2.0.0 [\#63](https://github.com/rero/rero-ebooks/pull/63) (by @rerowep)
+* various: better code [\#62](https://github.com/rero/rero-ebooks/pull/62) (by @rerowep)
+* dependencies: update the dependencies lock file [\#59](https://github.com/rero/rero-ebooks/pull/59) (by @rerowep)
+* update poetry [\#58](https://github.com/rero/rero-ebooks/pull/58) (by @rerowep)
+* security: Add config: [\#56](https://github.com/rero/rero-ebooks/pull/56) (by @rerowep)
+
 ## [v0.6.0](https://github.com/rero/rero-ebooks/tree/v0.6.0) (2021-04-20)
 
 [Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.5.0...v0.6.0)
