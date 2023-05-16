@@ -37,14 +37,19 @@ def add_set(spec, name, pattern, description='...'):
     :param description: human readable description
     """
     try:
-        oaiset = OAISet(spec=spec, name=name, description=description)
+        oaiset = OAISet(
+            spec=spec,
+            name=name,
+            description=description,
+            system_created=False
+        )
         oaiset.search_pattern = pattern
         db.session.add(oaiset)
         db.session.commit()
         msg = f'OAIset added: {name}'
     except Exception as err:
         db.session.rollback()
-        msg = f'OAIset exist: {name}'
+        msg = f'OAIset exist: {name} {err}'
     return msg
 
 
