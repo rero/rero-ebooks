@@ -60,6 +60,10 @@ project = u'RERO Ebooks'
 copyright = u'2018, RERO'
 author = u'RERO'
 
+# RERO Services
+RERO_SERVICE_ILS = 'https://bib.rero.ch'
+RERO_SERVICE_SONAR = 'https://sonar.rero.ch'
+
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
