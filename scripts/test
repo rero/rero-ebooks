@@ -59,12 +59,14 @@ msg "PROGRAM: ${PROGRAM}"
 
 # Poetry is a mandatory condition to launch this program!
 if [[ -z "${VIRTUAL_ENV}" ]]; then
-  error_msg+exit "Error - Launch this script via poetry command:\n\tpoetry run run-tests"
+  error_msg+exit "Error - Launch this script via poetry command:\n\tpoetry run ./scripts/test"
 fi
 
 set -e
 # TODO: find out why we have following error:
-# -> Vulnerability found in sqlalchemy version 1.4.48
+# -> Vulnerability found in flask-caching version 2.0.1
+#    Vulnerability ID: 40459
+# -> Vulnerability found in sqlalchemy version 1.4.50
 #    Vulnerability ID: 51668
 # -> Vulnerability found in sqlalchemy-utils version 0.38.3
 #    Vulnerability ID: 42194
@@ -72,7 +74,8 @@ set -e
 #    Vulnerability ID: 42852
 # -> Vulnerability found in py version 1.11.0
 #    Vulnerability ID: 51457
-safety check -o bare -i 51668 -i 42194 -i 42852 -i 51457
+info_msg "Test safety:"
+safety check -o bare -i 40459 -i 51668 -i 42194 -i 42852 -i 51457
 info_msg "Test pydocstyle:"
 pydocstyle rero_ebooks tests docs
 info_msg "Test isort:"

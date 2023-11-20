@@ -18,7 +18,7 @@ jobs:
     - name: Setup node
       uses: actions/setup-node@v3
       with:
-        node-version: '12'
+        node-version: '14'
 
     - name: Docker compose up
       run: docker-compose up -d
@@ -51,7 +51,7 @@ jobs:
         poetry run ./scripts/bootstrap --ci --deploy E2E=yes
 
     - name: Run Test
-      run: poetry run ./run-tests.sh
+      run: poetry run ./scripts/test
 
     # - name: Upload Coverage ${{ matrix.tests }}
     #   if: ${{ matrix.dependencies == 'locked' }}

@@ -33,6 +33,8 @@ def _(x):
     return x
 
 
+APP_THEME = ['bootstrap3']
+
 # Rate limiting
 # =============
 RATELIMIT_STORAGE_URL = 'redis://localhost:6379/3'
