@@ -101,7 +101,7 @@ Ready to contribute? Here's how to set up `rero-ebooks` for local development.
 
    .. code-block:: console
 
-      $ ./run-tests.sh
+      $ ./scripts/test
 
    The tests will provide you with test coverage and also check PEP8
    (code style), PEP257 (documentation), flake8 as well as build the Sphinx

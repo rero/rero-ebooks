@@ -97,14 +97,14 @@ Run the test suite via the provided script:
 
 .. code-block:: console
 
-    $ ./run-tests.sh
+    $ ./scripts/test
 
 By default, end-to-end tests are skipped. You can include the E2E tests like
 this:
 
 .. code-block:: console
 
-    $ env E2E=yes ./run-tests.sh
+    $ env E2E=yes ./scripts/test
 
 For more information about end-to-end testing see `pytest-invenio
 <https://pytest-invenio.readthedocs.io/en/latest/usage.html#running-e2e-tests>`_
