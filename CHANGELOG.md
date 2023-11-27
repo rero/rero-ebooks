@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.6.2](https://github.com/rero/rero-ebooks/tree/v0.6.2) (2023-11-27)
+
+[Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.6.1...v0.6.2)
+
+**Fixes:**
+* dependencies: fix security issues [\#76](https://github.com/rero/rero-ebooks/pull/76) (by @rerowep)
+* oaiserver: fix set creation [\#75](https://github.com/rero/rero-ebooks/pull/75) (by @rerowep)
+
 ## [v0.6.1](https://github.com/rero/rero-ebooks/tree/v0.6.1) (2023-05-04)
 
 [Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.6.0...v0.6.1)
