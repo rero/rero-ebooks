@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rero-ebooks"
-version = "0.6.1"
+version = "0.6.2"
 description = "Ebooks repository for RERO."
 authors = ["RERO <software@rero.ch>"]
 license = "GNU Affero General Public License v3.0"
