@@ -23,6 +23,7 @@ from __future__ import absolute_import, print_function
 import json
 
 import click
+from flask import current_app
 from requests import codes as requests_codes
 from requests import get as requests_get
 
@@ -148,7 +149,7 @@ class ApiCantook():
             click.echo(msg)
 
     def init_available_ids(self, from_date):
-        """Get all aavailable pids.
+        """Get all available pids.
 
         from_date: record changed after this date to get
         """
@@ -177,14 +178,18 @@ class ApiCantook():
             current_page = int(request.headers.get('X-Current-Page', 0))
         if total_items != count:
             # we had an ERROR
-            raise ValueError('ERROR to get all available ids')
+            current_app.logger.error(
+                'ERROR to get all available ids '
+                f'total:{total_items} != count:{count}'
+            )
+            # raise ValueError('ERROR to get all available ids')
         return self._available_ids
 
     def get_records(self, from_date, max=0, file=None):
         """Get cantook records.
 
         from_date: record changed after this date to get
-        max: maxium records to fetcher
+        max: maximum records to fetcher
         file: to save the fetched record
         """
         self._count = 0
