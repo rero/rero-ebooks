@@ -30,8 +30,8 @@ from rero_ebooks.apiharvester import cli
 
 FIXTURE_DIR = os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
-    'test_files',
-    )
+    "test_files",
+)
 
 
 def test_config(app, apiharvester_config_vs):
@@ -41,35 +41,33 @@ def test_config(app, apiharvester_config_vs):
 
     res = runner.invoke(cli.info, obj=script_info)
     assert 0 == res.exit_code
-    assert res.output == ''
+    assert res.output == ""
 
     res = runner.invoke(
         cli.api_source_config,
         [
-            'VS',
-            '-U', apiharvester_config_vs['url'],
-            '-n', apiharvester_config_vs['classname'],
-            '-c', apiharvester_config_vs['code'],
-            '-u'
+            "VS",
+            "-U",
+            apiharvester_config_vs["url"],
+            "-n",
+            apiharvester_config_vs["classname"],
+            "-c",
+            apiharvester_config_vs["code"],
+            "-u",
         ],
-        obj=script_info
+        obj=script_info,
     )
     assert 0 == res.exit_code
-    assert res.output == 'Add ApiHarvestConfig: VS\n'
+    assert res.output == "Add ApiHarvestConfig: VS\n"
     config_nj_filename = os.path.join(
         os.path.dirname(os.path.realpath(__file__)),
-        '../data/apisource-nj.yml',
+        "../data/apisource-nj.yml",
     )
     res = runner.invoke(
-        cli.api_source_config_from_file,
-        [
-            config_nj_filename,
-            '-u'
-        ],
-        obj=script_info
+        cli.api_source_config_from_file, [config_nj_filename, "-u"], obj=script_info
     )
     assert 0 == res.exit_code
-    assert res.output == 'Add ApiHarvestConfig: NJ\n'
+    assert res.output == "Add ApiHarvestConfig: NJ\n"
 
 
 # @pytest.mark.skip(
@@ -82,61 +80,60 @@ def test_harvest(app, apiharvester_config_vs, apiharvester_apiresponse_vs):
     script_info = ScriptInfo(create_app=lambda info: app)
 
     """Mock a request response."""
-    responses.add_passthru(
-        re.compile('http://localhost:9200/(.*)')
-    )
-    url = '{url}{static}'.format(
-        url=apiharvester_config_vs.get('url'),
-        static=('/v1/resources.json?start_at=1900-01-01T00:00:00'
-                '&page={page}{available}')
+    responses.add_passthru(re.compile("http://localhost:9200/(.*)"))
+    url = "{url}{static}".format(
+        url=apiharvester_config_vs.get("url"),
+        static=(
+            "/v1/resources.json?start_at=1900-01-01T00:00:00" "&page={page}{available}"
+        ),
     )
     headers1 = {
-        'X-Total-Pages': '1',
-        'X-Total-Items': '1',
-        'X-Per-Page': '20',
-        'X-Current-Page': '1'
+        "X-Total-Pages": "1",
+        "X-Total-Items": "1",
+        "X-Per-Page": "20",
+        "X-Current-Page": "1",
     }
     responses.add(
         responses.GET,
-        url=url.format(page=1, available='&available=1'),
+        url=url.format(page=1, available="&available=1"),
         status=200,
         json=apiharvester_apiresponse_vs,
-        headers=headers1
+        headers=headers1,
     )
     responses.add(
         responses.GET,
-        url=url.format(page=2, available='&available=1'),
+        url=url.format(page=2, available="&available=1"),
         status=400,
     )
     responses.add(
         responses.GET,
-        url=url.format(page=1, available=''),
+        url=url.format(page=1, available=""),
         status=200,
         json=apiharvester_apiresponse_vs,
-        headers=headers1
+        headers=headers1,
     )
     responses.add(
         responses.GET,
-        url=url.format(page=2, available=''),
+        url=url.format(page=2, available=""),
         status=400,
     )
 
-    res = runner.invoke(
-        cli.harvest,
-        [
-            '-n', 'VS', '-v'
-        ],
-        obj=script_info
-    )
+    res = runner.invoke(cli.harvest, ["-n", "VS", "-v"], obj=script_info)
 
-    #assert 0 == res.exit_code
-    assert res.output.strip().split('\n') == [
-        'Harvest api: VS',
-        ('API page: 1 url: http://mediatheque-valais.cantookstation.eu/v1/'
-         'resources.json?start_at=1900-01-01T00:00:00&page=1&available=1'),
-        ('API page: 1 url: http://mediatheque-valais.cantookstation.eu/v1/'
-         'resources.json?start_at=1900-01-01T00:00:00&page=1'),
-        '1: cantook:mv-cantook cantook-immateriel.frO692039 = CREATE',
-        ('API harvest items=1 available=1 |'
-         ' got=1 new=1 updated=0 deleted=0 from VS.')
+    # assert 0 == res.exit_code
+    assert res.output.strip().split("\n") == [
+        "Harvest api: VS",
+        (
+            "API page: 1 url: http://mediatheque-valais.cantookstation.eu/v1/"
+            "resources.json?start_at=1900-01-01T00:00:00&page=1&available=1"
+        ),
+        (
+            "API page: 1 url: http://mediatheque-valais.cantookstation.eu/v1/"
+            "resources.json?start_at=1900-01-01T00:00:00&page=1"
+        ),
+        "1: cantook:mv-cantook cantook-immateriel.frO692039 = CREATE",
+        (
+            "API harvest items=1 available=1 |"
+            " got=1 new=1 updated=0 deleted=0 from VS."
+        ),
     ]

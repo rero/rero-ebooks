@@ -19,17 +19,17 @@
 
 from dojson import Overdo
 
-marc21 = Overdo(entry_point_group='rero_ebooks.marc21')
+marc21 = Overdo(entry_point_group="rero_ebooks.marc21")
 """MARC 21 Format for Bibliographic Data."""
 
 
-@marc21.over('__order__', '__order__')
+@marc21.over("__order__", "__order__")
 def order(self, key, value):
     """Preserve order of datafields."""
-    order = []
+    data_order = []
     for field in value:
         name = marc21.index.query(field)
         name = name[0] if name else field
-        order.append(name)
+        data_order.append(name)
 
-    return order
+    return data_order

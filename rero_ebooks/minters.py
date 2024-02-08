@@ -24,22 +24,18 @@ from .providers import EbookPidProvider
 
 def build_ebook_pid(data, source):
     """Build ebook pid from record."""
-    assert 'other_standard_identifier' in data
-    assert (
-        'standard_number_or_code'
-        in data.get('other_standard_identifier')[0]
-    )
+    assert "other_standard_identifier" in data
+    assert "standard_number_or_code" in data.get("other_standard_identifier")[0]
 
     pid_value = (
-        data.get('other_standard_identifier')[0]
-        .get('standard_number_or_code')
-        .split('/')[-1]
+        data.get("other_standard_identifier")[0]
+        .get("standard_number_or_code")
+        .split("/")[-1]
     )
-    return f'{source}-{pid_value}'
+    return f"{source}-{pid_value}"
 
 
-def ebook_pid_minter(record_uuid, data, source, pid_key='pid',
-                     object_type='rec'):
+def ebook_pid_minter(record_uuid, data, source, pid_key="pid", object_type="rec"):
     """Mint record identifiers.
 
     This is a minter specific for ebooks.
@@ -62,7 +58,8 @@ def ebook_pid_minter(record_uuid, data, source, pid_key='pid',
     assert pid_key not in data
     pid_value = build_ebook_pid(data, source)
     provider = EbookPidProvider.create(
-        object_type='rec', pid_value=pid_value, object_uuid=record_uuid)
+        object_type="rec", pid_value=pid_value, object_uuid=record_uuid
+    )
     data[pid_key] = pid_value
     oaiid_minter(record_uuid, data)
     return provider.pid

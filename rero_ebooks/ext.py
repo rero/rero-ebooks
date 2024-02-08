@@ -31,10 +31,10 @@ class ReroEBooks(object):
     def init_app(self, app):
         """Flask application initialization."""
         self.init_config(app)
-        app.extensions['reroebooks-app'] = self
+        app.extensions["reroebooks-app"] = self
 
     def init_config(self, app):
         """Initialize configuration."""
         for k in dir(config):
-            if k.startswith('REROEBOOKS_APP_'):
+            if k.startswith("REROEBOOKS_APP_"):
                 app.config.setdefault(k, getattr(config, k))

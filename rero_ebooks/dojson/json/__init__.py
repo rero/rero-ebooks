@@ -20,4 +20,4 @@
 
 from .model import cantook_json
 
-__all__ = ('cantook_json')
+__all__ = "cantook_json"

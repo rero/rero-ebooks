@@ -31,22 +31,22 @@ class Underdo(Overdo):
         res = super(Underdo, self).do(blob, ignore_missing, exception_handlers)
 
         order = [
-            'leader',
-            'control_number',
-            'fixed_length_data_elements',
-            'international_standard_book_number',
-            'other_standard_identifier',
-            'system_control_number',
-            'language_code',
-            'title_statement',
-            'production_publication_distribution_manufacture'  # + next line
-            '_and_copyright_notice',
-            'physical_description',
-            'page_count',
-            'summary',
-            'index_term_uncontrolled',
-            'added_entry_personal_name',
-            'electronic_location_and_access',
+            "leader",
+            "control_number",
+            "fixed_length_data_elements",
+            "international_standard_book_number",
+            "other_standard_identifier",
+            "system_control_number",
+            "language_code",
+            "title_statement",
+            "production_publication_distribution_manufacture"  # + next line
+            "_and_copyright_notice",
+            "physical_description",
+            "page_count",
+            "summary",
+            "index_term_uncontrolled",
+            "added_entry_personal_name",
+            "electronic_location_and_access",
         ]
 
         # get all keys from res as list
@@ -56,11 +56,11 @@ class Underdo(Overdo):
         # correct list for multiple entries
         all_keys = []
         for key in keys:
-            if type(res[key]) == list:
+            if isinstance(res[key], list):
                 all_keys.extend(key for _ in range(len(res[key])))
             else:
                 all_keys.append(key)
-        res['__order__'] = all_keys
+        res["__order__"] = all_keys
 
         return res
 
@@ -69,80 +69,97 @@ cantook_json = Underdo()
 """rero_ebook Format for Cantook Data."""
 
 
-@cantook_json.over('system_control_number', 'id')
+GENERIC_008 = "000000n########xx#|||||||||||||||||###|u"
+
+
+@cantook_json.over("system_control_number", "id")
 def system_control_number(self, key, value):
     """System control number transformation.
 
-    The id field is transforme as system_control_number and
+    The id field is transform as system_control_number and
     other_standard_identifier
 
     The system_control_number is used in the Marc21 035 field.
     The other_standard_identifier is used in the Marc21 024 field.
     A Marc21 Leader data is added.
     """
-    self['leader'] = {
-        'base_address_of_data': 0,
-        'bibliographic_level': 'monograph_item',
-        'character_coding_scheme': 'ucs_unicode',
-        'descriptive_cataloging_form': 'unknown',
-        'encoding_level': 'not_applicable',
-        'indicator_count': 2,
-        'length_of_the_implementation_defined_portion': 0,
-        'length_of_the_length_of_field_portion': 4,
-        'length_of_the_starting_character_position_portion': 5,
-        'record_length': 0,
-        'record_status': 'corrected_or_revised',
-        'subfield_code_count': 2,
-        'type_of_record': 'language_material',
-        'undefined': 0
+    self["leader"] = {
+        "base_address_of_data": 0,
+        "bibliographic_level": "monograph_item",
+        "character_coding_scheme": "ucs_unicode",
+        "descriptive_cataloging_form": "unknown",
+        "encoding_level": "not_applicable",
+        "indicator_count": 2,
+        "length_of_the_implementation_defined_portion": 0,
+        "length_of_the_length_of_field_portion": 4,
+        "length_of_the_starting_character_position_portion": 5,
+        "record_length": 0,
+        "record_status": "corrected_or_revised",
+        "subfield_code_count": 2,
+        "type_of_record": "language_material",
+        "undefined": 0,
     }
-    self['other_standard_identifier'] = [{
-        'standard_number_or_code': f'cantook/{value}',
-        'type_of_standard_number_or_code':
-            'Unspecified type of standard number or code'
-    }]
-    return {'system_control_number': f'cantook-{value}'}
+    self["other_standard_identifier"] = [
+        {
+            "standard_number_or_code": f"cantook/{value}",
+            "type_of_standard_number_or_code": "Unspecified type of standard number or code",
+        }
+    ]
+    self["fixed_length_data_elements"] = GENERIC_008
+    return {"system_control_number": f"cantook-{value}"}
 
 
-@cantook_json.over('language_code', 'languages|translated_from')
+@cantook_json.over("fixed_length_data_elements", "fiction")
+@utils.ignore_value
+def is_fiction(self, key, value):
+    """Is fiction.
+
+    Fiction is set in Marc21 008 33.
+    """
+    if value:
+        self["fixed_length_data_elements"] = GENERIC_008
+        self["fixed_length_data_elements"][33] = 1
+
+
+@cantook_json.over("language_code", "languages|translated_from")
 def language_code(self, key, value):
     """Language codes transformation.
 
     The language codes are used in the Marc21 041 field.
     """
-    result = self.get('language_code', [])
+    result = self.get("language_code", [])
     if value:
         for lang in utils.force_list(value):
-            if key == 'languages':
+            if key == "languages":
                 result.append(
-                    {'language_code_of_text_sound_track_or_separate_title':
-                        lang}
+                    {"language_code_of_text_sound_track_or_separate_title": lang}
                 )
             else:
-                result.append({
-                    'language_code_of_original': lang,
-                    'translation_indication':
-                        'Item is or includes a translation'
-                })
+                result.append(
+                    {
+                        "language_code_of_original": lang,
+                        "translation_indication": "Item is or includes a translation",
+                    }
+                )
     return result
 
 
-@cantook_json.over('title_statement', 'title|subtitle')
+@cantook_json.over("title_statement", "title|subtitle")
 def title_statement(self, key, value):
     """Title statement transformation.
 
     The title and subtitle are used in the Marc21 245 field.
     """
-    return_value = self.get('title_statement', {})
+    return_value = self.get("title_statement", {})
     if value:
-        if key == 'title':
-            return_value['title'] = value
-        elif key == 'subtitle':
-            return_value['remainder_of_title'] = value
+        if key == "title":
+            return_value["title"] = value
+        elif key == "subtitle":
+            return_value["remainder_of_title"] = value
     return return_value
 
 
-@cantook_json.over(None, 'publisher_name')
+@cantook_json.over(None, "publisher_name")
 @utils.filter_values
 @utils.ignore_value
 def publisher_name(self, key, value):
@@ -151,18 +168,17 @@ def publisher_name(self, key, value):
     The publisher_name is used in the Marc21 264 field.
     """
     self.setdefault(
-        'production_publication_distribution_manufacture_and_copyright_notice',
-        {}
+        "production_publication_distribution_manufacture_and_copyright_notice", {}
     )
-    self[
-        'production_publication_distribution_manufacture_and_copyright_notice'
-    ].update({
-        'name_of_producer_publisher_distributor_manufacturer': value,
-        'function_of_entity': 'Publication'
-    })
+    self["production_publication_distribution_manufacture_and_copyright_notice"].update(
+        {
+            "name_of_producer_publisher_distributor_manufacturer": value,
+            "function_of_entity": "Publication",
+        }
+    )
 
 
-@cantook_json.over('physical_description', 'page_count')
+@cantook_json.over("physical_description", "page_count")
 @utils.for_each_value
 @utils.filter_values
 @utils.ignore_value
@@ -172,18 +188,20 @@ def physical_description(self, key, value):
     extent (Number of physical pages, volumes...): Marc21 300 $a field.
     """
     if int(value) != 0:
-        pages = f'{value} pages'
-        return {'extent': pages}
+        pages = f"{value} pages"
+        return {"extent": pages}
+
+
 #    return {'extent': f'{value}'} if int(value) != 0 else None
 
 
-@cantook_json.over('summary', 'summary')
+@cantook_json.over("summary", "summary")
 def summary(self, key, value):
     """Summary transformation."""
-    return {'summary': value}
+    return {"summary": value}
 
 
-@cantook_json.over('index_term_uncontrolled', 'classifications')
+@cantook_json.over("index_term_uncontrolled", "classifications")
 def index_term_uncontrolled(self, key, value):
     """Index term uncontrolled transformation.
 
@@ -191,28 +209,27 @@ def index_term_uncontrolled(self, key, value):
     """
     index_term_uncontrolled = []
     for classification in value:
-        for caption in classification.get('captions', []):
+        for caption in classification.get("captions", []):
             uncontrolled_term = []
             order = []
-            fr = caption.get('fr')
+            fr = caption.get("fr")
             need_to_append_term = False
             if fr:
                 uncontrolled_term.append(fr)
-                order.append('uncontrolled_term')
+                order.append("uncontrolled_term")
                 need_to_append_term = True
-            if en := caption.get('en'):
+            if en := caption.get("en"):
                 uncontrolled_term.append(en)
-                order.append('uncontrolled_term')
+                order.append("uncontrolled_term")
                 need_to_append_term = True
             if need_to_append_term:
-                index_term_uncontrolled.append({
-                    '__order__': order,
-                    'uncontrolled_term': uncontrolled_term
-                })
+                index_term_uncontrolled.append(
+                    {"__order__": order, "uncontrolled_term": uncontrolled_term}
+                )
     return index_term_uncontrolled
 
 
-@cantook_json.over('added_entry_personal_name', 'contributors')
+@cantook_json.over("added_entry_personal_name", "contributors")
 @utils.for_each_value
 @utils.filter_values
 def added_entry_personal_name(self, key, value):
@@ -221,72 +238,72 @@ def added_entry_personal_name(self, key, value):
     added_entry_personal_name: Marc21 700 field.
     """
     names = []
-    if value.get('first_name'):
-        names.append(value.get('first_name'))
-    if value.get('last_name'):
-        names.insert(0, value.get('last_name'))
+    if value.get("first_name"):
+        names.append(value.get("first_name"))
+    if value.get("last_name"):
+        names.insert(0, value.get("last_name"))
     result = {
-        'type_of_personal_name_entry_element': 'Forename',
-        'personal_name': ', '.join(names)
+        "type_of_personal_name_entry_element": "Forename",
+        "personal_name": ", ".join(names),
     }
 
     if len(names) > 1:
-        result['type_of_personal_name_entry_element'] = 'Surname'
-    if value.get('nature') == 'author':
-        result['relator_code'] = 'aut'
-    elif value.get('nature') == 'translated_by':
-        result['relator_code'] = 'trl'
+        result["type_of_personal_name_entry_element"] = "Surname"
+    if value.get("nature") == "author":
+        result["relator_code"] = "aut"
+    elif value.get("nature") == "translated_by":
+        result["relator_code"] = "trl"
     return result
 
 
-@cantook_json.over('electronic_location_and_access', 'cover|flipbook|link')
+@cantook_json.over("electronic_location_and_access", "cover|flipbook|link")
 def electronic_location_and_access_from_cover_flipbook_link(self, key, value):
     """Transformation of cover, flipbook and link data.
 
     electronic_location_and_access: Marc21 856 field.
     """
-    result = self.get('electronic_location_and_access', [])
-    if value and key == 'cover':
+    result = self.get("electronic_location_and_access", [])
+    if value and key == "cover":
         result.append(
             {
-                'uniform_resource_identifier': value,
-                'materials_specified': 'Image de couverture',
-                'access_method': 'HTTP',
-                'relationship': 'Related resource'
+                "uniform_resource_identifier": value,
+                "materials_specified": "Image de couverture",
+                "access_method": "HTTP",
+                "relationship": "Related resource",
             }
         )
-    elif value and key == 'flipbook':
+    elif value and key == "flipbook":
         result.append(
             {
-                'uniform_resource_identifier': value,
-                'materials_specified': 'Extrait',
-                'access_method': 'HTTP',
-                'relationship': 'Related resource'
+                "uniform_resource_identifier": value,
+                "materials_specified": "Extrait",
+                "access_method": "HTTP",
+                "relationship": "Related resource",
             }
         )
-    elif key == 'link':
+    elif key == "link":
         need_to_append_link_data = True
         for data in result:
-            if data.get('electronic_format_type'):
-                data['uniform_resource_identifier'] = value
-                data['materials_specified'] = 'Texte intégral'
-                data['access_method'] = 'HTTP'
-                data['relationship'] = 'Resource'
+            if data.get("electronic_format_type"):
+                data["uniform_resource_identifier"] = value
+                data["materials_specified"] = "Texte intégral"
+                data["access_method"] = "HTTP"
+                data["relationship"] = "Resource"
                 need_to_append_link_data = False
         if need_to_append_link_data:
             result.append(
                 {
                     # 'electronic_format_type' : is added from media:nature
-                    'uniform_resource_identifier': value,
-                    'materials_specified': 'Texte intégral',
-                    'access_method': 'HTTP',
-                    'relationship': 'Resource'
+                    "uniform_resource_identifier": value,
+                    "materials_specified": "Texte intégral",
+                    "access_method": "HTTP",
+                    "relationship": "Resource",
                 }
             )
     return result
 
 
-@cantook_json.over(None, 'media')
+@cantook_json.over(None, "media")
 @utils.for_each_value
 @utils.filter_values
 @utils.ignore_value
@@ -300,31 +317,31 @@ def transformation_from_media(self, key, value):
     :date_of_production_publication_distribution_manufacture is added
     (Marc21 264 $c field).
     """
-    if value.get('key'):
-        self['international_standard_book_number'] = {
-            'international_standard_book_number': value.get('key')
+    if value.get("key"):
+        self["international_standard_book_number"] = {
+            "international_standard_book_number": value.get("key")
         }
-    if value.get('nature'):
-        self.setdefault('electronic_location_and_access', [])
-        location_and_access = self['electronic_location_and_access']
+    if value.get("nature"):
+        self.setdefault("electronic_location_and_access", [])
+        location_and_access = self["electronic_location_and_access"]
         need_to_append_link_data = True
         for data in location_and_access:
-            if data.get('relationship') == 'Resource':
-                data['electronic_format_type'] = value.get('nature')
+            if data.get("relationship") == "Resource":
+                data["electronic_format_type"] = value.get("nature")
                 need_to_append_link_data = False
         if need_to_append_link_data:
-            location_and_access.append({
-                'electronic_format_type': value.get('nature')})
-    if value.get('issued_on'):
+            location_and_access.append({"electronic_format_type": value.get("nature")})
+    if value.get("issued_on"):
         self.setdefault(
-            'production_publication_distribution_manufacture'
-            '_and_copyright_notice',
-            {}
+            "production_publication_distribution_manufacture" "_and_copyright_notice",
+            {},
         )
-        self['production_publication_distribution_manufacture'
-             '_and_copyright_notice'].update(
+        self[
+            "production_publication_distribution_manufacture" "_and_copyright_notice"
+        ].update(
             {
-                'date_of_production_publication_distribution_manufacture'
-                '_or_copyright_notice': value.get('issued_on')[:4]
-            })
+                "date_of_production_publication_distribution_manufacture"
+                "_or_copyright_notice": value.get("issued_on")[:4]
+            }
+        )
     return None

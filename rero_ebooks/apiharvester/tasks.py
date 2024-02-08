@@ -35,27 +35,24 @@ def harvest_records(name, from_date=None, max=0, verbose=False):
     if config := get_apiharvest_object(name=name):
         if not from_date:
             from_date = config.lastrun.isoformat()
-        msg = f'API harvest {name} class name: {config.classname} '
-        msg += f'from date: {from_date} url: {config.url}'
+        msg = f"API harvest {name} class name: {config.classname} "
+        msg += f"from date: {from_date} url: {config.url}"
 
         current_app.logger.info(msg)
         HarvestClass = obj_or_import_string(config.classname)
         harvest = HarvestClass(config=config, verbose=verbose)
         config.update_lastrun()
-        total = harvest.get_records(
-            from_date=from_date,
-            max=max
-        )
+        total = harvest.get_records(from_date=from_date, max=max)
         msg = (
-            f'API harvest items={total} available={harvest.count_available} |'
-            f' got={harvest.count} new={harvest.count_new}'
-            f' updated={harvest.count_upd} deleted={harvest.count_del}'
-            f' from {name}.'
+            f"API harvest items={total} available={harvest.count_available} |"
+            f" got={harvest.count} new={harvest.count_new}"
+            f" updated={harvest.count_upd} deleted={harvest.count_del}"
+            f" from {name}."
         )
         if verbose:
             click.echo(msg)
         current_app.logger.info(msg)
         count = harvest.count
     else:
-        current_app.logger.error(f'No config found: {name}')
+        current_app.logger.error(f"No config found: {name}")
     return count

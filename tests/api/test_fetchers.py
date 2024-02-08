@@ -26,15 +26,16 @@ from rero_ebooks.minters import ebook_pid_minter
 def test_item_id_fetcher(base_app, db):
     """Test fetcher."""
     data = {
-        'other_standard_identifier': [{
-            'standard_number_or_code':
-                'http://cantookstation.com/resources/55373535cdd23087a9789b72'
-        }]
+        "other_standard_identifier": [
+            {
+                "standard_number_or_code": "http://cantookstation.com/resources/55373535cdd23087a9789b72"
+            }
+        ]
     }
     # first record
     rec_uuid = uuid4()
-    ebook_pid_minter(rec_uuid, data, 'cantook')
+    ebook_pid_minter(rec_uuid, data, "cantook")
     fetched_pid = ebook_pid_fetcher(rec_uuid, data)
     assert fetched_pid.pid_type == fetched_pid.provider.pid_type
-    assert fetched_pid.pid_type == 'ebook'
-    assert fetched_pid.pid_value == 'cantook-55373535cdd23087a9789b72'
+    assert fetched_pid.pid_type == "ebook"
+    assert fetched_pid.pid_value == "cantook-55373535cdd23087a9789b72"

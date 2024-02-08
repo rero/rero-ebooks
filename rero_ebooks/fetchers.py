@@ -21,11 +21,11 @@ from collections import namedtuple
 
 from .providers import EbookPidProvider
 
-FetchedPID = namedtuple('FetchedPID', ['provider', 'pid_type', 'pid_value'])
+FetchedPID = namedtuple("FetchedPID", ["provider", "pid_type", "pid_value"])
 """A pid fetcher."""
 
 
-def ebook_pid_fetcher(record_uuid, data, pid_key='pid'):
+def ebook_pid_fetcher(record_uuid, data, pid_key="pid"):
     """Fetch a ebook's identifiers.
 
     :param record_uuid: The record UUID.
