@@ -27,16 +27,16 @@ from invenio_db import db
 class ApiHarvestConfig(db.Model):
     """Represents a ApiHarvestConfig record."""
 
-    __tablename__ = 'apiharvest_config'
+    __tablename__ = "apiharvest_config"
 
     id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(255), nullable=False, server_default='')
+    url = db.Column(db.String(255), nullable=False, server_default="")
     name = db.Column(db.String(255), nullable=False)
     classname = db.Column(db.String(255), nullable=False)
     code = db.Column(db.Text, nullable=True)
-    lastrun = db.Column(db.DateTime, default=datetime.datetime(
-        year=1900, month=1, day=1
-    ), nullable=True)
+    lastrun = db.Column(
+        db.DateTime, default=datetime.datetime(year=1900, month=1, day=1), nullable=True
+    )
 
     def save(self):
         """Save object to persistent storage."""
@@ -49,4 +49,4 @@ class ApiHarvestConfig(db.Model):
         self.save()
 
 
-__all__ = ('ApiHarvestConfig',)
+__all__ = ("ApiHarvestConfig",)

@@ -21,5 +21,5 @@ import json
 
 
 def dump(iterator):
-    """Dump JSON from iteraror."""
+    """Dump JSON from iterator."""
     return json.dumps(list(iterator), indent=2)

@@ -24,7 +24,7 @@ from invenio_pidstore.providers.base import BaseProvider
 class EbookPidProvider(BaseProvider):
     """Ebooks identifier provider."""
 
-    pid_type = 'ebook'
+    pid_type = "ebook"
     """Type of persistent identifier."""
 
     pid_provider = None

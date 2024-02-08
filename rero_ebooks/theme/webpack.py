@@ -26,13 +26,21 @@ You include one of the bundles in a page like the example below (using
 
 """
 
-from flask_webpackext import WebpackBundle
+from flask_webpackext import WebpackBundle, WebpackBundleProject
+from pywebpack import bundles_from_entry_point
+
+project = WebpackBundleProject(
+    __name__,
+    project_folder="webpack_assets",
+    config_path="build/config.json",
+    bundles=bundles_from_entry_point("invenio_assets.webpack"),
+)
 
 theme = WebpackBundle(
     __name__,
-    'assets',
+    "assets",
     entry={
-        'rero_ebooks-theme': './scss/rero_ebooks/ebooks.scss',
+        "rero_ebooks-theme": "./scss/rero_ebooks/ebooks.scss",
     },
-    dependencies={
-    })
+    dependencies={},
+)

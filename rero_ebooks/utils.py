@@ -23,8 +23,7 @@ from invenio_db import db
 from invenio_oaiharvester.models import OAIHarvestConfig
 
 
-def add_oai_source(name, baseurl, metadataprefix='marc21',
-                   setspecs='', comment=''):
+def add_oai_source(name, baseurl, metadataprefix="marc21", setspecs="", comment=""):
     """Add OAIHarvestConfig."""
     with current_app.app_context():
         if OAIHarvestConfig.query.filter_by(name=name).count() == 0:
@@ -33,7 +32,7 @@ def add_oai_source(name, baseurl, metadataprefix='marc21',
                 baseurl=baseurl,
                 metadataprefix=metadataprefix,
                 setspecs=setspecs,
-                comment=comment
+                comment=comment,
             )
             source.save()
             db.session.commit()

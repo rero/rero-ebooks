@@ -34,36 +34,35 @@ invenio-oaiharvester = { git = "https://github.com/inveniosoftware/invenio-oaiha
 invenio-search = {version = ">=2.1.0,<3.0.0", extras = ["elasticsearch7"]}
 
 # Invenio core modules
-invenio-app = ">=1.3.4,<1.4.0"
-invenio-base = ">=1.2.16,<1.3.0"
-invenio-cache = ">=1.1.1,<1.2.0"
-invenio-celery = ">=1.2.5,<1.3.0"
-invenio-config = ">=1.0.3,<1.1.0"
+invenio-app = ">=1.4.0,<2.0.0"
+invenio-base = ">=1.3.0,<2.0.0"
+invenio-cache = ">=1.1.1,<2.0.0"
+invenio-celery = ">=1.2.5,<2.0.0"
+invenio-config = ">=1.0.3,<2.0.0"
 invenio-i18n = ">=2.0.0,<3.0.0"
-invenio-db = {version = ">=1.1.0,<1.2.0", extras = ["postgresql"]}
+invenio-db = {version = ">=1.1.0,<2.0.0", extras = ["postgresql"]}
 # Invenio base bundle
 invenio-admin = ">=1.4.0,<1.5.0"
-# invenio-assets = ">=3.0.0,<4.0.0" # error patch-package 6.5.1 semantic-ui-less
-invenio-assets = ">=2.0.0,<3.0.0"
+invenio-assets = ">=3.0.0,<4.0.0"
 invenio-formatter = ">=2.0.0,<3.0.0"
-invenio-logging = {version = ">=2.0.0,<3.0.0"}
+invenio-logging = ">=2.0.0,<3.0.0"
 invenio-mail = ">=2.0.0,<3.0.0"
-invenio-rest = ">=1.3.0,<1.4.0"
-invenio-theme = ">=2.5.7,<3.0.0"
+invenio-rest = ">=1.3.0,<2.0.0"
+invenio-theme = ">=3.0.0,<4.0.0"
 # Invenio auth bundle
 invenio-access = ">=2.0.0,<3.0.0"
-invenio-accounts = ">=3.5.2,<4.0.0"
+invenio-accounts = ">=5.0.0,<6.0.0"
 invenio-oauth2server = ">=2.0.0,<3.0.0"
-invenio-oauthclient = ">=3.0.0,<4.0.0"
-invenio-userprofiles = ">=2.2.0,<3.0.0"
+invenio-oauthclient = ">=4.0.0,<5.0.0"
+invenio-userprofiles = ">=3.0.0,<4.0.0"
 # Invenio metadata bundle
 invenio-indexer = ">=2.2.0,<3.0.0"
-invenio-jsonschemas = ">=1.1.4,<1.2.0"
-invenio-oaiserver = ">=2.2.0,<2.3.0"
-invenio-pidstore = ">=1.3.0,<1.4.0"
-invenio-records-rest = ">=2.2.0,<2.3.0"
-invenio-records-ui = ">=1.2.0,<1.3.0"
-invenio-records = "2.1.0,<2.2.0"
+invenio-jsonschemas = ">=1.1.4,<2.0.0"
+invenio-oaiserver = ">=2.2.0,<3.0.0"
+invenio-pidstore = ">=1.3.0,<2.0.0"
+invenio-records-rest = ">=2.2.0,<3.0.0"
+invenio-records-ui = ">=1.2.0,<2.0.0"
+invenio-records = "2.1.0,<3.0.0"
 #invenio-search-ui = ">=2.4.0,<3.0.0"
 # Pinned due to before_first_request deprecation https://flask.palletsprojects.com/en/2.2.x/api/#flask.Flask.before_first_request
 Flask = ">=2.2.0,<2.3.0"
@@ -80,7 +79,6 @@ responses = "*"
 
 ## Deployment
 python-dotenv = ">=0.13.0"
-pydocstyle = ">=6.1.1"
 
 ## RERO ILS specific python modules
 poethepoet = "*"
@@ -92,6 +90,8 @@ poethepoet = "*"
 #----------------------------------------------------------
 ## Default from Invenio
 pytest-invenio = ">=2.1.6,<3.0.0"
+pydocstyle = ">=6.1.1"
+pytest-black = ">=0.3.2"
 Sphinx = ">=4.5.0"
 ## RERO ILS specific python packages
 safety = ">=1.8,<3.0.0"
@@ -173,6 +173,9 @@ tests_debug = {cmd = "./scripts/pytest -s --v --no-cov", help = "pytest -s --v -
 server = {cmd = "./scripts/server", help = "Starts the server "}
 setup = {cmd = "./scripts/setup", help = "Runs setup"}
 update = {cmd = "./scripts/update", help = "Runs update"}
+
+[tool.isort]
+profile = "black"
 
 [build-system]
 requires = ["poetry>=0.12"]

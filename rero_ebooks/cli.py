@@ -29,75 +29,76 @@ from invenio_oaiharvester.models import OAIHarvestConfig
 from .utils import add_oai_source
 
 
-@oaiharvester.command('addsource')
-@click.argument('name')
-@click.argument('baseurl')
-@click.option('-m', '--metadataprefix', default='marc21',
-              help='The prefix for the metadata')
-@click.option('-s', '--setspecs', default='',
-              help='The ‘set’ criteria for the harvesting')
-@click.option('-c', '--comment', default='',
-              help='Comment')
+@oaiharvester.command("addsource")
+@click.argument("name")
+@click.argument("baseurl")
+@click.option(
+    "-m", "--metadataprefix", default="marc21", help="The prefix for the metadata"
+)
+@click.option(
+    "-s", "--setspecs", default="", help="The ‘set’ criteria for the harvesting"
+)
+@click.option("-c", "--comment", default="", help="Comment")
 @with_appcontext
 def add_oai_source_config(name, baseurl, metadataprefix, setspecs, comment):
     """Add OAIHarvestConfig."""
-    click.echo(f'Add OAIHarvestConfig: {name} ', nl=False)
+    click.echo(f"Add OAIHarvestConfig: {name} ", nl=False)
     if add_oai_source(
         name=name,
         baseurl=baseurl,
         metadataprefix=metadataprefix,
         setspecs=setspecs,
-        comment=comment
+        comment=comment,
     ):
-        click.secho('Ok', fg='green')
+        click.secho("Ok", fg="green")
     else:
-        click.secho('Exist', fg='red')
+        click.secho("Exist", fg="red")
 
 
-@oaiharvester.command('initconfig')
-@click.argument('configfile', type=click.File('rb'))
+@oaiharvester.command("initconfig")
+@click.argument("configfile", type=click.File("rb"))
 @with_appcontext
 def init_oai_harvest_config(configfile):
     """Init OAIHarvestConfig."""
     configs = yaml.load(configfile, Loader=yaml.FullLoader)
     for name, values in sorted(configs.items()):
-        baseurl = values['baseurl']
-        metadataprefix = values.get('metadataprefix', 'marc21')
-        setspecs = values.get('setspecs', '')
-        comment = values.get('comment', '')
-        click.echo(f'Add OAIHarvestConfig: {name} {baseurl} ', nl=False)
+        baseurl = values["baseurl"]
+        metadataprefix = values.get("metadataprefix", "marc21")
+        setspecs = values.get("setspecs", "")
+        comment = values.get("comment", "")
+        click.echo(f"Add OAIHarvestConfig: {name} {baseurl} ", nl=False)
         if add_oai_source(
             name=name,
             baseurl=baseurl,
             metadataprefix=metadataprefix,
             setspecs=setspecs,
-            comment=comment
+            comment=comment,
         ):
-            click.secho('Ok', fg='green')
+            click.secho("Ok", fg="green")
         else:
-            click.secho('Exist', fg='red')
+            click.secho("Exist", fg="red")
 
 
-@oaiharvester.command('schedules')
+@oaiharvester.command("schedules")
 @with_appcontext
 def schedules():
     """List harvesting schedules."""
-    celery_ext = current_app.extensions.get('invenio-celery')
+    celery_ext = current_app.extensions.get("invenio-celery")
     for key, value in celery_ext.celery.conf.beat_schedule.items():
-        click.echo(key + '\t', nl=False)
+        click.echo(key + "\t", nl=False)
         click.echo(value)
 
 
-@oaiharvester.command('info')
+@oaiharvester.command("info")
 @with_appcontext
 def info():
     """List infos for tasks."""
     oais = OAIHarvestConfig.query.all()
     for oai in oais:
         click.echo(oai.name)
-        click.echo('\tlastrun       : ', nl=False)
+        click.echo("\tlastrun       : ", nl=False)
         click.echo(oai.lastrun)
-        click.echo('\tbaseurl       : ' + oai.baseurl)
-        click.echo('\tmetadataprefix: ' + oai.metadataprefix)
-        click.echo('\tcomment       : ' + oai.comment)
-        click.echo('\tsetspecs      : ' + oai.setspecs)
+        click.echo("\tbaseurl       : " + oai.baseurl)
+        click.echo("\tmetadataprefix: " + oai.metadataprefix)
+        click.echo("\tcomment       : " + oai.comment)
+        click.echo("\tsetspecs      : " + oai.setspecs)
