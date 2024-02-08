@@ -80,7 +80,8 @@ THEME_FRONTPAGE_TEMPLATE = 'rero_ebooks/frontpage.html'
 THEME_FOOTER_TEMPLATE = FOOTER_TEMPLATE
 #: Header base template.
 THEME_HEADER_TEMPLATE = HEADER_TEMPLATE
-
+#: Template for error pages.
+THEME_ERROR_TEMPLATE = 'rero_ebooks/page_error.html'
 
 # Email configuration
 # ===================
