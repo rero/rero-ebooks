@@ -83,7 +83,7 @@ THEME_HEADER_TEMPLATE = HEADER_TEMPLATE
 #: Template for error pages.
 THEME_ERROR_TEMPLATE = "rero_ebooks/page_error.html"
 
-WEBPACKEXT_PROJECT = 'rero_ebooks.theme.webpack:project'
+WEBPACKEXT_PROJECT = "rero_ebooks.theme.webpack:project"
 
 # Email configuration
 # ===================

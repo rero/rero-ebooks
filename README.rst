@@ -19,16 +19,17 @@
  RERO Ebooks
 =============
 
-.. image:: https://img.shields.io/travis/rero/rero-ebooks.svg
-        :target: https://travis-ci.org/rero/rero-ebooks
+.. image:: https://github.com/rero/rero-ebooks/workflows/build/badge.svg
+        :alt: Github actions status
+        :target: https://github.com/rero/rero-ebooks/actions?query=workflow%3Abuild
 
-.. image:: https://img.shields.io/coveralls/rero/rero-ebooks.svg
-        :target: https://coveralls.io/r/rero/rero-ebooks
+.. image:: https://img.shields.io/github/tag/rero/rero-ebooks.svg
+        :alt: Release Number
+        :target: https://github.com/rero/rero-ebooks/releases/latest
 
-.. image:: https://img.shields.io/github/license/rero/rero-ebooks.svg
-        :target: https://github.com/rero/rero-ebooks/blob/master/LICENSE
+.. image:: https://img.shields.io/badge/License-AGPL%20v3-blue.svg
+        :alt: License
+        :target: http://www.gnu.org/licenses/agpl-3.0.html
 
 Ebooks repository for RERO.
 
-Further documentation is available on
-https://rero-ebooks.readthedocs.io/

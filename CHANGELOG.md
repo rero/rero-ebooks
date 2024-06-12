@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.7.0](https://github.com/rero/rero-ebooks/tree/v0.7.0) (2024-06-12)
+
+[Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.6.2...v0.7.0)
+
+**Fixes:**
+* dependencies: fix security issues [\#78](https://github.com/rero/rero-ebooks/pull/78) (by @rerowep)
+* bump dependencies, use black for tests, add 008 field [\#83](https://github.com/rero/rero-ebooks/pull/83) (by @rerowep)
+
 ## [v0.6.2](https://github.com/rero/rero-ebooks/tree/v0.6.2) (2023-11-27)
 
 [Full Changelog](https://github.com/rero/rero-ebooks/compare/v0.6.1...v0.6.2)
