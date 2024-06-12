@@ -117,8 +117,8 @@ def is_fiction(self, key, value):
     Fiction is set in Marc21 008 33.
     """
     if value:
-        self["fixed_length_data_elements"] = GENERIC_008
-        self["fixed_length_data_elements"][33] = 1
+        fixed_data = f'{GENERIC_008[:33]}1{GENERIC_008[34:]}'
+        self["fixed_length_data_elements"] = fixed_data
 
 
 @cantook_json.over("language_code", "languages|translated_from")
